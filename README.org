@@ -1,0 +1,14 @@
+#+TITLE: Interfaces de usuario 2023 2024
+#+AUTHOR: Lucas Elvira Martín
+#+DATE: <2023-08-25 Fri>
+
+* Interfaces de Usuario - Curso 2023 2024
+
+This repository aims to provide some notes about the practical class given by me in the subject of
+"Interfaces de usuario".
+
+** Structure
+
+As I only give the subject to two groups, the repository will have 3 branches. One for each group on
+which I will use in the classes and the main branch with the content of the course update with the
+changes on the other branch, but adapting these changes for a better publication.
