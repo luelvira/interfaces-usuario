@@ -42,7 +42,7 @@
 (setq user-mail-address "luelvira@pa.uc3m.es")
 
 (defvar lem/site-url (if (string-equal (getenv "CI") "true")
-			 "https://luelvira.codeberg.page/interfaces-usuario-23_24"
+			 "https://luelvira.github.io/interfaces-usuario"
 		       "http://localhost:8080")
   "The url of the site")
 
