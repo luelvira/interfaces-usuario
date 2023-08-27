@@ -14,7 +14,7 @@ jobs:
         run: sudo apt install emacs-nox --yes
      
       - name: Build the site
-        run: emacs -Q --batch -l ./publissh.el --funcall lem/publish
+        run: emacs -Q --batch -l ./publish.el --funcall lem/publish
      
       - name: Publish generated content to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@4.1.4
