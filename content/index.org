@@ -1,6 +1,7 @@
 #+TITLE: Interfaces de usuario 2023 2024
-#+AUTHOR: Lucas Elvira Martín
 #+DATE: <2023-08-25 Fri>
+#+EXPORT_FILE_NAME: index
+
 
 * Interfaces de Usuario - Curso 2023 2024
 
@@ -12,3 +13,18 @@ This repository aims to provide some notes about the practical class given by me
 As I only give the subject to two groups, the repository will have 3 branches. One for each group on
 which I will use in the classes and the main branch with the content of the course update with the
 changes on the other branch, but adapting these changes for a better publication.
+
+** Planning
+
+*Note*: This planning is temporal and maybe will suffer some changes
+
+*** Week 1 
+SCHEDULED: <2023-09-05 Tue>
+On this week, we introduce the subject, with the first  practice, the evaluation rules and a short
+introduction to the web (HTML)
+
+**** Practice 1
+
+**** Evaluation
+
+**** [[file:sessions/01_introduction.org][HTML]]

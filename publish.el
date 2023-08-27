@@ -1,0 +1,175 @@
+;; Copyright (C) 2023 by Lucas  Elvira Martín
+
+;; Initialize package source
+(require 'package)
+(setq package-user-dir (expand-file-name "./.package"))
+
+;; Add some repositories
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+(add-to-list 'package-archives '("melpa-stable" . "https://stable.Melpa.org/packages/"))
+
+;;  Initialize the package system
+(package-initialize)
+(unless package-archive-contents
+  (package-refresh-contents))
+
+(unless (package-installed-p 'use-package)
+  (package-install 'use-package))
+
+(require 'use-package)
+(require 'vc-git)
+(require 'ox-publish)
+(require 'subr-x)
+(require 'cl-lib)
+
+;; Install other dependencies
+(use-package esxml
+  :pin "melpa-stable"
+  :ensure t)
+
+(use-package htmlize
+  :ensure t)
+
+(use-package  org
+  :ensure  t)
+(use-package  org-roam
+  :ensure t)
+
+
+(setq user-full-name "Lucas Elvira Martín")
+(setq user-mail-address "luelvira@pa.uc3m.es")
+
+(defvar lem/site-url (if (string-equal (getenv "CI") "true")
+			 "https://luelvira.codeberg.page/interfaces-usuario-23_24"
+		       "http://localhost:8080")
+  "The url of the site")
+
+(defun lem/get-commit ()
+  "Get the short hash of the latest commit in the current repository."
+  (concat  (string-trim-right
+	     (with-output-to-string
+	       (with-current-buffer standard-output
+		 (vc-git-command t nil nil "log" "-1" "--date=format:\"%Y/%m/%d %T\"" "--format=%ad"))))
+	   " "
+	   (string-trim-right
+	    (with-output-to-string
+	      (with-current-buffer standard-output
+		(vc-git-command t nil nil "rev-parse" "--short" "HEAD"))))))
+
+(cl-defun  lem/generate-page (
+			      title
+			      content
+			      info
+			      &key
+			      (publish-date))
+  (concat
+   "<!-- Generate from " (lem/get-commit) " with " org-export-creator-string " -->\n"
+   "<!DOCTYPE html>"
+   (sxml-to-xml
+    `(html (@ (lang "en"))
+	   (head
+	    (meta (@ (charset "utf-8")))
+	    (meta (@ (author ,user-full-name)))
+	    (meta (@ (name "viewport")
+		     (content "width=device-width, initial-scale=1")))
+	    (link (@ (rel "stylesheet") (href ,(concat lem/site-url "/css/code.css"))))
+	    (link (@ (rel "stylesheet") (href ,(concat lem/site-url "/css/style.css"))))
+	    (title ,(concat title " - Jumble")))
+	   (body
+	    (header (@ (class "site-header"))
+	;;	    (nav (@ (class "nav-side")) (a (@ (class "nav-link") (href "/")) "Home"))  For  the moment,  hidden the navigation bar
+		    (h1 ,title)
+		    (p  (@  (class  "date"))
+			,(concat  "Date:  "  (org-export-data (plist-get info :date) info))))
+	    (main (@ (class "main-content"))
+		  (section
+		   (article (@ (class "post"))
+			    ,content)))
+	    (footer  (@ (class "footer-site"))
+			     (div (@ (class "copyright"))
+				  (p ,(concat "© 2023-2024 " (org-export-data (plist-get info :author) info)  " ")
+				     (a (@ (href ,(concat "mailto:" user-mail-address)))
+					,user-mail-address)))
+			(div (@ (class "Generated"))
+			     (p ,(concat "Generated with " org-export-creator-string " at " publish-date)))))))))
+				       
+
+
+
+  
+(defun lem/html-template (contents info)
+  (lem/generate-page (org-export-data (plist-get info :title) info)
+		     contents
+		     info
+		     :publish-date (org-export-data (org-export-get-date info "%B %e, %Y") info)))
+
+(defun lem/org-html-src-block (src-block _contents info)
+  (let* ((lang (org-element-property :language src-block))
+	       (code (org-html-format-code src-block info)))
+    (format "<pre>%s</pre>" (string-trim code))))
+
+(org-export-define-derived-backend 'site-html 'html
+  :translate-alist
+  '(
+    (template . lem/html-template)
+    (src-block . lem/org-html-src-block)
+    ))
+
+(defun org-html-publish-to-html (plist filename pub-dir)
+  "Publish aan org file to html with the custom backend"
+  (org-publish-org-to 'site-html
+		      filename
+		      (concat "." (or (plist-get plist :html-extension) "html"))
+		      plist
+		      pub-dir))
+
+
+;; Define the configuration
+
+(setq org-publish-use-timestamps-flag t
+      org-publish-timestamp-directory "./.org-cache/"
+      org-export-with-section-numbers nil
+      org-export-use-babel nil
+      org-export-with-smart-quotes t
+      org-export-with-sub-superscripts t
+      org-export-with-tags nil
+      org-export-with-title  nil
+      org-export-with-author  t
+      org-export-with-date t
+      org-export-with-timestamps t
+      org-html-htmlize-output-type 'css
+      org-html-prefer-user-labels t
+      org-html-link-home lem/site-url
+      org-html-html5-fancy t
+      org-export-with-toc nil
+      make-backup-files nil)
+
+;; configure the project to be published
+
+(setq org-publish-project-alist
+      '(("jumble"
+	 :base-directory "./content"
+	 :base-extension "org"
+	 :publishing-directory "./public/"
+	 :publishing-function org-html-publish-to-html
+	 :headline-levels 4
+	 :recursive t)
+	("attachment"
+	 :base-directory "./assets"
+	 :base-extension "css\\|js\\|png\\|jpg\\|gif\\\|ttf"
+	 :publishing-directory "./public"
+	 :recursive t
+	 :publishing-function org-publish-attachment)
+	("myproject" :components("jumble" "attachment"))))
+
+(defun lem/publish ()
+  "Start the publish process"
+  (interactive)
+  (org-publish-all (string-equal (or (getenv "FORCE")
+				     (getenv "CI"))
+				 "true")))
+
+
+(provide  'publish)
+
+
