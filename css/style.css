@@ -1,0 +1,108 @@
+:root {
+    --background-color: #222831; 
+    --foreground: #f8f8f2;
+    --dark-color: #393e46;
+    --accent-color: #29a19c;
+    --accent-light-color: #a3f7bf;
+    --pink: #ff79c6;
+    --purple: #bd93f9;
+    
+}
+@font-face {
+    font-family: FiraCode;
+    src: url("/fonts/static/FiraCode-Bold.ttf");
+    font-weight: 700 900;
+}
+@font-face {
+    font-family: FiraCode;
+    src: url("/fonts/static/FiraCode-Light.ttf");
+    font-weight: 100 300;
+}
+@font-face {
+    font-family: FiraCode;
+    src: url("/fonts/static/FiraCode-Regular.ttf");
+    font-weight: 400;
+}
+@font-face {
+    font-family: FiraCode;
+    src: url("/fonts/static/FiraCode-Medium.ttf");
+    font-weight: 500;
+}
+@font-face {
+    font-family: FiraCode;
+    src: url("/fonts/static/FiraCode-SemiBold.ttf");
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: DejavuSans;
+    src: url("/fonts/static/DejaVuSansMNerdFontMono-Regular.ttf");
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: DejavuSans;
+    src: url("/fonts/static/DejaVuSansMNerdFontMono-Bold.ttf");
+    font-weight: bold;
+}
+
+body {
+    background-color: var(--background-color);
+    color:  var(--foreground);
+    font-family: DejavuSans;
+}
+b {
+    color: var(--accent-light-color);
+    font-family: DejavuSans;
+    font-weight: bold;
+}
+.site-header {
+    margin-bottom: 1%;
+}
+.site-header h1 {
+    text-align: center;
+}
+.site-header  .date  {
+    max-width: 960px;
+    width: 80%;
+    margin: auto;
+    
+}
+.main-content {
+    max-width: 960px;
+    width: 80%;
+    display: block;
+    margin: auto;
+    background-color: var(--dark-color);
+    padding:  0.5%;
+}
+
+h1,  h2, h3, h4,  h5, h6 {
+    font-family: FiraCode;
+}
+
+h1  {
+    font-size: 3rem;
+    font-weight: 600;
+}
+h2 {font-size: 2.5em; color: var(--pink);}
+h3 {font-size: 2rem; color: var(--purple);}
+h4 {font-size: 1.8rem;}
+h5 {font-size: 1.5rem;}
+h6 {font-size: 1.2rem;}
+
+.outline-2,  .outline-3, outline-4,  outline-5, outline-6 {
+    padding:  0 1%;
+}
+
+a {
+    color: var(--accent-color);
+}
+footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width:  90%;
+    padding-top: 2%;
+    margin:  auto;
+}

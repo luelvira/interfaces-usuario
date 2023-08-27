@@ -1,0 +1,530 @@
+<!-- Generate from "2023/08/27 21:20:57" dc44213 with Emacs 27.1 (Org mode 9.3) -->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"/><meta author="Lucas Elvira Martín"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="https://luelvira.codeberg.page/interfaces-usuario-23_24/css/code.css"/><link rel="stylesheet" href="https://luelvira.codeberg.page/interfaces-usuario-23_24/css/style.css"/><title>Introduction to the WWW - Jumble</title></head><body><header class="site-header"><h1>Introduction to the WWW</h1><p class="date">Date:  <span class="timestamp-wrapper"><span class="timestamp">&lt;2023-08-16 Wed&gt;</span></span></p></header><main class="main-content"><section><article class="post">
+
+<div id="outline-container-orge78380a" class="outline-2">
+<h2 id="orge78380a">Word Wide Web</h2>
+<div class="outline-text-2" id="text-orge78380a">
+</div>
+<div id="outline-container-orgcc6ebb6" class="outline-3">
+<h3 id="orgcc6ebb6">What is The Word Wide Web?</h3>
+<div class="outline-text-3" id="text-orgcc6ebb6">
+<p>
+The word wide web is an interconnected system which connect a set of web page between internet. It
+is important to dont confuse Internet with WWW.
+</p>
+
+<p>
+WWW is only one of the application that was builded
+above internet.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org6ff7f3b" class="outline-3">
+<h3 id="org6ff7f3b">Who was the creator?</h3>
+<div class="outline-text-3" id="text-org6ff7f3b">
+<p>
+Tim Berners-Lee propuse the architecture of the WWW, creatting the first Server and the first
+browser on 1990, and publish it on 1991
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org48d6adb" class="outline-2">
+<h2 id="org48d6adb">Components of the Word Wide Web</h2>
+<div class="outline-text-2" id="text-org48d6adb">
+</div>
+<div id="outline-container-org9ed2be2" class="outline-3">
+<h3 id="org9ed2be2">HTTP Protocol</h3>
+<div class="outline-text-3" id="text-org9ed2be2">
+</div>
+<div id="outline-container-orgac92d92" class="outline-4">
+<h4 id="orgac92d92">HTTP Methods:</h4>
+<div class="outline-text-4" id="text-orgac92d92">
+<p>
+This protocol provides a series of method to communicate with a server from a client. There are 6
+methods with different use and rules:
+</p>
+</div>
+
+<div id="outline-container-org43c20ea" class="outline-5">
+<h5 id="org43c20ea">DELETE</h5>
+<div class="outline-text-5" id="text-org43c20ea">
+<p>
+Method in charge of delete a resource from the server. The resource could be a file, an entry on a
+database, or whatever. This method is not a default method, so should be implement by the server.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org59f20bf" class="outline-5">
+<h5 id="org59f20bf">GET</h5>
+<div class="outline-text-5" id="text-org59f20bf">
+<p>
+The get method is used to ask for a resource from a serve. This method can&rsquo;t send data to the
+server. The answer is a text which could be in different formats, like <a href="./html.html">html</a>, <a href="./json.html">json</a> and so.
+</p>
+
+<p>
+To make the request more specific, you can send some information about what you are looking up. This
+values are append to the <a href="./url.html">URL</a>, as a key value, separate each one with the ampersand <code>&amp;</code> symbol and
+after the close question mark of the URL.
+</p>
+
+<p>
+In most case, is enough with append the request values to the url. But there are occasion on which
+it is not enough and you need to use the  form encoding format
+</p>
+
+<pre><span class="org-variable-name">user_agent</span>=<span class="org-string">"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36"</span>
+curl -vvv -G http://localhost:8000/test -H <span class="org-string">"User-Agent: $user_agent"</span> -d <span class="org-variable-name">query</span>=<span class="org-variable-name">scope</span>=1</pre>
+
+<pre class="example">
+ Connected to localhost (127.0.0.1) port 8000 (#0)
+&gt; GET /test?query=scope=1 HTTP/1.1
+&gt; Host: localhost:8000
+&gt; Accept: */*
+&gt; User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36
+&gt; 
+ HTTP 1.0, assume close after body
+&lt; HTTP/1.0 404 File not found
+&lt; Server: SimpleHTTP/0.6 Python/3.11.4
+&lt; Date: Mon, 14 Aug 2023 12:28:11 GMT
+&lt; Connection: close
+&lt; Content-Type: text/html;charset=utf-8
+&lt; Content-Length: 335
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org29458b2" class="outline-5">
+<h5 id="org29458b2">HEAD</h5>
+<div class="outline-text-5" id="text-org29458b2">
+<p>
+This method ask for the <b>same</b> headers which will be returned with the <b>get</b> method. It is useful
+in some context as small computer capabilities. Imagine you haven&rsquo;t RAM available. You, could ask
+first for the headers of the request, evaluate the <i>content-length</i> property and act according this value.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgd60c778" class="outline-5">
+<h5 id="orgd60c778">OPTIONS</h5>
+<div class="outline-text-5" id="text-orgd60c778">
+<p>
+The method <b>OPTIONS</b> retrieve a list of method availables for a resource. This method is implement
+by default in most of the servers
+</p>
+
+<pre>curl -X OPTIONS https://example.org -i</pre>
+
+<pre class="example">
+HTTP/2 200 
+allow: OPTIONS, GET, HEAD, POST
+cache-control: max-age=604800
+content-type: text/html; charset=UTF-8
+date: Wed, 16 Aug 2023 15:06:45 GMT
+expires: Wed, 23 Aug 2023 15:06:45 GMT
+server: EOS (vny/044F)
+content-length: 0
+
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org6804b21" class="outline-5">
+<h5 id="org6804b21">POST</h5>
+<div class="outline-text-5" id="text-org6804b21">
+<p>
+The POST method allows to send data to the server. Normally, this method, produce a change on the
+state of the server, for example, when a login process ends succesfully, the server create a session
+to the user and works in a different way. That means that the post method is not indepondent.
+</p>
+
+<pre class="example">
+POST /test HTTP/1.1
+Host: foo.example
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 27
+
+field1=value1&amp;field2=value2
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgb2b41e9" class="outline-5">
+<h5 id="orgb2b41e9">PUT</h5>
+<div class="outline-text-5" id="text-orgb2b41e9">
+<p>
+With this method, we can create or update an existing resource. It means that the method is
+indepondent.
+</p>
+
+<pre class="example">
+PUT /new.html HTTP/1.1
+Host: example.com
+sontent-type: text/html
+Content-length: 16
+
+&lt;p&gt;New File&lt;/p&gt;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2c7e3bf" class="outline-4">
+<h4 id="org2c7e3bf">HTTP CODES</h4>
+<div class="outline-text-4" id="text-org2c7e3bf">
+<p>
+When we ask for a resource using the HTTP protocol, the response has a status code to identify if
+the answer was successfully or not. The codes are grouped in five categories.
+</p>
+</div>
+
+<div id="outline-container-orgf44bd91" class="outline-5">
+<h5 id="orgf44bd91">1XX INFORMATION RESPONSE</h5>
+<div class="outline-text-5" id="text-orgf44bd91">
+<p>
+When a request gets a code between 100 and 199, the value of the response is informative
+</p>
+</div>
+</div>
+
+<div id="outline-container-org1952fe9" class="outline-5">
+<h5 id="org1952fe9">2XX SUCCESS RESPONSE</h5>
+<div class="outline-text-5" id="text-org1952fe9">
+<p>
+In this case, the request ends successfully. The most common response is 200 that means OK. But there
+is a lot of entries.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org162c202" class="outline-5">
+<h5 id="org162c202">3XX REDIRECT RESPONSE</h5>
+<div class="outline-text-5" id="text-org162c202">
+<p>
+With this response, the client should make another request following a new URL because the resource
+has been moved temporally or permanent
+</p>
+</div>
+</div>
+
+<div id="outline-container-org97e5ffa" class="outline-5">
+<h5 id="org97e5ffa">4XX CLIENT ERROR RESPONSE</h5>
+<div class="outline-text-5" id="text-org97e5ffa">
+<p>
+When the client gets an error code between 400 and 499, the client performe the request with some
+errors that should be fixed before trying again. This errors could be from a bad formed URL, to an
+incorrect data provided to the server, including to try to access to some resource inexistent, the
+famous <i>404 Page not found</i>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org48467b4" class="outline-5">
+<h5 id="org48467b4">5XX SERVER ERROR</h5>
+<div class="outline-text-5" id="text-org48467b4">
+<p>
+With the 5XX error the server inform the client, that there was an error processing the request, but
+it could be temporally and the error is not caused by a client&rsquo;s action.
+<span class="underline">_</span>
+<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status">Mozilla documentation status code</a>
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org30a9bc9" class="outline-3">
+<h3 id="org30a9bc9">THE URL</h3>
+<div class="outline-text-3" id="text-org30a9bc9">
+<p>
+The url is a identify for a resource on the <a href="./word_wide_web.html">WWW</a>. The URL is formed by different parts:
+</p>
+</div>
+
+<div id="outline-container-orgc67db6b" class="outline-4">
+<h4 id="orgc67db6b">The protocol</h4>
+<div class="outline-text-4" id="text-orgc67db6b">
+<p>
+The protocol specify the communication schema to be used. The most known are:
+</p>
+<ul class="org-ul">
+<li>HTTP:</li>
+<li>HTTP:</li>
+<li>ftp</li>
+<li>ftps</li>
+<li><i>file</i>: This is not a protocol by itself , it is a instruction for some programs which tell to the
+software that the resource is on the computer.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orge16ded9" class="outline-4">
+<h4 id="orge16ded9">The domain</h4>
+<div class="outline-text-4" id="text-orge16ded9">
+<p>
+The domain is the namespace of the resource. When the client write a domain, there is a process on
+which the computer ask for a ip associate with the domain to an DNS Server. That means, that the
+client could use the domain or the ip elsewhere.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org24217fe" class="outline-4">
+<h4 id="org24217fe">PORT</h4>
+<div class="outline-text-4" id="text-org24217fe">
+<p>
+The server can open many ports as a sockets. When the protocol is http, the default port is 80 or
+443 if use https.
+</p>
+
+<p>
+The first 2<sup>10</sup> numbers are port used by the operative system. After that, the user could open and
+use the port which desired.
+</p>
+
+<p>
+This is specially useful when working with live server as the provided by Visual Studio.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org5af54a7" class="outline-4">
+<h4 id="org5af54a7">The path</h4>
+<div class="outline-text-4" id="text-org5af54a7">
+<p>
+The path or location of the resource on the server. Normally, it represent a physical location for a
+file. But now, it could works as an abstraction to the server.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org14e83f3" class="outline-4">
+<h4 id="org14e83f3">The query parameters</h4>
+<div class="outline-text-4" id="text-org14e83f3">
+<p>
+A list of key value pairs, joined by an ampersand, that follows the path of the URL and separate
+from it with a closed question marked.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orged17098" class="outline-4">
+<h4 id="orged17098">Anchor</h4>
+<div class="outline-text-4" id="text-orged17098">
+<p>
+The anchor is a key inside the web-page, like a section. This allows to go directly to the section
+which is refereed. The character used to separate the anchor from the rest of the URL is a hashtag,
+because that, we can refer to it as a hash part.
+</p>
+
+
+<pre class="example">
+http://example.org:80/index.html?user=lucas
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4d3c9b8" class="outline-2">
+<h2 id="org4d3c9b8">Characteristics</h2>
+<div class="outline-text-2" id="text-org4d3c9b8">
+<p>
+The main characteristic of the <a href="./word_wide_web.html">WWW</a> is the capability to connect sites with hiperlinks. This provides
+an architecture not hierarchy, allowing user explore the content in a different way connecting
+different ideas, intead of follow a path.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org314a814" class="outline-2">
+<h2 id="org314a814">W3C</h2>
+<div class="outline-text-2" id="text-org314a814">
+<p>
+The World Wide Web Consortium (W3C) develops standards and guidelines to help everyone build a web
+based on the principles of accessibility, internationalization, privacy and security.
+</p>
+</div>
+
+<div id="outline-container-org9744c24" class="outline-3">
+<h3 id="org9744c24">Standars and Guidelines</h3>
+<div class="outline-text-3" id="text-org9744c24">
+<p>
+The standards are <i>rules</i> developed to help web developer and browser to render well a web page,
+helping to make it accessible, with semantic meaning. The most important advantage about this
+standard is that help to make the site visible in many devices, without many headache.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org29c99e6" class="outline-2">
+<h2 id="org29c99e6">HTML</h2>
+<div class="outline-text-2" id="text-org29c99e6">
+<p>
+HTML is a markup language (HyperText Markup Language). Is the most basic tool to build web
+sites.With HTML we can define the structure of the page and give meaning to its part. Currently, the
+html is combined with CSS and JavaScript
+</p>
+</div>
+
+<div id="outline-container-orge612710" class="outline-3">
+<h3 id="orge612710">Basic Syntax</h3>
+<div class="outline-text-3" id="text-orge612710">
+<p>
+The syntax of HTML is evolving in the recent years. Now the standard is HTML5 which proved more tag
+and functionalities.
+</p>
+
+<pre>&lt;<span class="org-function-name">p</span>&gt;This is a paragraph&lt;/<span class="org-function-name">p</span>&gt;</pre>
+
+<p>
+The tags have an opening part which indicates the start of this part and a closed tag end indicates
+the end of the tag. The main difference between both is the slash character after the <i>less than</i>
+symbol.
+</p>
+
+<p>
+The tag could be wrapped by another tag. One example of that is the use of ordered or unordered
+list. The tags <code>ol</code> and <code>ul</code> create its respectively.
+</p>
+
+<pre>&lt;<span class="org-function-name">p</span>&gt; Ingredients: &lt;/<span class="org-function-name">p</span>&gt;
+&lt;<span class="org-function-name">ul</span>&gt;
+  &lt;<span class="org-function-name">li</span>&gt; salt&lt;/<span class="org-function-name">li</span>&gt;
+    &lt;<span class="org-function-name">li</span>&gt; 2 eggs &lt;/<span class="org-function-name">li</span>&gt;
+    &lt;<span class="org-function-name">li</span>&gt; ... &lt;/<span class="org-function-name">li</span>&gt;
+&lt;/<span class="org-function-name">ul</span>&gt;
+&lt;<span class="org-function-name">p</span>&gt;Steps:&lt;/<span class="org-function-name">p</span>&gt;
+&lt;<span class="org-function-name">ol</span>&gt;
+  &lt;<span class="org-function-name">li</span>&gt; Step 1&lt;/<span class="org-function-name">li</span>&gt;
+  &lt;<span class="org-function-name">li</span>&gt; Step 2&lt;/<span class="org-function-name">li</span>&gt;
+  &lt;<span class="org-function-name">li</span>&gt; Step 3&lt;/<span class="org-function-name">li</span>&gt;
+  &lt;<span class="org-function-name">ol</span>&gt;</pre>
+</div>
+</div>
+
+<div id="outline-container-orga3f1bc1" class="outline-3">
+<h3 id="orga3f1bc1">Attributes</h3>
+<div class="outline-text-3" id="text-orga3f1bc1">
+<p>
+In order to provides more meaning to an element, the developer could use attributes. They are a key,
+value pairs which give some aditional information or functionalities to an element. There are a lot
+of predefined attributes like:
+</p>
+<ul class="org-ul">
+<li>class</li>
+<li>id</li>
+<li>href</li>
+<li>value</li>
+</ul>
+<p>
+And so on. Also the developer could use their own attributes, but is a good practice to prepend it
+with <code>data-</code> to ensure that doesn&rsquo;t override default behavior.
+</p>
+
+<pre>&lt;<span class="org-function-name">img</span> <span class="org-variable-name">src</span>=<span class="org-string">"img/my_image.png"</span> /&gt;
+&lt;<span class="org-function-name">ul</span> <span class="org-variable-name">data-type</span>=<span class="org-string">"quizz"</span>&gt;
+    &lt;<span class="org-function-name">li</span> <span class="org-variable-name">data-correct</span>=<span class="org-string">"false"</span>&gt; Answer one&lt;/<span class="org-function-name">li</span>&gt;
+    &lt;<span class="org-function-name">li</span> <span class="org-variable-name">data-correct</span>=<span class="org-string">"false"</span>&gt; Answer two&lt;/<span class="org-function-name">li</span>&gt;
+    &lt;<span class="org-function-name">li</span> <span class="org-variable-name">data-correct</span>=<span class="org-string">"true"</span>&gt; Answer three&lt;/<span class="org-function-name">li</span>&gt;
+&lt;/<span class="org-function-name">ul</span>&gt;</pre>
+</div>
+</div>
+
+<div id="outline-container-org14651a4" class="outline-3">
+<h3 id="org14651a4">Semantic tags</h3>
+<div class="outline-text-3" id="text-org14651a4">
+<p>
+As I mentioned, there is a meaning behind some tags. This helps to the browser and search engine.
+</p>
+</div>
+
+<div id="outline-container-org68e3932" class="outline-4">
+<h4 id="org68e3932">header</h4>
+<div class="outline-text-4" id="text-org68e3932">
+<p>
+Inside the header should be the most important part of the page. With the title, logo and a
+description.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org15deb0d" class="outline-4">
+<h4 id="org15deb0d">main</h4>
+<div class="outline-text-4" id="text-org15deb0d">
+<p>
+The main part of the site. In this element couldn&rsquo;t be repeated elements from other pages, likes
+navigation links, footer or introduction
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf32338c" class="outline-4">
+<h4 id="orgf32338c">section</h4>
+<div class="outline-text-4" id="text-orgf32338c">
+<p>
+The section wrap related content, it works as a chapter of a book.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org15969af" class="outline-4">
+<h4 id="org15969af">article</h4>
+<div class="outline-text-4" id="text-org15969af">
+<p>
+Inside the section should be at least one article that talks about a single topic formed by
+paragraphs
+</p>
+</div>
+</div>
+
+<div id="outline-container-org0f3e2c0" class="outline-4">
+<h4 id="org0f3e2c0">nav</h4>
+<div class="outline-text-4" id="text-org0f3e2c0">
+<p>
+The navigation bar. This element contains the links to the other page or section of the web site
+</p>
+</div>
+</div>
+
+<div id="outline-container-org7227863" class="outline-4">
+<h4 id="org7227863">aside</h4>
+<div class="outline-text-4" id="text-org7227863">
+<p>
+The aside tag defines indirect related content surround the main text.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org737b3a4" class="outline-4">
+<h4 id="org737b3a4">footer</h4>
+<div class="outline-text-4" id="text-org737b3a4">
+<p>
+The footer of a document. Typically contains:
+</p>
+<ul class="org-ul">
+<li>authorship information</li>
+<li>copyright information</li>
+<li>contact information</li>
+<li>site map</li>
+<li>back to top link</li>
+<li>related documents</li>
+</ul>
+<hr />
+<p>
+references:
+</p>
+<ul class="org-ul">
+<li><a href="https://www.w3schools.com/tags/">html tags</a></li>
+<li><a href="https://www.w3schools.com/tags/ref_attributes.asp">attributes</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</article></section></main><footer class="footer-site"><div class="copyright"><p>© 2023-2024 Lucas Elvira Martín <a href="mailto:luelvira@pa.uc3m.es">luelvira@pa.uc3m.es</a></p></div><div class="Generated"><p>Generated with Emacs 27.1 (Org mode 9.3) at August 16, 2023</p></div></footer></body></html>
