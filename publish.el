@@ -1,4 +1,6 @@
 ;; Copyright (C) 2023 by Lucas  Elvira Martín
+;;  run emacs -Q --batch -l ./publish.el --funcall lem/publish
+
 
 ;; Initialize package source
 (require 'package)
