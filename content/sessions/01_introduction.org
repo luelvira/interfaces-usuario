@@ -4,21 +4,34 @@
 #+email: luelvira@pa.uc3m.es
 #+DESCRIPTION: Session for Week 1. Introduction to the WWW
 
+* Table of Content :TOC:
+- [[#word-wide-web][Word Wide Web]]
+  - [[#what-is-the-world-wide-web][What is The World Wide Web?]]
+  - [[#who-was-the-creator][Who was the creator?]]
+- [[#components-of-the-word-wide-web][Components of the Word Wide Web]]
+  - [[#http-protocol][HTTP Protocol]]
+  - [[#the-url][THE URL]]
+- [[#characteristics][Characteristics]]
+- [[#w3c][W3C]]
+  - [[#standards-and-guidelines][Standards and Guidelines]]
+- [[#html][HTML]]
+  - [[#basic-syntax][Basic Syntax]]
+  - [[#attributes][Attributes]]
+  - [[#semantic-tags][Semantic tags]]
 
 * Word Wide Web
 
-** What is The Word Wide Web?
+** What is The World Wide Web?
 
-The word wide web is an interconnected system which connect a set of web page between internet. It
-is important to dont confuse Internet with WWW.
-
-WWW is only one of the application that was builded
+The World Wide Web is an interconnected system that connects a set of web pages between the internet. It
+is important to not confuse the Internet with WWW.  WWW is only one of the applications that was built
 above internet.
 
 ** Who was the creator?
 
-Tim Berners-Lee propuse the architecture of the WWW, creatting the first Server and the first
-browser on 1990, and publish it on 1991
+Tim Berners-Lee proposed the architecture of the WWW, creating the first Server and the first
+browser in 1990, and published in 1991
+
 
 * Components of the Word Wide Web
 
@@ -29,25 +42,26 @@ browser on 1990, and publish it on 1991
 :BEAMER_opt: allowframebreaks
 :END:
 
-This protocol provides a series of method to communicate with a server from a client. There are 6
-methods with different use and rules:
+This protocol provides a series of methods to communicate with a server from a client. There are 6
+methods with different uses and rules:
 
 **** DELETE
 
 Method in charge of delete a resource from the server. The resource could be a file, an entry on a
-database, or whatever. This method is not a default method, so should be implement by the server.
+database, or whatever. This method is not a default method, so should be implemented by the server.
 
 **** GET
 
 The get method is used to ask for a resource from a serve. This method can't send data to the
-server. The answer is a text which could be in different formats, like [[./html.org][html]], [[./json.org][json]] and so.
+server. The answer is a text which could be in different formats, like [[./html.org][html]], [[./json.org][json]] and so on.
 
 To make the request more specific, you can send some information about what you are looking up. This
 values are append to the [[./url.org][URL]], as a key value, separate each one with the ampersand ~&~ symbol and
 after the close question mark of the URL.
 
-In most case, is enough with append the request values to the url. But there are occasion on which
-it is not enough and you need to use the  form encoding format
+In most cases, is enough to append the request values to the URL. But there are
+occasions on which it is not enough and you need to use the [[id:2f2ead03-b0da-456b-9edf-12067bb236b5][FORM ENCODING]] format
+
 
 #+begin_src bash
 user_agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36"
@@ -72,13 +86,13 @@ curl -vvv -G http://localhost:8000/test -H "User-Agent: $user_agent" -d query=sc
 
 ****  HEAD
 
-This method ask for the *same* headers which will be returned with the *get* method. It is useful
-in some context as small computer capabilities. Imagine you haven't RAM available. You, could ask
-first for the headers of the request, evaluate the /content-length/ property and act according this value.
+This method asks for the *same* headers which will be returned with the *get* method. It is useful
+in some contexts as small computer capabilities. Imagine you haven't RAM available. You, could ask
+first for the headers of the request, evaluate the /content-length/ property and act according to this value.
 
 ****  OPTIONS
 
-The method *OPTIONS* retrieve a list of method availables for a resource. This method is implement
+The method *OPTIONS* retrieves a list of methods availables for a resource. This method is implement
 by default in most of the servers
 
 #+begin_src bash :results code :wrap example
@@ -100,9 +114,9 @@ content-length: 0
 
 **** POST
 
-The POST method allows to send data to the server. Normally, this method, produce a change on the
-state of the server, for example, when a login process ends succesfully, the server create a session
-to the user and works in a different way. That means that the post method is not indepondent.
+The POST method allows to send data to the server. Normally, this method, produces a change in the
+state of the server, for example, when a login process ends successfully, the server creates a session
+for the user and works in a different way. That means that the post method is not indepondent.
 
 #+begin_example
 POST /test HTTP/1.1
@@ -130,7 +144,7 @@ Content-length: 16
 *** HTTP CODES
 
 When we ask for a resource using the HTTP protocol, the response has a status code to identify if
-the answer was successfully or not. The codes are grouped in five categories.
+the answer was successful or not. The codes are grouped in five categories.
 
 **** 1XX INFORMATION RESPONSE
 
@@ -138,7 +152,7 @@ When a request gets a code between 100 and 199, the value of the response is inf
 
 **** 2XX SUCCESS RESPONSE
 
-In this case, the request ends successfully. The most common response is 200 that means OK. But there
+In this case, the request ends successfully. The most common response is 200 which means OK. But there
 is a lot of entries.
 
 **** 3XX REDIRECT RESPONSE
@@ -148,51 +162,51 @@ has been moved temporally or permanent
 
 **** 4XX CLIENT ERROR RESPONSE
 
-When the client gets an error code between 400 and 499, the client performe the request with some
-errors that should be fixed before trying again. This errors could be from a bad formed URL, to an
-incorrect data provided to the server, including to try to access to some resource inexistent, the
+When the client gets an error code between 400 and 499, the client performs the request with some
+errors that should be fixed before trying again. These errors could be from a badly formed URL to an
+incorrect data provided to the server, including trying to access some inexistent resource, the
 famous /404 Page not found/
 
 **** 5XX SERVER ERROR
 
-With the 5XX error the server inform the client, that there was an error processing the request, but
+With the 5XX error, the server informs the client, that there was an error processing the request, but
 it could be temporally and the error is not caused by a client's action.
 ___
 [[https://developer.mozilla.org/en-US/docs/Web/HTTP/Status][Mozilla documentation status code]]
 
 ** THE URL
 
-The url is a identify for a resource on the [[./word_wide_web.org][WWW]]. The URL is formed by different parts:
+The URL is an id for a resource on the [[./word_wide_web.org][WWW]]. The URL is formed by different parts:
 
 *** The protocol
 The protocol specify the communication schema to be used. The most known are:
 - HTTP:
 - HTTP:
-- ftp
-- ftps
-- /file/: This is not a protocol by itself , it is a instruction for some programs which tell to the
+- FTP
+- FTPS
+- /file/: This is not a protocol by itself, it is an instruction for some programs which tell the
   software that the resource is on the computer.
 
 *** The domain
 
-The domain is the namespace of the resource. When the client write a domain, there is a process on
-which the computer ask for a ip associate with the domain to an DNS Server. That means, that the
+The domain is the namespace of the resource. When the client writes a domain, there is a process in
+which the computer ask for an ip associated with the domain to a DNS Server. That means, that the
 client could use the domain or the ip elsewhere.
 
 *** PORT 
 
-The server can open many ports as a sockets. When the protocol is http, the default port is 80 or
-443 if use https.
+The server can open many ports as sockets. When the protocol is http, the default port is 80 or
+443 if uses https.
 
-The first 2^10 numbers are port used by the operative system. After that, the user could open and
+The first 2^10 numbers are ports used by the operative system. After that, the user could open and
 use the port which desired.
 
-This is specially useful when working with live server as the provided by Visual Studio.
+This is specially useful when working with live servers such as the one provided by Visual Studio.
 
 *** The path
 
-The path or location of the resource on the server. Normally, it represent a physical location for a
-file. But now, it could works as an abstraction to the server.
+The path or location of the resource on the server. Normally, it represents a physical location for a
+file. But now, it could work as an abstraction to the server.
 
 *** The query parameters
 
@@ -201,44 +215,42 @@ from it with a closed question marked.
 
 *** Anchor
 
-The anchor is a key inside the web-page, like a section. This allows to go directly to the section
+The anchor is a key inside the web-page, like a section. This allows the user to go directly to the section
 which is refereed. The character used to separate the anchor from the rest of the URL is a hashtag,
 because that, we can refer to it as a hash part.
 
 
 #+begin_example
-http://example.org:80/index.html?user=lucas
+http://example.org:80/index.html?user=pedro
 #+end_example
 
 * Characteristics
 
-The main characteristic of the [[./word_wide_web.org][WWW]] is the capability to connect sites with hiperlinks. This provides
-an architecture not hierarchy, allowing user explore the content in a different way connecting
-different ideas, intead of follow a path.
+The main characteristic of the [[./word_wide_web.org][WWW]] is the capability to connect sites with hyperlinks. This provides
+an architecture not hierarchy, allowing users to explore the content in a different way connecting
+different ideas, instead of following a path.
 
 * W3C
 
 The World Wide Web Consortium (W3C) develops standards and guidelines to help everyone build a web
-based on the principles of accessibility, internationalization, privacy and security.
+based on the principles of accessibility, internationalization, privacy, and security.
 
-** Standars and Guidelines
+** Standards and Guidelines
 
-The standards are /rules/ developed to help web developer and browser to render well a web page,
-helping to make it accessible, with semantic meaning. The most important advantage about this
-standard is that help to make the site visible in many devices, without many headache.
+The standards are /rules/ developed to help web developers and browsers to
+render well a web page, helping to make it accessible, with semantic
+meaning. The most important advantage about this standard is that help to make
+the site visible on many devices, without many headaches.
 
 * HTML
-:PROPERTIES:
-:BEAMER_envargs: [t]
-:END:
 
-HTML is a markup language (HyperText Markup Language). Is the most basic tool to build web
-sites.With HTML we can define the structure of the page and give meaning to its part. Currently, the
-html is combined with CSS and JavaScript
+HTML is a markup language (HyperText Markup Language). Is the most basic tool to
+build websites. With HTML we can define the structure of the page and give
+meaning to its part. Currently, the html is combined with CSS and JavaScript
 
 ** Basic Syntax
 
-The syntax of HTML is evolving in the recent years. Now the standard is HTML5 which proved more tag
+The syntax of HTML has been evolving in recent years. Now the standard is HTML5 which proved more tag
 and functionalities.
 
 #+begin_src html
@@ -250,52 +262,51 @@ the end of the tag. The main difference between both is the slash character afte
 symbol.
 
 The tag could be wrapped by another tag. One example of that is the use of ordered or unordered
-list. The tags ~ol~ and ~ul~ create its respectively.
+lists. The tags ~ol~ and ~ul~ create it respectively.
 
 #+begin_src html
-  <p> Ingredients: </p>
-  <ul>
-    <li> salt</li>
-      <li> 2 eggs </li>
-      <li> ... </li>
-  </ul>
+    <p> Ingredients: </p>
+      <ul>
+        <li> salt</li>
+        <li> 2 eggs </li>
+        <li> ... </li>
+      </ul>
   <p>Steps:</p>
   <ol>
     <li> Step 1</li>
     <li> Step 2</li>
     <li> Step 3</li>
-    <ol>
+  <ol>
 #+end_src
 
 ** Attributes
 
-In order to provides more meaning to an element, the developer could use attributes. They are a key,
-value pairs which give some aditional information or functionalities to an element. There are a lot
+To provide more meaning to an element, the developer could use attributes. They are a key,
+value pairs which give some additional information or functionalities to an element. There are a lot
 of predefined attributes like:
 - class
 - id
 - href
 - value
-And so on. Also the developer could use their own attributes, but is a good practice to prepend it
-with ~data-~ to ensure that doesn't override default behavior.
+And so on. Also, the developer could use their own attributes, but is a good practice to prepend it
+with ~data-~ to ensure that doesn't override the default behavior.
 
 #+begin_src html
-<img src="img/my_image.png" />
-<ul data-type="quizz">
+  <img src="img/my_image.png" />
+  <ul data-type="quizz">
     <li data-correct="false"> Answer one</li>
     <li data-correct="false"> Answer two</li>
     <li data-correct="true"> Answer three</li>
-</ul>
+  </ul>
 #+end_src
 
 ** Semantic tags
 
-As I mentioned, there is a meaning behind some tags. This helps to the browser and search engine.
+As I mentioned, there is a meaning behind some tags. This helps the browser and search engine.
 
 *** header
 
-Inside the header should be the most important part of the page. With the title, logo and a
-description.
+Inside the header should be the most important part of the page. With the title, logo and, description.
 
 *** main
 
@@ -304,7 +315,7 @@ navigation links, footer or introduction
 
 *** section
 
-The section wrap related content, it works as a chapter of a book.
+The section wraps related content, it works as a chapter of a book.
 
 *** article
 
@@ -317,7 +328,7 @@ The navigation bar. This element contains the links to the other page or section
 
 *** aside
 
-The aside tag defines indirect related content surround the main text.
+The aside tag defines indirectly related content surrounding the main text.
 
 *** footer
 The footer of a document. Typically contains:

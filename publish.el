@@ -143,6 +143,8 @@
       org-html-prefer-user-labels t
       org-html-link-home lem/site-url
       org-html-html5-fancy t
+      org-html-head-include-default-style  nil
+      org-html-head-include-scripts  nil
       org-export-with-toc nil
       make-backup-files nil)
 
