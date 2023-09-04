@@ -81,8 +81,7 @@
 	    (header (@ (class "site-header"))
 	;;	    (nav (@ (class "nav-side")) (a (@ (class "nav-link") (href "/")) "Home"))  For  the moment,  hidden the navigation bar
 		    (h1 ,title)
-		    (p  (@  (class  "date"))
-			,(concat  "Date:  "  (org-export-data (plist-get info :date) info))))
+		    (p  (@  (class  "date")) ,(concat  "Date:  "  publish-date)))
 	    (main (@ (class "main-content"))
 		  (section
 		   (article (@ (class "post"))

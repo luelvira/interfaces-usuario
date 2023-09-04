@@ -41,9 +41,6 @@ browser in 1990, and published in 1991
 ** HTTP Protocol
 
 *** HTTP Methods:
-:PROPERTIES:
-:BEAMER_opt: allowframebreaks
-:END:
 
 This protocol provides a series of methods to communicate with a server from a client. There are 6
 methods with different uses and rules:
@@ -56,10 +53,10 @@ database, or whatever. This method is not a default method, so should be impleme
 **** GET
 
 The get method is used to ask for a resource from a serve. This method can't send data to the
-server. The answer is a text which could be in different formats, like [[./html.org][html]], [[./json.org][json]] and so on.
+server. The answer is a text which could be in different formats, like HTML, JSON and so on.
 
 To make the request more specific, you can send some information about what you are looking up. This
-values are append to the [[./url.org][URL]], as a key value, separate each one with the ampersand ~&~ symbol and
+values are append to the URL, as a key value, separate each one with the ampersand ~&~ symbol and
 after the close question mark of the URL.
 
 In most cases, is enough to append the request values to the URL. But there are
@@ -174,12 +171,13 @@ famous /404 Page not found/
 
 With the 5XX error, the server informs the client, that there was an error processing the request, but
 it could be temporally and the error is not caused by a client's action.
-___
+
+-----
 [[https://developer.mozilla.org/en-US/docs/Web/HTTP/Status][Mozilla documentation status code]]
 
 ** THE URL
 
-The URL is an id for a resource on the [[./word_wide_web.org][WWW]]. The URL is formed by different parts:
+The URL is an id for a resource on the WWW. The URL is formed by different parts:
 
 *** The protocol
 The protocol specify the communication schema to be used. The most known are:
@@ -229,7 +227,7 @@ http://example.org:80/index.html?user=pedro
 
 * Characteristics
 
-The main characteristic of the [[./word_wide_web.org][WWW]] is the capability to connect sites with hyperlinks. This provides
+The main characteristic of the WWW is the capability to connect sites with hyperlinks. This provides
 an architecture not hierarchy, allowing users to explore the content in a different way connecting
 different ideas, instead of following a path.
 
@@ -341,6 +339,7 @@ The footer of a document. Typically contains:
 - site map
 - back to top link
 - related documents
+
 -----
 references:
 - [[https://www.w3schools.com/tags/][html tags]]
