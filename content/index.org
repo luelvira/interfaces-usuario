@@ -5,7 +5,7 @@
 
 * Interfaces de Usuario - Curso 2023 2024
 
-This repository aims to provide some notes about the practical class given by me in the subject of
+This repository aims to provide some notes about the practical class given by me on the subject of
 "Interfaces de usuario".
 
 ** Structure
@@ -16,15 +16,12 @@ changes on the other branch, but adapting these changes for a better publication
 
 ** Planning
 
-*Note*: This planning is temporal and maybe will suffer some changes
+*Note*: This planning is temporal and may suffer some changes
 
 *** Week 1 
 SCHEDULED: <2023-09-05 Tue>
-On this week, we introduce the subject, with the first  practice, the evaluation rules and a short
+This week, we introduce the subject, with the first  practice, the evaluation rules, and a short
 introduction to the web (HTML)
 
-**** Practice 1
-
-**** Evaluation
-
-**** [[file:sessions/01_introduction.org][HTML]]
+- [[file:sessions/presentacion.org][Presentation]]
+- [[file:sessions/01_introduction.org][01 introduction to the html]]

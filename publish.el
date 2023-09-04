@@ -34,8 +34,8 @@
 
 (use-package  org
   :ensure  t)
-(use-package  org-roam
-  :ensure t)
+;(use-package  org-roam
+;  :ensure t)
 
 
 (setq user-full-name "Lucas Elvira Martín")
@@ -156,6 +156,7 @@
 	 :base-extension "org"
 	 :publishing-directory "./public/"
 	 :publishing-function org-html-publish-to-html
+	 :sitemap-filename     "index.org"
 	 :headline-levels 4
 	 :recursive t)
 	("attachment"

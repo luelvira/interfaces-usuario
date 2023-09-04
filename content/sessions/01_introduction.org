@@ -3,8 +3,11 @@
 #+author: Lucas Elvira Martín
 #+email: luelvira@pa.uc3m.es
 #+DESCRIPTION: Session for Week 1. Introduction to the WWW
+#+language: en
+#+exclude_tags: noexport
+#+creator: Emacs 28.2 (Org mode 9.5.5)
 
-* Table of Content :TOC:
+* Table of content   :TOC:noexport:
 - [[#word-wide-web][Word Wide Web]]
   - [[#what-is-the-world-wide-web][What is The World Wide Web?]]
   - [[#who-was-the-creator][Who was the creator?]]
@@ -60,7 +63,7 @@ values are append to the [[./url.org][URL]], as a key value, separate each one w
 after the close question mark of the URL.
 
 In most cases, is enough to append the request values to the URL. But there are
-occasions on which it is not enough and you need to use the [[id:2f2ead03-b0da-456b-9edf-12067bb236b5][FORM ENCODING]] format
+occasions on which it is not enough and you need to use the FORM ENCODING format
 
 
 #+begin_src bash
