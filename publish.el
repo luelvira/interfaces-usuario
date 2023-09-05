@@ -152,19 +152,41 @@
 (setq org-publish-project-alist
       '(("jumble"
 	 :base-directory "./content"
+	 :recursive nil
 	 :base-extension "org"
 	 :publishing-directory "./public/"
 	 :publishing-function org-html-publish-to-html
-	 :sitemap-filename     "index.org"
 	 :headline-levels 4
-	 :recursive t)
+	 )
+	("theory"
+	 :base-directory "./content/sessions/"
+	 :base-extension "org"
+	 :publishing-directory "./public/sessions"
+	 :publishing-function org-html-publish-to-html
+	 :headline-levels 4
+	 :auto-sitemap t
+	 :sitemap-style list
+	 :sitemap-title ""
+	 :sitemap-filename "sessions.org"
+	 :sitemap-sort-files anti-chronologically)
+	("practice"
+	 :base-directory "./content/practice/"
+	 :base-extension "org"
+	 :publishing-directory "./public/practice/"
+	 :publishing-function org-html-publish-to-html
+	 :headline-levels 4
+	 :auto-sitemap t
+	 :sitemap-style list
+	 :sitemap-filename "practice.org"
+	 :sitemap-title nil 
+	 :sitemap-sort-files anti-chronologically)
 	("attachment"
 	 :base-directory "./assets"
 	 :base-extension "css\\|js\\|png\\|jpg\\|gif\\\|ttf"
 	 :publishing-directory "./public"
 	 :recursive t
 	 :publishing-function org-publish-attachment)
-	("myproject" :components("jumble" "attachment"))))
+	("myproject" :components("jumble" "theory" "practice" "attachment"))))
 
 (defun lem/publish ()
   "Start the publish process"

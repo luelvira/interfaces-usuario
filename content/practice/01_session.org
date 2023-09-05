@@ -1,5 +1,5 @@
 :PROPERTIES:
-:header-args: :tangle index.index
+:header-args: :tangle index.html
 :END:
 #+DATE: [2023-08-28 Mon]
 

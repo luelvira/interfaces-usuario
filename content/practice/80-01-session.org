@@ -1,0 +1,88 @@
+:PROPERTIES:
+:header-args: :tangle index.html
+:END:
+#+DATE: [2023-09-05 Tue]
+* Introducción al HTML
+
+** Meta info
+
+We define the format. With the first line, we tell the browser the content is HTML5.
+The second line specify the language of the content. The text that the user will view.
+
+#+begin_src html
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+    <title> Mi primera página</title>
+    <style>
+#+end_src
+
+Also we can include style into the web page. But it is preferable use a external file
+#+begin_src html
+ * {
+  border: 1px solid black; // use this to make more clear each tag
+  }
+  body {
+    font-family: sans-serif;
+  }
+  main {
+    width: 960px;
+    margin: auto;
+    }
+  section {
+    width: 30%;
+    display: inline-block;
+    }
+#+end_src
+
+Cerramos las etiquetas del head
+
+#+begin_src html
+    </style>
+  </head>
+#+end_src
+
+** Body
+
+Into the body tag, we put our content. We can nest any number of tags as we want. But it has a cost into the performance.
+
+The first tag is the header. Into the header, we should introduce the most important part of the web. See [[file:./../content/sessions/01_introduction.org*header][introduction]]
+
+#+begin_src html
+  <body>
+    <header>
+      <h1>Hola Mundo </h1>
+    </header>
+      #+end_src
+
+*** Main content
+
+In this section we play with the different modes of =display=
+
+Check the difference between ~display: inline-block~ and ~display: block~, toggle it in the style section.
+      
+#+begin_src html
+    <main>
+      <h2>Segundo título</h2>
+      <section style="background-color: blue">
+        <h3>Sección 1</h3>
+      </section>
+      <section style="background-color: red">
+        <h3>Sección 2</h3>
+      </section>
+      <section style="background-color: green">
+        <h3>Sección 3</h3>
+      </section>
+      </section>
+    </main>
+  </body>
+#+end_src
+
+
+** EOF
+
+#+begin_src html
+</html>
+#+end_src
+
+The final code of this session: [[https://github.com/luelvira/interfaces-usuario/blob/d50763168a83156b6132648bb73ac5d4a3175b84/content/practice/index.html][index.html]]
