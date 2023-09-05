@@ -1,0 +1,103 @@
+<!-- Generate from "2023/09/05 19:08:32" d507631 with Emacs 27.1 (Org mode 9.3) -->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"/><meta author="Lucas Elvira Martín"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="https://luelvira.github.io/interfaces-usuario/css/code.css"/><link rel="stylesheet" href="https://luelvira.github.io/interfaces-usuario/css/style.css"/><title> - Jumble</title></head><body><header class="site-header"><h1></h1><p class="date">Date:  September  5, 2023</p></header><main class="main-content"><section><article class="post"><p>
+:header-args: :tangle index.html
+</p>
+<div id="outline-container-org4f7d543" class="outline-2">
+<h2 id="org4f7d543">Introducción al HTML</h2>
+<div class="outline-text-2" id="text-org4f7d543">
+</div>
+<div id="outline-container-orgd2367e9" class="outline-3">
+<h3 id="orgd2367e9">Meta info</h3>
+<div class="outline-text-3" id="text-orgd2367e9">
+<p>
+We define the format. With the first line, we tell the browser the content is HTML5.
+The second line specify the language of the content. The text that the user will view.
+</p>
+
+<pre>&lt;<span class="org-keyword">!DOCTYPE</span> html&gt;
+&lt;<span class="org-function-name">html</span> <span class="org-variable-name">lang</span>=<span class="org-string">"es"</span>&gt;
+&lt;<span class="org-function-name">head</span>&gt;
+&lt;<span class="org-function-name">title</span>&gt;<span class="org-underline"><span class="org-bold"> Mi primera p&#225;gina</span></span>&lt;/<span class="org-function-name">title</span>&gt;
+&lt;<span class="org-function-name">style</span>&gt;</pre>
+
+<p>
+Also we can include style into the web page. But it is preferable use a external file
+</p>
+<pre>* {
+ border: 1px solid black; // use this to make more clear each tag
+ }
+ body {
+   font-family: sans-serif;
+ }
+ main {
+   width: 960px;
+   margin: auto;
+   }
+ section {
+   width: 30%;
+   display: inline-block;
+   }</pre>
+<p>
+Cerramos las etiquetas del head
+</p>
+
+<pre>&lt;/<span class="org-function-name">style</span>&gt;
+&lt;/<span class="org-function-name">head</span>&gt;</pre>
+</div>
+</div>
+
+<div id="outline-container-org88d59fc" class="outline-3">
+<h3 id="org88d59fc">Body</h3>
+<div class="outline-text-3" id="text-org88d59fc">
+<p>
+Into the body tag, we put our content. We can nest any number of tags as we want. But it has a cost into the performance.
+</p>
+
+<p>
+The first tag is the header. Into the header, we should introduce the most important part of the web. See <a href="./../content/sessions/01_introduction.org*header">introduction</a>
+</p>
+
+<pre>&lt;<span class="org-function-name">body</span>&gt;
+  &lt;<span class="org-function-name">header</span>&gt;
+    &lt;<span class="org-function-name">h1</span>&gt;<span class="org-underline"><span class="org-bold">Hola Mundo </span></span>&lt;/<span class="org-function-name">h1</span>&gt;
+  &lt;/<span class="org-function-name">header</span>&gt;</pre>
+</div>
+
+<div id="outline-container-org2cb5161" class="outline-4">
+<h4 id="org2cb5161">Main content</h4>
+<div class="outline-text-4" id="text-org2cb5161">
+<p>
+In this section we play with the different modes of <code>display</code>
+</p>
+
+<p>
+Check the difference between <code>display: inline-block</code> and <code>display: block</code>, toggle it in the style section.
+</p>
+
+<pre>&lt;<span class="org-function-name">main</span>&gt;
+    &lt;<span class="org-function-name">h2</span>&gt;<span class="org-underline"><span class="org-bold-italic">Segundo t&#237;tulo</span></span>&lt;/<span class="org-function-name">h2</span>&gt;
+    &lt;<span class="org-function-name">section</span> <span class="org-variable-name">style</span>=<span class="org-string">"background-color: blue"</span>&gt;
+      &lt;<span class="org-function-name">h3</span>&gt;<span class="org-underline"><span class="org-italic">Secci&#243;n 1</span></span>&lt;/<span class="org-function-name">h3</span>&gt;
+    &lt;/<span class="org-function-name">section</span>&gt;
+    &lt;<span class="org-function-name">section</span> <span class="org-variable-name">style</span>=<span class="org-string">"background-color: red"</span>&gt;
+      &lt;<span class="org-function-name">h3</span>&gt;<span class="org-underline"><span class="org-italic">Secci&#243;n 2</span></span>&lt;/<span class="org-function-name">h3</span>&gt;
+    &lt;/<span class="org-function-name">section</span>&gt;
+    &lt;<span class="org-function-name">section</span> <span class="org-variable-name">style</span>=<span class="org-string">"background-color: green"</span>&gt;
+      &lt;<span class="org-function-name">h3</span>&gt;<span class="org-underline"><span class="org-italic">Secci&#243;n 3</span></span>&lt;/<span class="org-function-name">h3</span>&gt;
+    &lt;/<span class="org-function-name">section</span>&gt;
+    &lt;/<span class="org-function-name">section</span>&gt;
+  &lt;/<span class="org-function-name">main</span>&gt;
+&lt;/<span class="org-function-name">body</span>&gt;</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orga2c3c0f" class="outline-3">
+<h3 id="orga2c3c0f">EOF</h3>
+<div class="outline-text-3" id="text-orga2c3c0f">
+<pre>&lt;/<span class="org-function-name">html</span>&gt;</pre>
+</div>
+</div>
+</div>
+</article></section></main><footer class="footer-site"><div class="copyright"><p>© 2023-2024 Lucas Elvira Martín <a href="mailto:luelvira@pa.uc3m.es">luelvira@pa.uc3m.es</a></p></div><div class="Generated"><p>Generated with Emacs 27.1 (Org mode 9.3) at September  5, 2023</p></div></footer></body></html>
