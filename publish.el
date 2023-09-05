@@ -178,7 +178,7 @@
 	 :auto-sitemap t
 	 :sitemap-style list
 	 :sitemap-filename "practice.org"
-	 :sitemap-title nil 
+	 :sitemap-title  ""
 	 :sitemap-sort-files anti-chronologically)
 	("attachment"
 	 :base-directory "./assets"
@@ -191,9 +191,7 @@
 (defun lem/publish ()
   "Start the publish process"
   (interactive)
-  (org-publish-all (string-equal (or (getenv "FORCE")
-				     (getenv "CI"))
-				 "true")))
+  (org-publish-all t))
 
 
 (provide  'publish)

@@ -1,4 +1,4 @@
-#+TITLE: Sitemap for project practice
+#+TITLE: 
 
-- [[file:0180_session.org][0180_session]]
-- [[file:01_session.org][01_session]]
+- [[file:80-01-session.org][80-01-session]]
+- [[file:G01-session.org][G01-session]]

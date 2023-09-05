@@ -1,4 +1,4 @@
-#+title: Introduction to the WWW
+#+title: Presentation
 #+date: <2023-09-04 Mon>
 #+author: Lucas Elvira Martín
 #+email: luelvira@pa.uc3m.es
@@ -23,6 +23,7 @@ Foro de la asignatura
 4. Entrega *Caso práctico*:
    1. Grupo 80: <2023-11-21 Tue>
    2. Grupo 82: <2023-11-23 Thu>
+
 ** Evaluación
 
 | Ejercicio     | Porcentaje |

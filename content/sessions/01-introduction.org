@@ -21,6 +21,7 @@
   - [[#basic-syntax][Basic Syntax]]
   - [[#attributes][Attributes]]
   - [[#semantic-tags][Semantic tags]]
+- [[#external-links][External links]]
 
 * Word Wide Web
 
@@ -345,3 +346,9 @@ references:
 - [[https://www.w3schools.com/tags/][html tags]]
 - [[https://www.w3schools.com/tags/ref_attributes.asp][attributes]]
 
+
+* External links
+
+- [[https://www.w3schools.com/html/default.asp][WCSCHOOL]] This page has content about different technologies, includes html, css and javascript
+- [[https://developer.mozilla.org/es/docs/Web/HTML][mdn documentation]] Mozzila has an excellent documentation about any content related to the web
+- [[https://caniuse.com/][can i use?]] When you are not sure if something is supported in some browser
