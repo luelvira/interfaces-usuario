@@ -46,6 +46,9 @@
     font-weight: bold;
 }
 
+img, svg, media {
+    width: 100%;
+}
 body {
     background-color: var(--background-color);
     color:  var(--foreground);
@@ -67,6 +70,21 @@ b {
     width: 80%;
     margin: auto;
     
+}
+
+.site-header .nav-side {
+    max-width: 960px;
+    width: 80%;
+    margin: auto;
+}
+
+.nav-categories {
+    display: flex;
+    justify-content: space-around;
+    padding: 0;
+}
+.nav-categories li {
+    display: inline-block;
 }
 .main-content {
     max-width: 1080px;
@@ -105,4 +123,19 @@ footer {
     width:  90%;
     padding-top: 2%;
     margin:  auto;
+    flex-wrap: wrap;
+}
+
+.Generated, .copyright, .colabore {
+    width: 50%;
+    text-align: center;
+}
+
+footer .colabore {
+    display: flex;
+    justify-content: center;
+}
+footer .colabore a{
+    display: block;
+    width: 25%;
 }
