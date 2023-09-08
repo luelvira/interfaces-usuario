@@ -1,0 +1,12 @@
+#+TITLE: Sessions Index
+#+AUTHOR: Lucas Elvira Martín
+#+EMAIL: luelvira@pa.uc3m.es
+
+* Sessions
+
+This category will get all the notes about each session of theory. The content
+is sorted anti-chronologically and each entry has its category based on one of
+the following: =HTML=, =CSS=, =JS=
+
+
+#+INCLUDE: sessions/sessions.org

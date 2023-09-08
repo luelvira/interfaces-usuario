@@ -22,8 +22,3 @@ changes on the other branch, but adapting these changes for a better publication
 SCHEDULED: <2023-09-05 Tue>
 This week, we introduce the subject, with the first  practice, the evaluation rules, and a short
 introduction to the web (HTML)
-
-
-
-#+INCLUDE: sessions/sessions.org
-#+INCLUDE: practice/practice.org

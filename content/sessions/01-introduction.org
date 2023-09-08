@@ -33,7 +33,7 @@ above internet.
 
 ** Who was the creator?
 
-Tim Berners-Lee proposed the architecture of the WWW, creating the first Server and the first
+Tim *Berners-Lee* proposed the architecture of the WWW, creating the first Server and the first
 browser in 1990, and published in 1991
 
 

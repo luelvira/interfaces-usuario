@@ -1,0 +1,11 @@
+#+TITLE: Practice Index
+#+AUTHOR: Lucas Elvira Martín
+#+EMAIL: luelvira@pa.uc3m.es
+
+* Practice
+
+This category will contain all the example we use in class to explain the
+content. For this reason every file has a relation with another one on the
+sessions folder
+
+#+INCLUDE: practice/practice.org

@@ -58,6 +58,9 @@
 	      (with-current-buffer standard-output
 		(vc-git-command t nil nil "rev-parse" "--short" "HEAD"))))))
 
+(defun lem/include-date (publish-date)
+  (list `(p "hola")))
+
 (cl-defun  lem/generate-page (
 			      title
 			      content
@@ -76,12 +79,20 @@
 		     (content "width=device-width, initial-scale=1")))
 	    (link (@ (rel "stylesheet") (href ,(concat lem/site-url "/css/code.css"))))
 	    (link (@ (rel "stylesheet") (href ,(concat lem/site-url "/css/style.css"))))
-	    (title ,(concat title " - Jumble")))
+	    (title ,(concat title " - Jumble"))
+	    (script (@ (defer "defer" )
+		       (data-domain "luelvira.github.io/interfaces-usuario")
+		       (src "https://plausible.io/js/script.js"))
+		    ""))
 	   (body
 	    (header (@ (class "site-header"))
-	;;	    (nav (@ (class "nav-side")) (a (@ (class "nav-link") (href "/")) "Home"))  For  the moment,  hidden the navigation bar
 		    (h1 ,title)
-		    (p  (@  (class  "date")) ,(concat  "Date:  "  publish-date)))
+		    ,(unless (= (length publish-date) 0) (concat "<p class=\"date\">Date: " publish-date "</p>"))
+		    (nav (@ (class "nav-side"))
+			 (ul (@ (class "nav-categories"))
+			     (li (a (@ (href "/")) "Home"))
+			     (li (a (@ (href "/sessions.html")) "Theory"))
+			     (li (a (@ (href "/practice.html")) "Practice")))))
 	    (main (@ (class "main-content"))
 		  (section
 		   (article (@ (class "post"))
@@ -89,10 +100,16 @@
 	    (footer  (@ (class "footer-site"))
 			     (div (@ (class "copyright"))
 				  (p ,(concat "© 2023-2024 " (org-export-data (plist-get info :author) info)  " ")
+				     (br)
 				     (a (@ (href ,(concat "mailto:" user-mail-address)))
 					,user-mail-address)))
-			(div (@ (class "Generated"))
-			     (p ,(concat "Generated with " org-export-creator-string " at " publish-date)))))))))
+			     (div (@ (class "Generated"))
+				  (p ,(concat "Generated with " org-export-creator-string)))
+			     (div (@ (class "colabore"))
+				  (a (@ (href "https://github.com/luelvira/interfaces-usuario/")
+					(target "_blank"))
+				     (img (@ (src ,(concat lem/site-url "/img/github-mark-white.png"))
+					     (alt "Link to the github repository")))))))))))
 				       
 
 
@@ -149,6 +166,13 @@
 
 ;; configure the project to be published
 
+(defun format-entry-sitemap (entry style project)
+  (format "%s - [[file:%s][%s]]"
+	  (format-time-string "%Y-%m-%d" (org-publish-find-date entry project))
+	  entry
+	  (org-publish-find-title entry project)
+	  ))
+
 (setq org-publish-project-alist
       '(("jumble"
 	 :base-directory "./content"
@@ -168,6 +192,7 @@
 	 :sitemap-style list
 	 :sitemap-title ""
 	 :sitemap-filename "sessions.org"
+	 :sitemap-format-entry format-entry-sitemap
 	 :sitemap-sort-files anti-chronologically)
 	("practice"
 	 :base-directory "./content/practice/"
@@ -179,6 +204,7 @@
 	 :sitemap-style list
 	 :sitemap-filename "practice.org"
 	 :sitemap-title  ""
+	 :sitemap-format-entry format-entry-sitemap
 	 :sitemap-sort-files anti-chronologically)
 	("attachment"
 	 :base-directory "./assets"
