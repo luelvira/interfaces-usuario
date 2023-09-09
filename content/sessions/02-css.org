@@ -1,0 +1,68 @@
+#+TITLE: Introduction to CSS
+#+DATE: <2023-09-11 Mon>
+#+AUTHOR: Lucas Elvira Martín
+#+email: luelvira@pa.uc3m.es
+#+DESCRIPTION: Session for Week 2. Introduction to CSS
+#+language: en
+#+exclude_tags: noexport
+#+creator: Emacs 28.2 (Org mode 9.5.5)
+
+* Table of Content  :TOC:noexport:
+- [[#introduction-to-css3][Introduction to CSS3]]
+  - [[#history][History]]
+  - [[#functionalities][Functionalities]]
+  - [[#syntax][Syntax]]
+- [[#references][References]]
+
+* Introduction to CSS3
+
+** History
+- CSS (Cascading Style Sheets)
+- In 1994 *Hakon Wium Lie* proposed the first approximation  of the CSS.
+- At the same time, research of the CERN was trying different ways to create
+  styles into the web.
+- In 1996, *W3C* started recommending the first version about CSS, =CSS1=. Today
+  it is the standard. Now we use  CSS3.
+
+** Functionalities
+- Developers use CSS to give style and identity to web pages. These allow web
+  pages to be different between each one and improve the user experience.
+- We can define styles for many different markup languages as =XML=, =SVG=, and =HTML=.
+- It is a rule-based language. We define rules and apply them to a set of elements using selectors
+
+** Syntax
+
+To import a CSS file we should use the link tag, which asks for the file and provides it to the browser to render the content
+
+#+begin_src html
+<!-- index.html -->
+  <head>
+    <title>My first page </title>
+    <!-- load the css style -->
+    <link rel="style/sheet" href="css/main.css">
+  </head>
+#+end_src
+
+Look at the link tag. It is open, but never closed. Some tag doesn't need a close tag.
+
+#+begin_src css
+/* main.css */
+selector {
+    property: value;
+}
+#+end_src
+
+The selectors can start with =#= to refer to an ID attribute. If it starts with
+a =.=, the selector looks for a class attribute. And if the selector starts with
+a tag, this group applies to all tags that are referenced.
+
+-----
+
+Next: [[file:02-css-layout.org][display float]]
+
+
+* References
+#+ATTR_HTML: :target _blank
+- [[https://developer.mozilla.org/en-US/docs/Learn/CSS/First_steps/What_is_CSS][What is CSS?, mdn web docs]]
+#+ATTR_HTML: :target _blank
+- [[https://en.wikipedia.org/wiki/CSS#History][CSS Wikipedia, wikipedia]]

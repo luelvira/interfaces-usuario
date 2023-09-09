@@ -1,0 +1,36 @@
+#+title: CSS Layouts
+#+date: <2023-09-11 Mon>
+#+author: Lucas Elvira Martín
+#+DESCRIPTION: Session for Week 2. CSS Float Layout
+#+language: en
+#+exclude_tags: noexport
+#+creator: Emacs 28.2 (Org mode 9.5.5)
+
+* Table of content :TOC:noexport:
+- [[#css-float-layout][CSS Float Layout]]
+  - [[#float][FLOAT]]
+
+* CSS Float Layout
+
+** FLOAT
+
+This property places an element on top left or right of its parents, allowing
+text and inline elements to wrap around it. The element is removed from the
+normal flow of the page, keeping part of the flow.
+
+*** Characteristics
+Lost the display properties because it depends on the box layout
+
+*** Cleaning
+Sometimes we want that a floating element positioned below other floating
+elements. To do it, we use the clear property that removes the default
+characteristics of the clear.
+
+[[https://codepen.io/luelvira/pen/oNdBLdW][example codepen]]
+
+This property allows an element to be allocated below another floating element
+when there is enough space to keep both elements on the same line
+
+-----
+
+next: [[file:02-css-display-flex.org][display flex]]

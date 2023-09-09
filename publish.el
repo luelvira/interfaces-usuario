@@ -217,8 +217,9 @@
 (defun lem/publish ()
   "Start the publish process"
   (interactive)
-  (org-publish-all t))
-
+  (org-publish-all (string-equal (or (getenv "FORCE")
+				     (getenv "CI"))
+				 "true")))
 
 (provide  'publish)
 

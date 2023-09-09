@@ -1,0 +1,95 @@
+#+title: 02 CSS DISPLAY FLEX CHILD
+#+date: <2023-09-11 Mon>
+#+author: Lucas Elvira Martín
+#+DESCRIPTION: Session for Week 2. Display flex II
+#+language: en
+#+exclude_tags: noexport
+#+creator: Emacs 28.2 (Org mode 9.5.5)
+
+* Table of content :TOC:noexport:
+- [[#flexbox-childs][FLEXBOX CHILDS]]
+  - [[#flex-basis][flex-basis:]]
+  - [[#flex-grow][flex-grow:]]
+  - [[#flex-shrink][flex-shrink]]
+  - [[#shorthand-values][shorthand values]]
+
+* FLEXBOX CHILDS
+
+These elements are all which its parent has the property [[file:02-css-display-flex-child.org][display flex]]
+There are some properties that allow to have more control over flex items
+
+** flex-basis:
+Define the size of the elements in terms of the space it leaves as
+available space. If the property is set as =auto= the browser looks if
+the item have size and use it. Otherwise, the content size is used as
+flex-basis. *Specifies the initial length* of the item
+
+** flex-grow:
+This property is used to specify if the items can grow along the space
+available. If the property takes a positive value, we say that it could
+grow from his flex-basis value.
+
+If there are many items with that property, the value represents the
+proportion of the space that could take.
+
+#+ATTR_HTML: :target _blank
+[[https://codepen.io/luelvira/pen/NWYQyyM][example in codepen]]
+
+#+begin_export html
+<style>
+.cont {
+  display: flex;
+  width: 500px;
+  height: 200px;
+  border: 2px solid #2c1159;
+}
+
+.cont div {
+  background: #429365;
+  margin: 5px;
+}
+</style>
+<div class="cont">
+  <div>999</div>
+  <div>999</div>
+  <div>999</div>
+  <div>999</div>
+</div>
+
+<form>
+  <input type="checkbox" id="flex_basis"> <label for="flex_basis">flex-basis</label>
+  <br>
+  <input type="checkbox" id="flex_grow"> <label for="flex_grow">flex-grow</label>
+  <br>
+  <input type="checkbox" id="flex_grow_2"> <label for="flex_grow_2">flex-grow to item2</label>
+</form>
+
+#+end_export
+
+** flex-shrink
+If we do not have enough space in the container to lay out our items,
+and flex-shrink is set to a positive integer, then the item can become
+smaller than the flex-basis.
+
+*The flex-grow and flex-shrink are proportions*
+
+** shorthand values
+We can join three properties in one with
+
+#+begin_src css
+.flex-item {
+    /*flex: grow shrink basis;*/
+    flex: 1 1 200px;
+}
+#+end_src
+
+*** order
+The order property specifies the order of the items
+*** align-self
+Override the default alignment by the container's [[file:02-css-display-flex.org::*align-items][align-items]] 
+
+-----
+
+References:
+#+ATTR_HTML: :target _blank
+- [[https://www.w3schools.com/csS/css3_flexbox.asp][w3school flex-box]]

@@ -1,0 +1,91 @@
+#+title: 02 CSS DISPLAY FLEX
+#+date: <2023-09-11 Mon>
+#+author: Lucas Elvira Martín
+#+DESCRIPTION: Session for Week 2. Display flex I
+#+language: en
+#+exclude_tags: noexport
+#+creator: Emacs 28.2 (Org mode 9.5.5)
+
+* Table of Content :TOC:noexport:
+- [[#flexbox][FLEXBOX]]
+  - [[#basic-concepts][Basic concepts]]
+  - [[#properties][Properties]]
+  - [[#properties-applied-to-flex-items][Properties applied to flex items]]
+
+* FLEXBOX
+The main idea behind the flex layout is to give the container the
+ability to alter its items' with/height and order the best fill the
+space. One important thing is that flexbox is direction agnostic. This
+capability is really useful in responsive layout.
+
+Flexbox allows to:
+- vertical centering a block of content inside its parent
+- Making all the children of a container take up equal size
+- Making all columns (in a multiple-column layout) adopt the same height (same as the previous item)
+
+** Basic concepts
+There are two axes. The main and the cross. The main axis is defined
+with [[*flex-direction][flex-direction]] property and the cross runs perpendicular
+
+** Properties
+*** Default values
+- Items display in a row (the[[*flex-direction][flex-direction]]  property's default is =row=).
+- The items start from the start edge of the main axis.
+- The items do not stretch on the main dimension, but can shrink.
+- The items will stretch to fill the size of the cross axis.
+- The [[file:02-css-display-flex-child.org::*flex-basis:][flex-basis]]i property is
+  set to =auto=.
+- The [[*flex-wrap][flex-wrap]] property is set to =nowrap=.
+
+*** flex-direction
+Define the direction in which the elements will be positioned. Can be:
+- *row*: The main axis is horizontal. All items will be position at the right of
+  the previous element
+- *row-reverse*: Same as row bud in sort reversed
+- *column*: The main axis is vertical. The children elements will tend to take
+  up all the horizontal space
+- *column-reverse*: Same as column bud in sort reversed
+
+*** flex-wrap
+Flexbox is one dimensional model. Its mean, if the content not fit into
+the parent, they will overflow the container. To prevent it, we can use
+flex-wrap. With this property set to =wrap=, if the items are too large to all
+display in one line, they will wrap onto another line
+
+*** flex-flow
+This property combine the flex-direction and flex-wrap properties. The
+first value is flex-direction and the second one is flex-wrap
+
+*** align-items
+This property align items in the cross axis. The default value is *stretch*. The values allowed are:
+- *stretch*: stretch all space available
+- *flex-start*: line up at the start - flex-end: to align items to the end
+- *center*: center elements in the cross axis
+- *baseline*: aligns the flex items such as their baselines
+
+*** justify-content
+Same as the align-item property bud in the main axis. The initial value
+is *flex-start*. The values allowed are:
+
+- *flex-start*: aligns the flex items at the beginning of the container
+- *flex-end*: aligns the flex items at the end of the container
+- *center*: aligns the flex items at the center of the container.
+- *space-around*: displays the flex items with space before, between, and after the items
+- *space-between*: displays the flex items with space between the items
+
+** Properties applied to [[file:02-css-display-flex-child.org][flex items]]
+
+-----
+
+References:
+#+ATTR_HTML: :target _blank
+- [[https://css-tricks.com/snippets/css/a-guide-to-flexbox/][css-trics a guide for flexbox]]
+#+ATTR_HTML: :target _blank
+- [[https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox][mdn css_layout flexbox]]
+#+ATTR_HTML: :target _blank
+- [[https://www.w3schools.com/csS/css3_flexbox.asp][w3school flex-box]]
+#+ATTR_HTML: :target _blank
+- [[https://www.w3schools.com/csS/css3_flexbox_container.asp][w3school flexbox_container]]
+#+ATTR_HTML: :target _blank
+- [[https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox][mdn css_layout flexbox basic concept]]
+
