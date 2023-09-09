@@ -1,0 +1,151 @@
+<!-- Generate from "2023/09/09 13:37:25" 013fbba with Emacs 27.1 (Org mode 9.3) -->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"/><meta author="Lucas Elvira Martín"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="https://luelvira.github.io/interfaces-usuario/css/code.css"/><link rel="stylesheet" href="https://luelvira.github.io/interfaces-usuario/css/style.css"/><title>02 CSS DISPLAY FLEX - Jumble</title><script defer="defer" data-domain="luelvira.github.io/interfaces-usuario" src="https://plausible.io/js/script.js"></script></head><body><header class="site-header"><h1>02 CSS DISPLAY FLEX</h1><p class="date">Date: September 11, 2023</p><nav class="nav-side"><ul class="nav-categories"><li><a href="/">Home</a></li><li><a href="/sessions.html">Theory</a></li><li><a href="/practice.html">Practice</a></li></ul></nav></header><main class="main-content"><section><article class="post">
+<div id="outline-container-org47b930d" class="outline-2">
+<h2 id="org47b930d">FLEXBOX</h2>
+<div class="outline-text-2" id="text-org47b930d">
+<p>
+The main idea behind the flex layout is to give the container the
+ability to alter its items&rsquo; with/height and order the best fill the
+space. One important thing is that flexbox is direction agnostic. This
+capability is really useful in responsive layout.
+</p>
+
+<p>
+Flexbox allows to:
+</p>
+<ul class="org-ul">
+<li>vertical centering a block of content inside its parent</li>
+<li>Making all the children of a container take up equal size</li>
+<li>Making all columns (in a multiple-column layout) adopt the same height (same as the previous item)</li>
+</ul>
+</div>
+
+<div id="outline-container-org97f00ca" class="outline-3">
+<h3 id="org97f00ca">Basic concepts</h3>
+<div class="outline-text-3" id="text-org97f00ca">
+<p>
+There are two axes. The main and the cross. The main axis is defined
+with <a href="#org8fdf717">flex-direction</a> property and the cross runs perpendicular
+</p>
+</div>
+</div>
+
+<div id="outline-container-org89f5d5c" class="outline-3">
+<h3 id="org89f5d5c">Properties</h3>
+<div class="outline-text-3" id="text-org89f5d5c">
+</div>
+<div id="outline-container-orgdedd33f" class="outline-4">
+<h4 id="orgdedd33f">Default values</h4>
+<div class="outline-text-4" id="text-orgdedd33f">
+<ul class="org-ul">
+<li>Items display in a row (the<a href="#org8fdf717">flex-direction</a>  property&rsquo;s default is <code>row</code>).</li>
+<li>The items start from the start edge of the main axis.</li>
+<li>The items do not stretch on the main dimension, but can shrink.</li>
+<li>The items will stretch to fill the size of the cross axis.</li>
+<li>The <a href="02-css-display-flex-child.html#org7164002">flex-basis</a>i property is
+set to <code>auto</code>.</li>
+<li>The <a href="#org4059cfe">flex-wrap</a> property is set to <code>nowrap</code>.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org8fdf717" class="outline-4">
+<h4 id="org8fdf717">flex-direction</h4>
+<div class="outline-text-4" id="text-org8fdf717">
+<p>
+Define the direction in which the elements will be positioned. Can be:
+</p>
+<ul class="org-ul">
+<li><b>row</b>: The main axis is horizontal. All items will be position at the right of
+the previous element</li>
+<li><b>row-reverse</b>: Same as row bud in sort reversed</li>
+<li><b>column</b>: The main axis is vertical. The children elements will tend to take
+up all the horizontal space</li>
+<li><b>column-reverse</b>: Same as column bud in sort reversed</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org4059cfe" class="outline-4">
+<h4 id="org4059cfe">flex-wrap</h4>
+<div class="outline-text-4" id="text-org4059cfe">
+<p>
+Flexbox is one dimensional model. Its mean, if the content not fit into
+the parent, they will overflow the container. To prevent it, we can use
+flex-wrap. With this property set to <code>wrap</code>, if the items are too large to all
+display in one line, they will wrap onto another line
+</p>
+</div>
+</div>
+
+<div id="outline-container-org6c043e9" class="outline-4">
+<h4 id="org6c043e9">flex-flow</h4>
+<div class="outline-text-4" id="text-org6c043e9">
+<p>
+This property combine the flex-direction and flex-wrap properties. The
+first value is flex-direction and the second one is flex-wrap
+</p>
+</div>
+</div>
+
+<div id="outline-container-org3f89f8e" class="outline-4">
+<h4 id="org3f89f8e">align-items</h4>
+<div class="outline-text-4" id="text-org3f89f8e">
+<p>
+This property align items in the cross axis. The default value is <b>stretch</b>. The values allowed are:
+</p>
+<ul class="org-ul">
+<li><b>stretch</b>: stretch all space available</li>
+<li><b>flex-start</b>: line up at the start - flex-end: to align items to the end</li>
+<li><b>center</b>: center elements in the cross axis</li>
+<li><b>baseline</b>: aligns the flex items such as their baselines</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgd39c496" class="outline-4">
+<h4 id="orgd39c496">justify-content</h4>
+<div class="outline-text-4" id="text-orgd39c496">
+<p>
+Same as the align-item property bud in the main axis. The initial value
+is <b>flex-start</b>. The values allowed are:
+</p>
+
+<ul class="org-ul">
+<li><b>flex-start</b>: aligns the flex items at the beginning of the container</li>
+<li><b>flex-end</b>: aligns the flex items at the end of the container</li>
+<li><b>center</b>: aligns the flex items at the center of the container.</li>
+<li><b>space-around</b>: displays the flex items with space before, between, and after the items</li>
+<li><b>space-between</b>: displays the flex items with space between the items</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgbfc99cf" class="outline-3">
+<h3 id="orgbfc99cf">Properties applied to <a href="02-css-display-flex-child.html">flex items</a></h3>
+<div class="outline-text-3" id="text-orgbfc99cf">
+<hr />
+
+<p>
+References:
+</p>
+<ul target="_blank" class="org-ul">
+<li><a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">css-trics a guide for flexbox</a></li>
+</ul>
+<ul target="_blank" class="org-ul">
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox">mdn css<sub>layout</sub> flexbox</a></li>
+</ul>
+<ul target="_blank" class="org-ul">
+<li><a href="https://www.w3schools.com/csS/css3_flexbox.asp">w3school flex-box</a></li>
+</ul>
+<ul target="_blank" class="org-ul">
+<li><a href="https://www.w3schools.com/csS/css3_flexbox_container.asp">w3school flexbox<sub>container</sub></a></li>
+</ul>
+<ul target="_blank" class="org-ul">
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox">mdn css<sub>layout</sub> flexbox basic concept</a></li>
+</ul>
+</div>
+</div>
+</div>
+</article></section></main><footer class="footer-site"><div class="copyright"><p>© 2023-2024 Lucas Elvira Martín <br/><a href="mailto:luelvira@pa.uc3m.es">luelvira@pa.uc3m.es</a></p></div><div class="Generated"><p>Generated with Emacs 27.1 (Org mode 9.3)</p></div><div class="colabore"><a href="https://github.com/luelvira/interfaces-usuario/" target="_blank"><img src="https://luelvira.github.io/interfaces-usuario/img/github-mark-white.png" alt="Link to the github repository"/></a></div></footer></body></html>

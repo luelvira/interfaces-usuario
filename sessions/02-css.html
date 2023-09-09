@@ -1,0 +1,83 @@
+<!-- Generate from "2023/09/09 13:37:25" 013fbba with Emacs 27.1 (Org mode 9.3) -->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"/><meta author="Lucas Elvira Martín"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="https://luelvira.github.io/interfaces-usuario/css/code.css"/><link rel="stylesheet" href="https://luelvira.github.io/interfaces-usuario/css/style.css"/><title>Introduction to CSS - Jumble</title><script defer="defer" data-domain="luelvira.github.io/interfaces-usuario" src="https://plausible.io/js/script.js"></script></head><body><header class="site-header"><h1>Introduction to CSS</h1><p class="date">Date: September 11, 2023</p><nav class="nav-side"><ul class="nav-categories"><li><a href="/">Home</a></li><li><a href="/sessions.html">Theory</a></li><li><a href="/practice.html">Practice</a></li></ul></nav></header><main class="main-content"><section><article class="post">
+<div id="outline-container-org4669172" class="outline-2">
+<h2 id="org4669172">Introduction to CSS3</h2>
+<div class="outline-text-2" id="text-org4669172">
+</div>
+<div id="outline-container-orgaa5693a" class="outline-3">
+<h3 id="orgaa5693a">History</h3>
+<div class="outline-text-3" id="text-orgaa5693a">
+<ul class="org-ul">
+<li>CSS (Cascading Style Sheets)</li>
+<li>In 1994 <b>Hakon Wium Lie</b> proposed the first approximation  of the CSS.</li>
+<li>At the same time, research of the CERN was trying different ways to create
+styles into the web.</li>
+<li>In 1996, <b>W3C</b> started recommending the first version about CSS, <code>CSS1</code>. Today
+it is the standard. Now we use  CSS3.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org18e1424" class="outline-3">
+<h3 id="org18e1424">Functionalities</h3>
+<div class="outline-text-3" id="text-org18e1424">
+<ul class="org-ul">
+<li>Developers use CSS to give style and identity to web pages. These allow web
+pages to be different between each one and improve the user experience.</li>
+<li>We can define styles for many different markup languages as <code>XML</code>, <code>SVG</code>, and <code>HTML</code>.</li>
+<li>It is a rule-based language. We define rules and apply them to a set of elements using selectors</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orga5fc21c" class="outline-3">
+<h3 id="orga5fc21c">Syntax</h3>
+<div class="outline-text-3" id="text-orga5fc21c">
+<p>
+To import a CSS file we should use the link tag, which asks for the file and provides it to the browser to render the content
+</p>
+
+<pre><span class="org-comment-delimiter">&lt;!-- </span><span class="org-comment">index.html </span><span class="org-comment-delimiter">--&gt;</span>
+  &lt;<span class="org-function-name">head</span>&gt;
+    &lt;<span class="org-function-name">title</span>&gt;<span class="org-underline"><span class="org-bold">My first page </span></span>&lt;/<span class="org-function-name">title</span>&gt;
+    <span class="org-comment-delimiter">&lt;!-- </span><span class="org-comment">load the css style </span><span class="org-comment-delimiter">--&gt;</span>
+    &lt;<span class="org-function-name">link</span> <span class="org-variable-name">rel</span>=<span class="org-string">"style/sheet"</span> <span class="org-variable-name">href</span>=<span class="org-string">"css/main.css"</span>&gt;
+  &lt;/<span class="org-function-name">head</span>&gt;</pre>
+
+<p>
+Look at the link tag. It is open, but never closed. Some tag doesn&rsquo;t need a close tag.
+</p>
+
+<pre><span class="org-comment-delimiter">/* </span><span class="org-comment">main.css </span><span class="org-comment-delimiter">*/</span>
+<span class="org-css-selector">selector </span>{
+    <span class="org-css-property">property</span>: value;
+}</pre>
+
+<p>
+The selectors can start with <code>#</code> to refer to an ID attribute. If it starts with
+a <code>.</code>, the selector looks for a class attribute. And if the selector starts with
+a tag, this group applies to all tags that are referenced.
+</p>
+
+<hr />
+
+<p>
+Next: <a href="02-css-layout.html">display float</a>
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orga0ed1b4" class="outline-2">
+<h2 id="orga0ed1b4">References</h2>
+<div class="outline-text-2" id="text-orga0ed1b4">
+<ul target="_blank" class="org-ul">
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/First_steps/What_is_CSS">What is CSS?, mdn web docs</a></li>
+</ul>
+<ul target="_blank" class="org-ul">
+<li><a href="https://en.wikipedia.org/wiki/CSS#History">CSS Wikipedia, wikipedia</a></li>
+</ul>
+</div>
+</div>
+</article></section></main><footer class="footer-site"><div class="copyright"><p>© 2023-2024 Lucas Elvira Martín <br/><a href="mailto:luelvira@pa.uc3m.es">luelvira@pa.uc3m.es</a></p></div><div class="Generated"><p>Generated with Emacs 27.1 (Org mode 9.3)</p></div><div class="colabore"><a href="https://github.com/luelvira/interfaces-usuario/" target="_blank"><img src="https://luelvira.github.io/interfaces-usuario/img/github-mark-white.png" alt="Link to the github repository"/></a></div></footer></body></html>
