@@ -1,5 +1,5 @@
-#+title: CSS Layouts
-#+date: <2023-09-11 Mon>
+#+title: 02 CSS Layouts
+#+date: [2023-09-11 Mon 00:01]
 #+author: Lucas Elvira Martín
 #+DESCRIPTION: Session for Week 2. CSS Float Layout
 #+language: en
@@ -26,6 +26,7 @@ Sometimes we want that a floating element positioned below other floating
 elements. To do it, we use the clear property that removes the default
 characteristics of the clear.
 
+#+ATTR_HTML: :target _blank
 [[https://codepen.io/luelvira/pen/oNdBLdW][example codepen]]
 
 This property allows an element to be allocated below another floating element

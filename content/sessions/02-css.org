@@ -1,5 +1,5 @@
-#+TITLE: Introduction to CSS
-#+DATE: <2023-09-11 Mon>
+#+TITLE: 02 Introduction to CSS
+#+DATE: [2023-09-11 Mon 00:00]
 #+AUTHOR: Lucas Elvira Martín
 #+email: luelvira@pa.uc3m.es
 #+DESCRIPTION: Session for Week 2. Introduction to CSS
@@ -8,12 +8,40 @@
 #+creator: Emacs 28.2 (Org mode 9.5.5)
 
 * Table of Content  :TOC:noexport:
+- [[#resume-of-the-last-session][Resume of the last session]]
+  - [[#skeleton-of-a-html-file][Skeleton of a html file]]
 - [[#introduction-to-css3][Introduction to CSS3]]
   - [[#history][History]]
   - [[#functionalities][Functionalities]]
   - [[#syntax][Syntax]]
 - [[#references][References]]
 
+* Resume of the last session
+
+The past week, we talk about the history of the HTML. We introduce the HTML and
+highlight we will use the fifty version. Also we introduce the syntax of a html
+file.
+
+** Skeleton of a html file
+
+#+begin_src html
+<!-- index.html -->
+  <!doctype html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <title>Document</title>
+    </head>
+    <body>
+
+    </body>
+  </html>
+#+end_src
+
+#+ATTR_HTML: :target _blank
+The above code includes a new tag. The =meta= tag. This tag allows to include
+some metadata additional. In this case, the charset encoding. If you need more
+info about this tag, you can consult the [[https://www.w3schools.com/tags/tag_meta.asp][w3school documentation.]]
 * Introduction to CSS3
 
 ** History
@@ -35,15 +63,23 @@
 To import a CSS file we should use the link tag, which asks for the file and provides it to the browser to render the content
 
 #+begin_src html
-<!-- index.html -->
-  <head>
-    <title>My first page </title>
-    <!-- load the css style -->
-    <link rel="style/sheet" href="css/main.css">
-  </head>
+  <!-- index.html -->
+  <!DOCTYPE html>
+  <html lang="es">
+    <head>
+      <meta charset="UTF-8">
+      <title>My first page </title>
+      <!-- load the css style -->
+      <link rel="style/sheet" href="css/main.css">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
 #+end_src
 
-Look at the link tag. It is open, but never closed. Some tag doesn't need a close tag.
+The above code contains 2 important things. Look at the =link tag=. It is open,
+but never closed. Some tag doesn't need a close tag. Also, we introduce the
+=meta viewport= tag. This tag tells to the browser that the page should be
+render according at the device size.
+
 
 #+begin_src css
 /* main.css */

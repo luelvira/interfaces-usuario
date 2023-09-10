@@ -1,5 +1,5 @@
 #+title: 02 CSS DISPLAY FLEX
-#+date: <2023-09-11 Mon>
+#+date: [2023-09-11 Mon 00:02]
 #+author: Lucas Elvira Martín
 #+DESCRIPTION: Session for Week 2. Display flex I
 #+language: en

@@ -193,7 +193,7 @@
 	 :sitemap-title ""
 	 :sitemap-filename "sessions.org"
 	 :sitemap-format-entry format-entry-sitemap
-	 :sitemap-sort-files anti-chronologically)
+	 :sitemap-sort-files chronologically)
 	("practice"
 	 :base-directory "./content/practice/"
 	 :base-extension "org"
@@ -205,14 +205,14 @@
 	 :sitemap-filename "practice.org"
 	 :sitemap-title  ""
 	 :sitemap-format-entry format-entry-sitemap
-	 :sitemap-sort-files anti-chronologically)
+	 :sitemap-sort-files chronologically)
 	("attachment"
 	 :base-directory "./assets"
 	 :base-extension "css\\|js\\|png\\|jpg\\|gif\\\|ttf"
 	 :publishing-directory "./public"
 	 :recursive t
 	 :publishing-function org-publish-attachment)
-	("myproject" :components("jumble" "theory" "practice" "attachment"))))
+	("myproject" :components( "theory" "practice" "attachment" "jumble"))))
 
 (defun lem/publish ()
   "Start the publish process"
