@@ -1,12 +1,45 @@
-<!-- Generate from "2023/09/09 13:37:25" 013fbba with Emacs 27.1 (Org mode 9.3) -->
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"/><meta author="Lucas Elvira Martín"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="https://luelvira.github.io/interfaces-usuario/css/code.css"/><link rel="stylesheet" href="https://luelvira.github.io/interfaces-usuario/css/style.css"/><title>Introduction to CSS - Jumble</title><script defer="defer" data-domain="luelvira.github.io/interfaces-usuario" src="https://plausible.io/js/script.js"></script></head><body><header class="site-header"><h1>Introduction to CSS</h1><p class="date">Date: September 11, 2023</p><nav class="nav-side"><ul class="nav-categories"><li><a href="/">Home</a></li><li><a href="/sessions.html">Theory</a></li><li><a href="/practice.html">Practice</a></li></ul></nav></header><main class="main-content"><section><article class="post">
-<div id="outline-container-org4669172" class="outline-2">
-<h2 id="org4669172">Introduction to CSS3</h2>
-<div class="outline-text-2" id="text-org4669172">
+<!-- Generate from "2023/09/10 12:55:14" 3a52d30 with Emacs 27.1 (Org mode 9.3) -->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"/><meta author="Lucas Elvira Martín"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="https://luelvira.github.io/interfaces-usuario/css/code.css"/><link rel="stylesheet" href="https://luelvira.github.io/interfaces-usuario/css/style.css"/><title>02 Introduction to CSS - Jumble</title><script defer="defer" data-domain="luelvira.github.io/interfaces-usuario" src="https://plausible.io/js/script.js"></script></head><body><header class="site-header"><h1>02 Introduction to CSS</h1><p class="date">Date: September 11, 2023</p><nav class="nav-side"><ul class="nav-categories"><li><a href="/">Home</a></li><li><a href="/sessions.html">Theory</a></li><li><a href="/practice.html">Practice</a></li></ul></nav></header><main class="main-content"><section><article class="post">
+<div id="outline-container-org61e2083" class="outline-2">
+<h2 id="org61e2083">Resume of the last session</h2>
+<div class="outline-text-2" id="text-org61e2083">
+<p>
+The past week, we talk about the history of the HTML. We introduce the HTML and
+highlight we will use the fifty version. Also we introduce the syntax of a html
+file.
+</p>
 </div>
-<div id="outline-container-orgaa5693a" class="outline-3">
-<h3 id="orgaa5693a">History</h3>
-<div class="outline-text-3" id="text-orgaa5693a">
+
+<div id="outline-container-org6f6329c" class="outline-3">
+<h3 id="org6f6329c">Skeleton of a html file</h3>
+<div class="outline-text-3" id="text-org6f6329c">
+<pre><span class="org-comment-delimiter">&lt;!-- </span><span class="org-comment">index.html </span><span class="org-comment-delimiter">--&gt;</span>
+  &lt;<span class="org-keyword">!doctype</span> html&gt;
+  &lt;<span class="org-function-name">html</span> <span class="org-variable-name">lang</span>=<span class="org-string">"en"</span>&gt;
+    &lt;<span class="org-function-name">head</span>&gt;
+      &lt;<span class="org-function-name">meta</span> <span class="org-variable-name">charset</span>=<span class="org-string">"UTF-8"</span>&gt;
+      &lt;<span class="org-function-name">title</span>&gt;<span class="org-underline"><span class="org-bold">Document</span></span>&lt;/<span class="org-function-name">title</span>&gt;
+    &lt;/<span class="org-function-name">head</span>&gt;
+    &lt;<span class="org-function-name">body</span>&gt;
+
+    &lt;/<span class="org-function-name">body</span>&gt;
+  &lt;/<span class="org-function-name">html</span>&gt;</pre>
+
+<p target="_blank">
+The above code includes a new tag. The <code>meta</code> tag. This tag allows to include
+some metadata additional. In this case, the charset encoding. If you need more
+info about this tag, you can consult the <a href="https://www.w3schools.com/tags/tag_meta.asp" target="_blank">w3school documentation.</a>
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org076ad29" class="outline-2">
+<h2 id="org076ad29">Introduction to CSS3</h2>
+<div class="outline-text-2" id="text-org076ad29">
+</div>
+<div id="outline-container-orgdf4f5db" class="outline-3">
+<h3 id="orgdf4f5db">History</h3>
+<div class="outline-text-3" id="text-orgdf4f5db">
 <ul class="org-ul">
 <li>CSS (Cascading Style Sheets)</li>
 <li>In 1994 <b>Hakon Wium Lie</b> proposed the first approximation  of the CSS.</li>
@@ -18,9 +51,9 @@ it is the standard. Now we use  CSS3.</li>
 </div>
 </div>
 
-<div id="outline-container-org18e1424" class="outline-3">
-<h3 id="org18e1424">Functionalities</h3>
-<div class="outline-text-3" id="text-org18e1424">
+<div id="outline-container-org8a95612" class="outline-3">
+<h3 id="org8a95612">Functionalities</h3>
+<div class="outline-text-3" id="text-org8a95612">
 <ul class="org-ul">
 <li>Developers use CSS to give style and identity to web pages. These allow web
 pages to be different between each one and improve the user experience.</li>
@@ -30,23 +63,31 @@ pages to be different between each one and improve the user experience.</li>
 </div>
 </div>
 
-<div id="outline-container-orga5fc21c" class="outline-3">
-<h3 id="orga5fc21c">Syntax</h3>
-<div class="outline-text-3" id="text-orga5fc21c">
+<div id="outline-container-org32b599c" class="outline-3">
+<h3 id="org32b599c">Syntax</h3>
+<div class="outline-text-3" id="text-org32b599c">
 <p>
 To import a CSS file we should use the link tag, which asks for the file and provides it to the browser to render the content
 </p>
 
 <pre><span class="org-comment-delimiter">&lt;!-- </span><span class="org-comment">index.html </span><span class="org-comment-delimiter">--&gt;</span>
+&lt;<span class="org-keyword">!DOCTYPE</span> html&gt;
+&lt;<span class="org-function-name">html</span> <span class="org-variable-name">lang</span>=<span class="org-string">"es"</span>&gt;
   &lt;<span class="org-function-name">head</span>&gt;
+    &lt;<span class="org-function-name">meta</span> <span class="org-variable-name">charset</span>=<span class="org-string">"UTF-8"</span>&gt;
     &lt;<span class="org-function-name">title</span>&gt;<span class="org-underline"><span class="org-bold">My first page </span></span>&lt;/<span class="org-function-name">title</span>&gt;
     <span class="org-comment-delimiter">&lt;!-- </span><span class="org-comment">load the css style </span><span class="org-comment-delimiter">--&gt;</span>
     &lt;<span class="org-function-name">link</span> <span class="org-variable-name">rel</span>=<span class="org-string">"style/sheet"</span> <span class="org-variable-name">href</span>=<span class="org-string">"css/main.css"</span>&gt;
+    &lt;<span class="org-function-name">meta</span> <span class="org-variable-name">name</span>=<span class="org-string">"viewport"</span> <span class="org-variable-name">content</span>=<span class="org-string">"width=device-width, initial-scale=1.0"</span>&gt;
   &lt;/<span class="org-function-name">head</span>&gt;</pre>
 
 <p>
-Look at the link tag. It is open, but never closed. Some tag doesn&rsquo;t need a close tag.
+The above code contains 2 important things. Look at the <code>link tag</code>. It is open,
+but never closed. Some tag doesn&rsquo;t need a close tag. Also, we introduce the
+<code>meta viewport</code> tag. This tag tells to the browser that the page should be
+render according at the device size.
 </p>
+
 
 <pre><span class="org-comment-delimiter">/* </span><span class="org-comment">main.css </span><span class="org-comment-delimiter">*/</span>
 <span class="org-css-selector">selector </span>{
@@ -69,9 +110,9 @@ Next: <a href="02-css-layout.html">display float</a>
 </div>
 
 
-<div id="outline-container-orga0ed1b4" class="outline-2">
-<h2 id="orga0ed1b4">References</h2>
-<div class="outline-text-2" id="text-orga0ed1b4">
+<div id="outline-container-org3637e1a" class="outline-2">
+<h2 id="org3637e1a">References</h2>
+<div class="outline-text-2" id="text-org3637e1a">
 <ul target="_blank" class="org-ul">
 <li><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/First_steps/What_is_CSS">What is CSS?, mdn web docs</a></li>
 </ul>
