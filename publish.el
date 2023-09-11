@@ -90,9 +90,9 @@
 		    ,(unless (= (length publish-date) 0) (concat "<p class=\"date\">Date: " publish-date "</p>"))
 		    (nav (@ (class "nav-side"))
 			 (ul (@ (class "nav-categories"))
-			     (li (a (@ (href "/")) "Home"))
-			     (li (a (@ (href "/sessions.html")) "Theory"))
-			     (li (a (@ (href "/practice.html")) "Practice")))))
+			     (li (a (@ (href ,(concat lem/site-url "/"))) "Home"))
+			     (li (a (@ (href ,(concat lem/site-url "/sessions.html"))) "Theory"))
+			     (li (a (@ (href ,(concat lem/site-url "/practice.html"))) "Practice")))))
 	    (main (@ (class "main-content"))
 		  (section
 		   (article (@ (class "post"))

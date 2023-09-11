@@ -29,7 +29,7 @@ with [[*flex-direction][flex-direction]] property and the cross runs perpendicul
 
 ** Properties
 *** Default values
-- Items display in a row (the[[*flex-direction][flex-direction]]  property's default is =row=).
+- Items display in a row (the [[*flex-direction][flex-direction]]  property's default is =row=).
 - The items start from the start edge of the main axis.
 - The items do not stretch on the main dimension, but can shrink.
 - The items will stretch to fill the size of the cross axis.
@@ -59,7 +59,8 @@ first value is flex-direction and the second one is flex-wrap
 *** align-items
 This property align items in the cross axis. The default value is *stretch*. The values allowed are:
 - *stretch*: stretch all space available
-- *flex-start*: line up at the start - flex-end: to align items to the end
+- *flex-start*: line up at the start
+- *flex-end*: to align items to the end
 - *center*: center elements in the cross axis
 - *baseline*: aligns the flex items such as their baselines
 
@@ -81,11 +82,11 @@ References:
 #+ATTR_HTML: :target _blank
 - [[https://css-tricks.com/snippets/css/a-guide-to-flexbox/][css-trics a guide for flexbox]]
 #+ATTR_HTML: :target _blank
-- [[https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox][mdn css_layout flexbox]]
+- [[https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox][mdn css layout flexbox]]
 #+ATTR_HTML: :target _blank
 - [[https://www.w3schools.com/csS/css3_flexbox.asp][w3school flex-box]]
 #+ATTR_HTML: :target _blank
-- [[https://www.w3schools.com/csS/css3_flexbox_container.asp][w3school flexbox_container]]
+- [[https://www.w3schools.com/csS/css3_flexbox_container.asp][w3school flexbox container]]
 #+ATTR_HTML: :target _blank
 - [[https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox][mdn css_layout flexbox basic concept]]
 

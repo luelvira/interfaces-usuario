@@ -1,0 +1,58 @@
+
+* Interfaces de Usuario
+
+This repository gets the content that I will use in the course of User
+Interface at the university [[https://www.uc3m.es/Inicio][UC3M]]. The subject uses web technology in the practice part.
+
+The idea behind the repository is to create a  web-site, with the collaboration of
+the students, that helps them with the practice part of the subject.
+
+** Installation
+
+The repository contains a GitHub action which provides some docker
+specification to run the website. But here is a brief summary.
+
+*** Dependencies
+The repository was tested in Debian an Fedora. Also use Ubuntu as a VM, but should
+work in any operative system which is enabled to install and run emacs.
+
+#+begin_src shell
+sudo apt install emacs-nox --yes
+#+end_src
+
+All the packages needed to build the website will be installed when you run the
+publish command and stored in a =.package= folder.
+
+** Usage
+
+The project uses the following structure.
+1. =publish.el= Script that installs the dependencies and builds the
+   web-site. This script also uses a folder as a cache to prevent rebuilding the same
+   works pages times.
+2. =content= This folder has all the content used in the subject as org
+   files. In the root of the folder, there are files, that acts as index or
+   sitemap. Also, there are 2 extra folders
+   1. =content/sessions= The theory content of the subject
+   2. =content/practice= Some examples used in class
+
+To run the web-site, you should execute in a shell
+#+begin_src shell
+emacs -Q --batch -l ./publish.el --funcall lem/publish
+#+end_src
+
+** Contributing
+
+The project was thought to be used by the students, but anyone can help. If you
+want to contribute, you can complement the content, improve the design, add
+functionalities, etc..
+
+If you are not ready to work with code, you can use the issues to create a
+change request. I will be thankful to read from you.
+
+** License
+[[https://choosealicense.com/licenses/agpl-3.0/][AGPLv3]]
+
+* Acknowledgment
+
+- [[https://systemcrafters.net/][SystemCrafters]] provides great emacs documentation with lots of
+examples and tutorials.
