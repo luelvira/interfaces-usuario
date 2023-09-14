@@ -1,0 +1,175 @@
+<!-- Generate from "2023/09/14 18:19:10" f1fe26a with Emacs 27.1 (Org mode 9.3) -->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"/><meta author="Lucas Elvira Martín"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="https://luelvira.github.io/interfaces-usuario/css/code.css"/><link rel="stylesheet" href="https://luelvira.github.io/interfaces-usuario/css/style.css"/><title> - Jumble</title><script defer="defer" data-domain="luelvira.github.io/interfaces-usuario" src="https://plausible.io/js/script.js"></script></head><body><header class="site-header"><h1></h1><p class="date">Date: September 11, 2023</p><nav class="nav-side"><ul class="nav-categories"><li><a href="https://luelvira.github.io/interfaces-usuario/">Home</a></li><li><a href="https://luelvira.github.io/interfaces-usuario/sessions.html">Theory</a></li><li><a href="https://luelvira.github.io/interfaces-usuario/practice.html">Practice</a></li></ul></nav></header><main class="main-content"><section><article class="post"><div id="outline-container-org98abbf8" class="outline-2">
+<h2 id="org98abbf8">Introduction to CSS3</h2>
+<div class="outline-text-2" id="text-org98abbf8">
+<p>
+This week we talk about two different flows of elements, the <a href="file:///home/runner/Documents/uc3m/doctorado/curso23_24/interfaces-usuario/content/sessions/02-css-layout.html">Float</a> and the
+<a href="file:///home/runner/Documents/uc3m/doctorado/curso23_24/interfaces-usuario/content/sessions/02-css-display-flex.html">flexbox</a>.
+</p>
+</div>
+<div id="outline-container-org21bbe86" class="outline-3">
+<h3 id="org21bbe86">Folder structure</h3>
+<div class="outline-text-3" id="text-org21bbe86">
+<p>
+It is important to keep the folder organized, so we should have a folder for the
+CSS, a folder for the JS, and a folder for the media
+</p>
+
+<pre><span class="org-comment-delimiter"># </span><span class="org-comment">This commands work for linux and unix system</span>
+mkdir -p css js media/{img,video} fonts
+touch index.html
+touch css/style.css</pre>
+</div>
+</div>
+
+<div id="outline-container-orga664535" class="outline-3">
+<h3 id="orga664535">Link the CSS</h3>
+<div class="outline-text-3" id="text-orga664535">
+<p>
+To use an external file as CSS we should use the <code>link</code> tag. This tag tells the
+browser where is the file and which type it is. 
+</p>
+
+
+<pre>&lt;<span class="org-keyword">!DOCTYPE</span> html&gt;
+&lt;<span class="org-function-name">html</span> <span class="org-variable-name">lang</span>=<span class="org-string">"en"</span>&gt;
+  &lt;<span class="org-function-name">head</span>&gt;
+    &lt;<span class="org-function-name">meta</span> <span class="org-variable-name">charset</span>=<span class="org-string">"UTF-8"</span>/&gt;
+    &lt;<span class="org-function-name">title</span>&gt;<span class="org-underline"><span class="org-bold">Document</span></span>&lt;/<span class="org-function-name">title</span>&gt;
+    &lt;<span class="org-function-name">link</span> <span class="org-variable-name">href</span>=<span class="org-string">"css/style.css"</span> <span class="org-variable-name">rel</span>=<span class="org-string">"stylesheet"</span>&gt;
+  &lt;/<span class="org-function-name">head</span>&gt;
+  &lt;<span class="org-function-name">body</span>&gt;</pre>
+</div>
+</div>
+
+<div id="outline-container-org55c4746" class="outline-3">
+<h3 id="org55c4746">The flexbox</h3>
+<div class="outline-text-3" id="text-org55c4746">
+<p>
+The following CSS code uses some features such as the <code>max-width</code> property, the <code>vh</code>
+(and <code>vw</code>) unit to set the size of an element and sort a set of elements with the
+<code>flex layout</code>. Furthermore, this example uses some of the most used CSS
+selectors as the ID (<code>#</code>), the class (<code>.</code>), and a custom element based on its
+position in the DOC tree.
+</p>
+
+
+<pre><span class="org-css-selector">#cont  </span>{
+    <span class="org-css-property">max-width</span>: 1080px;
+    <span class="org-css-property">width</span>: 80%;
+    <span class="org-css-property">border</span>: 1px solid;
+    <span class="org-css-property">height</span>: 60vh;
+    <span class="org-css-property">margin</span>: auto;
+    <span class="org-css-property">display</span>: flex;
+    <span class="org-css-property">flex-wrap</span>: wrap;
+    <span class="org-css-property">justify-content</span>: center;
+}
+
+<span class="org-css-selector">.section1:first-child </span>{
+    <span class="org-css-property">width</span>: 100%;
+    <span class="org-css-property">height</span>: 300px;
+    <span class="org-css-property">background-color</span>: <span class="custom-1">red</span>;
+}
+
+
+<span class="org-css-selector">.col </span>{
+    <span class="org-css-property">width</span>: 30%;
+    <span class="org-css-property">background-color</span>: <span class="custom">blue</span>;
+    <span class="org-css-property">margin</span>: 2px;
+    <span class="org-css-property">height</span>: 200px;
+    <span class="org-css-property">flex-shrink</span>: 2;
+}
+
+<span class="org-css-selector">.col:last-child </span>{
+    <span class="org-css-property">flex-grow</span>: 1;
+}</pre>
+</div>
+</div>
+
+<div id="outline-container-orga775ffa" class="outline-3">
+<h3 id="orga775ffa">The body of the page which</h3>
+<div class="outline-text-3" id="text-orga775ffa">
+<p>
+Continue in the index.html file
+</p>
+
+<pre>&lt;<span class="org-function-name">div</span> <span class="org-variable-name">id</span>=<span class="org-string">"cont"</span>&gt;
+    &lt;<span class="org-function-name">div</span> <span class="org-variable-name">class</span>=<span class="org-string">"section1"</span>&gt;&lt;/<span class="org-function-name">div</span>&gt;
+    &lt;<span class="org-function-name">div</span> <span class="org-variable-name">class</span>=<span class="org-string">"col"</span>&gt;&lt;/<span class="org-function-name">div</span>&gt;
+    &lt;<span class="org-function-name">div</span> <span class="org-variable-name">class</span>=<span class="org-string">"col"</span>&gt;&lt;/<span class="org-function-name">div</span>&gt;
+    &lt;<span class="org-function-name">div</span> <span class="org-variable-name">class</span>=<span class="org-string">"col"</span>&gt;&lt;/<span class="org-function-name">div</span>&gt;
+&lt;/<span class="org-function-name">div</span>&gt;</pre>
+</div>
+</div>
+
+<div id="outline-container-org313d41e" class="outline-3">
+<h3 id="org313d41e">EOF</h3>
+<div class="outline-text-3" id="text-org313d41e">
+<pre>&lt;/<span class="org-function-name">body</span>&gt;
+&lt;/<span class="org-function-name">html</span>&gt;</pre>
+
+<p>
+The resulting code of this session can be found 
+</p>
+<hr />
+</div>
+</div>
+</div>
+
+<div id="outline-container-org102a6a9" class="outline-2">
+<h2 id="org102a6a9">The href utility</h2>
+<div class="outline-text-2" id="text-org102a6a9">
+<p>
+Also this week, we talk about the <code>anchor</code> tag, which is represented by an
+<code>a</code>. This tag could have different attributes, but the most important are:
+</p>
+<ul class="org-ul">
+<li><code>href</code> This attribute tells the browser where it has to go when the user
+click on the anchor.</li>
+<li><code>target</code>: Determinate how the browser should act. The most common options
+are:
+<ul class="org-ul">
+<li><code>_self</code> : Open the page in the same context. This is the default behavior.</li>
+<li><code>_blank</code>: Open the page in a new context.</li>
+</ul></li>
+<li><p>
+<code>download</code>: Use this attribute with the name of the file if we want to force a
+download when the user click on the link
+</p>
+
+<p>
+An example of the use of the anchor tag can be found in
+</p>
+<pre>&lt;<span class="org-keyword">!DOCTYPE</span> html&gt;
+&lt;<span class="org-function-name">html</span> <span class="org-variable-name">lang</span>=<span class="org-string">"en"</span>&gt;
+&lt;<span class="org-function-name">head</span>&gt;
+    &lt;<span class="org-function-name">meta</span> <span class="org-variable-name">charset</span>=<span class="org-string">"UTF-8"</span>/&gt;
+    &lt;<span class="org-function-name">title</span>&gt;<span class="org-underline"><span class="org-bold">Document</span></span>&lt;/<span class="org-function-name">title</span>&gt;
+    &lt;<span class="org-function-name">style</span>&gt;
+    section {
+    height: 60vh;
+    }
+    &lt;/<span class="org-function-name">style</span>&gt;
+&lt;/<span class="org-function-name">head</span>&gt;
+&lt;<span class="org-function-name">body</span>&gt;
+    &lt;<span class="org-function-name">head</span>&gt;
+        &lt;<span class="org-function-name">a</span> <span class="org-variable-name">href</span>=<span class="org-string">"form2.html"</span>&gt;Section 1&lt;/<span class="org-function-name">a</span>&gt;
+        &lt;<span class="org-function-name">a</span> <span class="org-variable-name">href</span>=<span class="org-string">"#section2"</span>&gt;Section 2&lt;/<span class="org-function-name">a</span>&gt;
+        &lt;<span class="org-function-name">a</span> <span class="org-variable-name">href</span>=<span class="org-string">"#section3"</span>&gt;Section 3&lt;/<span class="org-function-name">a</span>&gt;
+    &lt;/<span class="org-function-name">head</span>&gt;
+
+    &lt;<span class="org-function-name">section</span>&gt;
+        &lt;<span class="org-function-name">h3</span> <span class="org-variable-name">id</span>=<span class="org-string">"section1"</span>&gt;<span class="org-underline"><span class="org-italic"> Section 1</span></span>&lt;/<span class="org-function-name">h3</span>&gt;
+    &lt;/<span class="org-function-name">section</span>&gt;
+    &lt;<span class="org-function-name">section</span>&gt;
+        &lt;<span class="org-function-name">h3</span> <span class="org-variable-name">id</span>=<span class="org-string">"section2"</span>&gt;<span class="org-underline"><span class="org-italic"> Section 2</span></span>&lt;/<span class="org-function-name">h3</span>&gt;
+    &lt;/<span class="org-function-name">section</span>&gt;
+    &lt;<span class="org-function-name">section</span>&gt;
+        &lt;<span class="org-function-name">h3</span> <span class="org-variable-name">id</span>=<span class="org-string">"section3"</span>&gt;<span class="org-underline"><span class="org-italic"> Section 3</span></span>&lt;/<span class="org-function-name">h3</span>&gt;
+    &lt;/<span class="org-function-name">section</span>&gt;
+&lt;/<span class="org-function-name">body</span>&gt;
+&lt;/<span class="org-function-name">html</span>&gt;</pre></li>
+</ul>
+</div>
+</div>
+</article></section></main><footer class="footer-site"><div class="copyright"><p>© 2023-2024 Lucas Elvira Martín <br/><a href="mailto:luelvira@pa.uc3m.es">luelvira@pa.uc3m.es</a></p></div><div class="Generated"><p>Generated with Emacs 27.1 (Org mode 9.3)</p></div><div class="colabore"><a href="https://github.com/luelvira/interfaces-usuario/" target="_blank"><img src="https://luelvira.github.io/interfaces-usuario/img/github-mark-white.png" alt="Link to the github repository"/></a></div></footer></body></html>
