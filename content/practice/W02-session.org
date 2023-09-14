@@ -1,0 +1,143 @@
+#+DATE: [2023-09-11 Mon]
+* Introduction to CSS3
+
+This week we talk about two different flows of elements, the [[file:~/Documents/uc3m/doctorado/curso23_24/interfaces-usuario/content/sessions/02-css-layout.org][Float]] and the
+[[file:~/Documents/uc3m/doctorado/curso23_24/interfaces-usuario/content/sessions/02-css-display-flex.org][flexbox]].
+** Folder structure
+
+It is important to keep the folder organized, so we should have a folder for the
+CSS, a folder for the JS, and a folder for the media
+
+#+begin_src shell
+  # This commands work for linux and unix system
+  mkdir -p css js media/{img,video} fonts
+  touch index.html
+  touch css/style.css
+#+end_src
+
+** Link the CSS
+
+To use an external file as CSS we should use the =link= tag. This tag tells the
+browser where is the file and which type it is. 
+
+
+#+begin_src html :tangle examples/index.html
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8"/>
+      <title>Document</title>
+      <link href="css/style.css" rel="stylesheet">
+    </head>
+    <body>
+#+end_src
+
+** The flexbox
+
+The following CSS code uses some features such as the =max-width= property, the =vh=
+(and =vw=) unit to set the size of an element and sort a set of elements with the
+=flex layout=. Furthermore, this example uses some of the most used CSS
+selectors as the ID (~#~), the class (~.~), and a custom element based on its
+position in the DOC tree.
+
+
+#+begin_src css :tangle examples/css/style.css
+  #cont  {
+      max-width: 1080px;
+      width: 80%;
+      border: 1px solid;
+      height: 60vh;
+      margin: auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+  }
+
+  .section1:first-child {
+      width: 100%;
+      height: 300px;
+      background-color: red;
+  }
+
+
+  .col {
+      width: 30%;
+      background-color: blue;
+      margin: 2px;
+      height: 200px;
+      flex-shrink: 2;
+  }
+
+  .col:last-child {
+      flex-grow: 1;
+  }
+#+end_src
+
+** The body of the page which
+
+
+Continue in the index.html file
+
+#+begin_src html :tangle examples/index.html
+<div id="cont">
+    <div class="section1"></div>
+    <div class="col"></div>
+    <div class="col"></div>
+    <div class="col"></div>
+</div>
+#+end_src
+
+** EOF
+#+begin_src html :tangle examples/index.html
+  </body>
+</html>
+#+end_src
+
+The resulting code of this session can be found 
+-----
+
+* The href utility
+
+Also this week, we talk about the =anchor= tag, which is represented by an
+=a=. This tag could have different attributes, but the most important are:
+- =href= This attribute tells the browser where it has to go when the user
+  click on the anchor.
+- =target=: Determinate how the browser should act. The most common options
+  are:
+  - =_self= : Open the page in the same context. This is the default behavior.
+  - =_blank=: Open the page in a new context.
+- =download=: Use this attribute with the name of the file if we want to force a
+  download when the user click on the link
+
+  An example of the use of the anchor tag can be found in
+  #+begin_src html :tangle examples/anchor-example.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Document</title>
+    <style>
+    section {
+    height: 60vh;
+    }
+    </style>
+</head>
+<body>
+    <head>
+        <a href="form2.html">Section 1</a>
+        <a href="#section2">Section 2</a>
+        <a href="#section3">Section 3</a>
+    </head>
+
+    <section>
+        <h3 id="section1"> Section 1</h3>
+    </section>
+    <section>
+        <h3 id="section2"> Section 2</h3>
+    </section>
+    <section>
+        <h3 id="section3"> Section 3</h3>
+    </section>
+</body>
+</html>
+  #+end_src

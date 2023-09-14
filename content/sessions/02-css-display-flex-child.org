@@ -64,6 +64,34 @@ proportion of the space that could take.
   <input type="checkbox" id="flex_grow_2"> <label for="flex_grow_2">flex-grow to item2</label>
 </form>
 
+<script>
+let items = Array.from(document.querySelectorAll(".cont div"));
+
+flex_basis.addEventListener("change", (e) => {
+  let state = e.currentTarget.checked;
+  items.forEach((item) => (item.style.flexBasis = state ? "100px" : "auto"));
+  getSize();
+});
+flex_grow.addEventListener("change", (e) => {
+  let state = e.currentTarget.checked;
+  items[0].style.flexGrow = state ? 1 : 0;
+  getSize();
+});
+flex_grow_2.addEventListener("change", (e) => {
+  let state = e.currentTarget.checked;
+  items[2].style.flexGrow = state ? 2 : 0;
+  getSize();
+});
+
+function getSize() {
+  items.forEach((item) => {
+    item.innerHTML = item.offsetWidth;
+  });
+}
+getSize();
+
+</script>
+
 #+end_export
 
 ** flex-shrink

@@ -35,7 +35,7 @@ Also we can include style into the web page. But it is preferable use a external
     }
 #+end_src
 
-Cerramos las etiquetas del head
+We have to close the style and head tag
 
 #+begin_src html
     </style>
@@ -85,4 +85,5 @@ Check the difference between ~display: inline-block~ and ~display: block~, toggl
 </html>
 #+end_src
 
-The final code of this session:[[https://github.com/luelvira/interfaces-usuario/blob/264bbf1e91c030030db62ef58062ccd6079c97b7/content/practice/index.html][index.html]]
+#+ATTR_HTML: :target _blank
+The final code of this session: [[https://github.com/luelvira/interfaces-usuario/blob/264bbf1e91c030030db62ef58062ccd6079c97b7/content/practice/index.html][index.html]]

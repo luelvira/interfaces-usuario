@@ -80,6 +80,9 @@ but never closed. Some tag doesn't need a close tag. Also, we introduce the
 =meta viewport= tag. This tag tells to the browser that the page should be
 render according at the device size.
 
+=Important= the css file must be inside a folder with all the css. I like to use
+~css~ as name of the folder. But also you can use style or any other name which
+make obviously the content of the folder.
 
 #+begin_src css
 /* main.css */

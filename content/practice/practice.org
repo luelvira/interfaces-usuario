@@ -1,4 +1,4 @@
 #+TITLE: 
 
-- 2023-08-28 - [[file:G01-session.org][G01-session]]
-- 2023-09-05 - [[file:80-01-session.org][80-01-session]]
+- 2023-09-05 - [[file:W01-session.org][W01-session]]
+- 2023-09-11 - [[file:W02-session.org][W02-session]]
