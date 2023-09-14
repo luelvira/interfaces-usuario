@@ -2,7 +2,9 @@
 :header-args: :tangle index.html
 :END:
 #+DATE: [2023-09-05 Tue]
-* Introducción al HTML
+#+TITLE: Week 1 - HTML
+
+* Introduction to HTML
 
 ** Meta info
 

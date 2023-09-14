@@ -1,4 +1,6 @@
 #+DATE: [2023-09-11 Mon]
+#+TITLE: Week 2 - HTML + CSS
+
 * Introduction to CSS3
 
 This week we talk about two different flows of elements, the [[file:~/Documents/uc3m/doctorado/curso23_24/interfaces-usuario/content/sessions/02-css-layout.org][Float]] and the
@@ -93,7 +95,8 @@ Continue in the index.html file
 </html>
 #+end_src
 
-The resulting code of this session can be found 
+#+ATTR_HTML: :target _blank
+The resulting code of this session can be found in [[https://github.com/luelvira/interfaces-usuario/blob/f1fe26ae8915b56226fe591610b713136114cc79/content/practice/examples/index.html][index.html]]
 -----
 
 * The href utility
@@ -109,7 +112,8 @@ Also this week, we talk about the =anchor= tag, which is represented by an
 - =download=: Use this attribute with the name of the file if we want to force a
   download when the user click on the link
 
-  An example of the use of the anchor tag can be found in
+#+ATTR_HTML: :target _blank
+  An example of the use of the anchor tag can be found in [[https://github.com/luelvira/interfaces-usuario/blob/f1fe26ae8915b56226fe591610b713136114cc79/content/practice/examples/anchor-example.html][anchor-example.html]]
   #+begin_src html :tangle examples/anchor-example.html
 <!DOCTYPE html>
 <html lang="en">
