@@ -1,0 +1,271 @@
+#+TITLE: 03 Grid Layout
+#+DATE: [2023-09-18 Mon 00:01]
+#+AUTHOR: Lucas Elvira Martín
+#+email: luelvira@pa.uc3m.es
+#+DESCRIPTION: Session for Week 3. Grid layout
+#+language: en
+#+exclude_tags: noexport
+#+creator: Emacs 28.2 (Org mode 9.5.5)
+* Table of Content :toc:noexport:
+- [[#grid-layout][GRID Layout]]
+  - [[#basic-concepts][Basic concepts]]
+  - [[#properties][Properties]]
+- [[#grid-child][Grid Child]]
+  - [[#grid-row-start-and-grid-column-start][grid-row-start and grid-column-start]]
+  - [[#grid-row-end-and-grid-column-end][grid-row-end and grid-column-end]]
+  - [[#grid-row-and-grid-column][grid-row and grid-column]]
+  - [[#grid-area][grid-area:]]
+
+* GRID Layout
+The CSS Grid Layout Module provides a grid-based layout system, with rows and
+columns, making it easier to design web pages without having to use floats and
+positioning.
+
+Grid Layout enables to you:
+- Divide a page into major regions or defining the relationship in terms of
+  size, position, layer, and space between elements.
+- Align items both as columns and rows
+
+** Basic concepts
+The space is divided into as many columns or rows as you want and specify their
+sizes without the content elements definition.
+
+** Properties
+*** grid-template-columns and grid-template-rows
+These properties define the number of columns or rows in the grid layout and can
+set the width of each column or row respectively.
+
+#+begin_src css
+      .grid-container {
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr 1fr;
+          grid-template-rows: 30px 50px 30px
+      }
+#+end_src
+
+In this example, the grid has four equally-sized columns and three rows, with heights of 30px, 50px, and 30px.
+
+#+begin_export html
+<style>
+[class^="grid-container"] {
+all: initial;
+  display: grid;
+  width: 500px;
+  height: 200px;
+  border: 1px solid #2c1159;
+  margin: 10px;
+}
+    .grid-container {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-rows: 30px 50px 30px;
+        gap: 10px;
+    }
+[class^="grid-container"] > div {
+  background: #429365;
+}
+</style>
+<article class="grid-container">
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+</article>
+
+
+#+end_export
+
+#+ATTR_HTML: :target _blank
+[[https://codepen.io/luelvira/pen/oNdgBXg][codepen example grid]]
+
+There are a lot of values possible:
+- *name*: The name of the section
+- *length*: The size of the section
+- *percentage*: The size of the section relative to the inline grid container <0-100>%
+- *flex*: The size in fr units. Each unit represents a division of the remainder
+  space and take the proportional space. <number>fr
+- *auto*: Represent the largest max-content size of the items and the minimum size of items in the track
+- *repeat(<number of times>, <value>)* 
+
+*** grid-template-areas
+
+This property allows to specify named grid areas, establishing the cells in the grid and assigning them names.
+
+#+begin_src css
+  .grid-container {
+      display: grid;	
+      grid-template-areas: "header header header"
+                           "nav col1 col1"
+                           "nav footer footer";
+      grid-template-rows: 1fr 3fr 30px;
+      grid-template-columns: 2fr 50% 1fr;
+  }
+  /*
+    Note that the number of rows/columns must match in the grid-template-areas and in the grid-template-rows/columns
+  ,*/
+#+end_src
+
+#+begin_export html
+<style>
+.grid-container-2 {
+      display: grid;	
+      grid-template-areas: "header header header"
+                           "nav col1 col1"
+                           "nav footer footer";
+      grid-template-rows: 1fr 3fr 30px;
+      grid-template-columns: 2fr 50% 1fr;
+  }
+
+  .grid-container-2 header {  
+  background: red;
+  grid-area: header;
+}
+.grid-container-2 nav {
+  background-color: blue;
+   grid-area: nav;
+}
+.grid-container-2  article {
+  background-color: cyan;
+   grid-area: col1;
+}
+.grid-container-2 footer {
+  background-color: orange;
+   grid-area: footer;
+}
+
+</style>
+<div class="grid-container-2">
+  <header>HEADER</header>
+  <nav>NAV</nav>
+  <article>COL1</article>
+  <footer>FOOTER</footer> 
+</div>
+
+#+end_export
+
+*** grid-template 
+
+This property works as a shorthand property for defining grid columns, rows, and areas.
+
+#+begin_src css
+.grid-container {
+	display: grid;
+	/*grid-template-rows/grid-template-columns*/
+	grid-template: 1fr 1fr 1fr 1fr / 30px 50px 30px;
+}
+#+end_src
+
+* Grid Child
+** grid-row-start and grid-column-start
+These properties specify a grid-item start position.
+The possible values are:
+- *auto*: This keyword indicates that the property contributes nothing to the grid item's placement, indicating auto-placement
+- *<custom-identify>*:  the name of the space that was created with the grid-template-areas
+- *<span n>*: Specifies the number of columns the item will span
+- *<number>*: Specifies on which column to start the display of the items
+
+** grid-row-end and grid-column-end
+These properties specify a grid-item end position. Also work as the properties row-start, column-end
+
+#+begin_src css
+.grid-container {
+	display: grid;
+	grid-template-rows: 1fr 3fr 1fr;
+}
+
+.grid-container div:nth-child(1) {
+	grid-row-start: 1;
+	grid-row-end: 5;
+}
+
+#+end_src
+
+** grid-row and grid-column
+These properties are shorthand of the properties row-start with row-end and column-start with columns-end
+
+** grid-area:
+This property is a shorthand property that joins grid-row-start / grid-column-start / grid-row-start / grid-row-end;
+
+#+begin_src css
+  .grid-container-3 {
+      display: grid;
+      grid-template-columns: 1fr 2fr 1fr;  
+      gap: 10px;
+  }
+
+  .grid-container-3 div:nth-child(4) {	
+      background: magenta;  
+      grid-area: 3 / 2 / 5 / 3;
+      /*
+          grid-row-start: 3;
+          grid-column-start: 2;
+          grid-row-end: 5;
+          grid-column-end: 3;
+     ,*/
+  }
+#+end_src
+
+#+begin_export html
+<style>
+.grid-container-3 {
+	display: grid;
+	grid-template-columns: 1fr 2fr 1fr;  
+  gap: 10px;
+}
+
+.grid-container-3 div:nth-child(1) {
+	grid-column-start: 2;
+	grid-column-end: 4;
+  background: red;
+}
+.grid-container-3 div:nth-child(2) {
+	grid-column: 2 /3;
+  background: orange;
+}
+
+.grid-container-3 div:nth-child(3) {	
+  background: cyan;
+}
+.grid-container-3 div:nth-child(4) {	
+  background: magenta;  
+  /*
+  grid-row: 3 / 5;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  */
+  grid-area: 3 / 2 / 5 / 3;
+}
+.grid-container-3 div:nth-child(5) {
+	grid-row-start: 1;
+	grid-row-end: 4;
+  background: blue;
+  color: white;
+}
+</style>
+
+<div class="grid-container-3">
+<div>1</div>
+<div>2</div>
+<div>3</div>
+<div>4</div>
+<div>5</div>
+<div>6</div>
+<div>7</div>
+<div>8</div>
+</div>
+
+#+end_export
+
+-----
+References:
+- [[https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout][mdn css grid layout]]
+- [[https://www.w3schools.com/css/css_grid.asp][w3schools css grid layout]]
+- [[https://www.w3schools.com/css/css_grid_container.asp][w3schools css grid container]]
+- [[https://www.w3schools.com/css/css_grid_item.asp][w3schools css grid items]]

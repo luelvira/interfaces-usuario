@@ -1,0 +1,180 @@
+#+TITLE: 03 Responsive Web Design
+#+DATE: [2023-09-18 Mon 00:02]
+#+AUTHOR: Lucas Elvira Martín
+#+EMAIL: luelvira@pa.uc3m.es
+#+DESCRIPTION: Session for Week 3. Introduction to the responsive web design
+#+language: en
+#+exclude_tags: noexport
+#+creator: Emacs 28.2 (Org mode 9.5.5)
+* CSS RWD
+
+Responsive web design, or RWD, is a design trend that pretends to make the
+website available on multiple devices. We used to set different interfaces for
+mobile, tablets, and desktops, but the media query can be used for many devices
+or configurations as we want. For example, we could edit if a rule is applied
+when the device is in landscape or horizontal; if the rule only affects when the
+page will be printed (convert to pdf), etc...
+
+** Best practices
+
+There are 2 ways to implement and design a website. The first one is the
+=desktop first=. In this approach, we design first the website for a desktop
+viewport and later adapt the content to be reduced when the device is smaller.
+
+The second approach, =mobile first=, as its name highlights, we design first the
+website for small devices and adapt the content for larger screens. This
+approach has two advantages. Currently, there is more traffic on the internet
+coming from mobile devices than coming from computer. Making the website for mobiles gives us the
+warranty that most people will view the website better. The other advantage is, that
+on a mobile, we don't have all the space we want, so we need to improve and
+optimize this resource. Later it is easier to add things than to remove them.
+
+** Viewport
+The viewport is the visible area of a web page and varies with the devices. For
+getting control over the viewport, you should include the following ~<meta>~
+viewport element in all your web pages:
+
+
+#+begin_src html
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+#+end_src
+
+** Change the design for devices
+To change the design you can use =media queries=. Media queries are functions
+that allow to loading of a custom part of CSS 
+
+#+begin_src css
+@media only screen and (max-width: 100px) {
+	/*This css only will be loaded when the viewport size is smaller than 100px */
+	selector {
+		property: value;
+	}
+}
+#+end_src
+
+*Alternative*
+
+#+begin_src css
+@media only screen and (min-width: 100px) {
+	/*This css only will be loaded when the viewport size is bigger than 100px */
+	selector {
+		property: value;
+	}
+}
+#+end_src
+
+
+** Example
+
+With this example, we can view who the content of the page changes as soon as we
+change the size of the device. To view it, you can reduce the browser window, or
+use the =developer tools=
+
+#+begin_src html :tangle ../practice/examples/rwd.html
+  <!-- rwd.html -->
+  <!DOCUMENT html>
+  <html lang="es">
+    <head>
+      <meta charset="UTF-8">
+      <title> Demo responsive web site </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link href="css/style.css" rel="stylesheet">
+    </head>
+    <body>
+      <div id="cont">
+        <div class="inner"></div>
+        <div class="inner"></div>
+        <div class="inner"></div>
+        <div class="inner"></div>
+        <div class="inner"></div>
+      </div>
+    </body>
+  </html>
+#+end_src
+
+#+begin_src css :tangle ../practice/examples/style.css
+
+/* css/style.css */
+  #cont {
+      width: 80%;
+      max-width: 1080px;
+      height: 600px;
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+      margin: auto;
+      border: 1px solid;
+  }
+
+  .inner {
+      width: 18%;
+      min-width: 194px;
+      height: 200px;
+      flex: 1 1 auto;
+      background-color: #55aa60;
+  }
+
+  @media only screen and (max-width: 1000px) {
+      #cont {
+          flex-wrap: wrap;
+      }
+  }
+  @media only screen and (max-width: 500px) {
+      #cont {
+          flex-direction: column;
+          flex-wrap: nowrap;
+      }
+      .inner {
+          flex: auto;
+      }
+  }
+
+#+end_src
+
+
+#+begin_export html
+<style>
+  #cont {
+      width: 80%;
+      max-width: 900px;
+      height: 600px;
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+      margin: auto;
+      border: 1px solid;
+  }
+
+  .inner {
+      width: 18%;
+      min-width: 120px;
+      height: 200px;
+      flex: 1 1 auto;
+      background-color: #55aa60;
+  }
+
+  @media only screen and (max-width: 1000px) {
+      #cont {
+          flex-wrap: wrap;
+      }
+  }
+  @media only screen and (max-width: 800px) {
+      #cont {
+          flex-direction: column;
+          flex-wrap: nowrap;
+      }
+      .inner {
+          flex: auto;
+      }
+  }
+
+</style>
+      <div id="cont">
+        <div class="inner"></div>
+        <div class="inner"></div>
+        <div class="inner"></div>
+        <div class="inner"></div>
+        <div class="inner"></div>
+      </div>
+
+#+end_export

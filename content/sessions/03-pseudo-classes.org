@@ -1,0 +1,113 @@
+#+TITLE: 03 PSEUDO-CLASSES
+#+DATE: [2023-09-18 Mon 00:00]
+#+AUTHOR: Lucas Elvira Martín
+#+email: luelvira@pa.uc3m.es
+#+DESCRIPTION: Session for Week 3. Advanced selectors
+#+language: en
+#+exclude_tags: noexport
+#+creator: Emacs 28.2 (Org mode 9.5.5)
+
+* Table of Content :toc:noexport:
+- [[#the-css-pseudo-class][The CSS pseudo-class]]
+  - [[#display-pseudo-classes][Display pseudo-classes]]
+  - [[#input-pseudo-classes][Input pseudo-classes]]
+  - [[#location-pseudo-classes][Location pseudo-classes]]
+  - [[#tree-structural-pseudo-classes][Tree structural pseudo-classes]]
+  -  [[#user-action-pseudo-classes][User action pseudo-classes]]
+  - [[#functional-pseudo-classes][Functional pseudo-classes]]
+
+* The CSS pseudo-class
+
+The pseudo-class are keywords added to a selector that specifies a special state
+of a selector or a set of selectors. There are different types of pseudo-classes
+depending on the behavior we want to emulate.
+
+=The syntax= of a pseudo-class consist in a colon, ~:~ and the name of the
+pseudo-class. In case of the pseudo-class acts as a function, the keyword is combine
+with a pair of parentheses and its arguments.
+
+** Display pseudo-classes
+
+The display pseudo-classes enable select elements based on their display state
+like fullscreen, modal, etc...
+
+1. ~:fullscreen~: This property matches elements that are in fullscreen mode, for
+   example a video
+2. ~:modal~: This property matches elements are in modal state.
+3. ~:picture-in-picture~: This property is used for elements in PIP state =NOTE:
+   This property is relative new and doesn't have full compatibility=
+
+** Input pseudo-classes
+The input pseudo-classes relate to form elements and enable selecting some HTML
+attributes after and before the user interacts with them.
+
+1. ~:autofill~ Match with an input element which was auto-filed by the
+   browser. It means that the browser sets the login and password input values
+   without the user interaction.
+2. ~:enabled~ Any HTML element could be in enable or disable state. These states
+   are more common in interactive elements like inputs or buttons. In this case,
+   the enable pseudo-class discards any element with the ~disable~ attribute set
+   to true.
+3. ~:disabled~ Any HTML element in disable state.
+4. ~:read-only~ The difference between a ~read-only~ input and a ~disabled~
+   input is that the read-only is sent with the form, and the disabled element
+   is not.
+5. ~:read-write~ Select elements which are editable by the user
+6. ~:placeholder-show~
+7. ~:checked~
+8. ~:indeterminate~ Match input with the attribute indeterminate. This is the
+   case of some inputs as a checkbox that we can't determine if the value is
+   true or false.
+9. ~:blank~
+10. ~:valid~,  ~:invalid~ and ~user-invalid~ The difference between ~user-invalid~
+    and ~invalid~ is that the first one requires an user interaction.
+11. ~in-range~ and ~:out-of-range~
+12. ~:required~ and ~:optional~. An input is required if it has the required
+    attribute set to true (or not false)
+
+** Location pseudo-classes
+
+These pseudo-classes are related to the states of the links. There are a lot of options:
+1. ~any-link~,  ~link~, and ~visited~. These pseudo-classes affect links that
+   were visited or not visited, visited and not visited respectively.
+2. ~local-link~: matches only links whose absolute URLs are the same as the
+   target URL.
+3. ~:target~ Matches elements that act as the target of a link. And
+   ~:target-within~ is the same, but in this case, the target element has a
+   child who acts as another target.
+
+** Tree structural pseudo-classes
+
+Represent the position of an element in the DOM tree
+1. ~:root~
+2. ~:empty~
+4. ~:nth-child~
+5. ~:first-child~
+6. ~:only-child~
+7. ~:nth-of-type~
+
+**  User action pseudo-classes
+These pseudo-classes respond to a user interaction like selecting or hovering an element
+
+1. ~:hover~: Pass the mouse over an element.
+3. ~:active~: Matches when a user activates an element. An example could be a button
+   that is activated while the user is pressing it with the mouse
+4. ~:focus~: Matches when the user sets the focus on an element.
+5. ~:focus-visible~:  The main difference between focus and focus-visible is
+   that the first one affects all elements, and the second one, only affects
+   elements that the user agent considers should be visible that the
+   user is focused on. For example, a button can be focused, but in most case, we
+   don't want it displays a ring around it. But, if the user navigates with the
+   keyboard, the focus ring is mandatory, so we can use the focus-visible to
+   only highlight the focus when it is required.
+6. ~:focus-within~: Affect to the focused element and a container element which
+   has the focused element
+
+** Functional pseudo-classes
+
+Accepts a selector or negation list as parameters
+1. ~:is()~: Allows you to select any element that matches a variety of options
+2. ~:not()~: Allows you to discard selecting elements that match some selection
+3. ~:where()~: Like is, but without adding specify weight
+4. ~:has()~: Match any element that has relative selectors that match with the
+   selectors inside the has function.

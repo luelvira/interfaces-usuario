@@ -6,3 +6,6 @@
 - 2023-09-11 - [[file:02-css-layout.org][02 CSS Layouts]]
 - 2023-09-11 - [[file:02-css-display-flex.org][02 CSS DISPLAY FLEX]]
 - 2023-09-11 - [[file:02-css-display-flex-child.org][02 CSS DISPLAY FLEX CHILD]]
+- 2023-09-18 - [[file:03-pseudo-classes.org][03 PSEUDO-CLASSES]]
+- 2023-09-18 - [[file:03-grid-layout.org][03 Grid Layout]]
+- 2023-09-18 - [[file:03-RWD.org][03 Responsive Web Design]]

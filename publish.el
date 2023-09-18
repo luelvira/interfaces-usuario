@@ -187,6 +187,7 @@
 	 :base-extension "org"
 	 :publishing-directory "./public/sessions"
 	 :publishing-function org-html-publish-to-html
+	 :recursive t
 	 :headline-levels 4
 	 :auto-sitemap t
 	 :sitemap-style list
