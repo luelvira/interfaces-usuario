@@ -1,0 +1,311 @@
+<!-- Generate from "2023/09/18 12:13:29" 2712ddc with Emacs 27.1 (Org mode 9.3) -->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"/><meta author="Lucas Elvira Martín"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="https://luelvira.github.io/interfaces-usuario/css/code.css"/><link rel="stylesheet" href="https://luelvira.github.io/interfaces-usuario/css/style.css"/><title>03 Grid Layout - UI 2023-2024</title><script defer="defer" data-domain="luelvira.github.io/interfaces-usuario" src="https://plausible.io/js/script.js"></script></head><body><header class="site-header"><h1>03 Grid Layout</h1><p class="date">Date: September 18, 2023</p><nav class="nav-side"><ul class="nav-categories"><li><a href="https://luelvira.github.io/interfaces-usuario/">Home</a></li><li><a href="https://luelvira.github.io/interfaces-usuario/sessions.html">Theory</a></li><li><a href="https://luelvira.github.io/interfaces-usuario/practice.html">Practice</a></li></ul></nav></header><main class="main-content"><section><article class="post"><div id="outline-container-orgb461659" class="outline-2">
+<h2 id="orgb461659">GRID Layout</h2>
+<div class="outline-text-2" id="text-orgb461659">
+<p>
+The CSS Grid Layout Module provides a grid-based layout system, with rows and
+columns, making it easier to design web pages without having to use floats and
+positioning.
+</p>
+
+<p>
+Grid Layout enables to you:
+</p>
+<ul class="org-ul">
+<li>Divide a page into major regions or defining the relationship in terms of
+size, position, layer, and space between elements.</li>
+<li>Align items both as columns and rows</li>
+</ul>
+</div>
+
+<div id="outline-container-org76d7d29" class="outline-3">
+<h3 id="org76d7d29">Basic concepts</h3>
+<div class="outline-text-3" id="text-org76d7d29">
+<p>
+The space is divided into as many columns or rows as you want and specify their
+sizes without the content elements definition.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org734bd38" class="outline-3">
+<h3 id="org734bd38">Properties</h3>
+<div class="outline-text-3" id="text-org734bd38">
+</div>
+<div id="outline-container-orgd0d0b11" class="outline-4">
+<h4 id="orgd0d0b11">grid-template-columns and grid-template-rows</h4>
+<div class="outline-text-4" id="text-orgd0d0b11">
+<p>
+These properties define the number of columns or rows in the grid layout and can
+set the width of each column or row respectively.
+</p>
+
+<pre><span class="org-css-selector">.grid-container </span>{
+    <span class="org-css-property">display</span>: grid;
+    <span class="org-css-property">grid-template-columns</span>: 1fr 1fr 1fr 1fr;
+    <span class="org-css-property">grid-template-rows</span>: 30px 50px 30px
+}</pre>
+
+<p>
+In this example, the grid has four equally-sized columns and three rows, with heights of 30px, 50px, and 30px.
+</p>
+
+<style>
+[class^="grid-container"] {
+all: initial;
+  display: grid;
+  width: 500px;
+  height: 200px;
+  border: 1px solid #2c1159;
+  margin: 10px;
+}
+    .grid-container {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-rows: 30px 50px 30px;
+        gap: 10px;
+    }
+[class^="grid-container"] > div {
+  background: #429365;
+}
+</style>
+<article class="grid-container">
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+</article>
+
+<p target="_blank">
+<a href="https://codepen.io/luelvira/pen/oNdgBXg" target="_blank">codepen example grid</a>
+</p>
+
+<p>
+There are a lot of values possible:
+</p>
+<ul class="org-ul">
+<li><b>name</b>: The name of the section</li>
+<li><b>length</b>: The size of the section</li>
+<li><b>percentage</b>: The size of the section relative to the inline grid container &lt;0-100&gt;%</li>
+<li><b>flex</b>: The size in fr units. Each unit represents a division of the remainder
+space and take the proportional space. &lt;number&gt;fr</li>
+<li><b>auto</b>: Represent the largest max-content size of the items and the minimum size of items in the track</li>
+<li><b>repeat(&lt;number of times&gt;, &lt;value&gt;)</b></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org35f6378" class="outline-4">
+<h4 id="org35f6378">grid-template-areas</h4>
+<div class="outline-text-4" id="text-org35f6378">
+<p>
+This property allows to specify named grid areas, establishing the cells in the grid and assigning them names.
+</p>
+
+<pre><span class="org-css-selector">.grid-container </span>{
+    <span class="org-css-property">display</span>: grid;      
+    <span class="org-css-property">grid-template-areas</span>: <span class="org-string">"header header header"</span>
+                         <span class="org-string">"nav col1 col1"</span>
+                         <span class="org-string">"nav footer footer"</span>;
+    <span class="org-css-property">grid-template-rows</span>: 1fr 3fr 30px;
+    <span class="org-css-property">grid-template-columns</span>: 2fr 50% 1fr;
+}
+<span class="org-comment-delimiter">/*</span>
+<span class="org-comment">  Note that the number of rows/columns must match in the grid-template-areas and in the grid-template-rows/columns</span>
+<span class="org-comment-delimiter">*/</span></pre>
+
+<style>
+.grid-container-2 {
+      display: grid;	
+      grid-template-areas: "header header header"
+                           "nav col1 col1"
+                           "nav footer footer";
+      grid-template-rows: 1fr 3fr 30px;
+      grid-template-columns: 2fr 50% 1fr;
+  }
+
+  .grid-container-2 header {  
+  background: red;
+  grid-area: header;
+}
+.grid-container-2 nav {
+  background-color: blue;
+   grid-area: nav;
+}
+.grid-container-2  article {
+  background-color: cyan;
+   grid-area: col1;
+}
+.grid-container-2 footer {
+  background-color: orange;
+   grid-area: footer;
+}
+
+</style>
+<div class="grid-container-2">
+  <header>HEADER</header>
+  <nav>NAV</nav>
+  <article>COL1</article>
+  <footer>FOOTER</footer> 
+</div>
+</div>
+</div>
+
+<div id="outline-container-org7000a1c" class="outline-4">
+<h4 id="org7000a1c">grid-template</h4>
+<div class="outline-text-4" id="text-org7000a1c">
+<p>
+This property works as a shorthand property for defining grid columns, rows, and areas.
+</p>
+
+<pre><span class="org-css-selector">.grid-container </span>{
+        <span class="org-css-property">display</span>: grid;
+        <span class="org-comment-delimiter">/*</span><span class="org-comment">grid-template-rows/grid-template-columns</span><span class="org-comment-delimiter">*/</span>
+        <span class="org-css-property">grid-template</span>: 1fr 1fr 1fr 1fr / 30px 50px 30px;
+}</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4505067" class="outline-2">
+<h2 id="org4505067">Grid Child</h2>
+<div class="outline-text-2" id="text-org4505067">
+</div>
+<div id="outline-container-orga280a7f" class="outline-3">
+<h3 id="orga280a7f">grid-row-start and grid-column-start</h3>
+<div class="outline-text-3" id="text-orga280a7f">
+<p>
+These properties specify a grid-item start position.
+The possible values are:
+</p>
+<ul class="org-ul">
+<li><b>auto</b>: This keyword indicates that the property contributes nothing to the grid item&rsquo;s placement, indicating auto-placement</li>
+<li><b>&lt;custom-identify&gt;</b>:  the name of the space that was created with the grid-template-areas</li>
+<li><b>&lt;span n&gt;</b>: Specifies the number of columns the item will span</li>
+<li><b>&lt;number&gt;</b>: Specifies on which column to start the display of the items</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org79fa3d3" class="outline-3">
+<h3 id="org79fa3d3">grid-row-end and grid-column-end</h3>
+<div class="outline-text-3" id="text-org79fa3d3">
+<p>
+These properties specify a grid-item end position. Also work as the properties row-start, column-end
+</p>
+
+<pre><span class="org-css-selector">.grid-container </span>{
+        <span class="org-css-property">display</span>: grid;
+        <span class="org-css-property">grid-template-rows</span>: 1fr 3fr 1fr;
+}
+
+<span class="org-css-selector">.grid-container div:nth-child(1) </span>{
+        <span class="org-css-property">grid-row-start</span>: 1;
+        <span class="org-css-property">grid-row-end</span>: 5;
+}</pre>
+</div>
+</div>
+
+<div id="outline-container-org55bac8b" class="outline-3">
+<h3 id="org55bac8b">grid-row and grid-column</h3>
+<div class="outline-text-3" id="text-org55bac8b">
+<p>
+These properties are shorthand of the properties row-start with row-end and column-start with columns-end
+</p>
+</div>
+</div>
+
+<div id="outline-container-org30b4ca4" class="outline-3">
+<h3 id="org30b4ca4">grid-area:</h3>
+<div class="outline-text-3" id="text-org30b4ca4">
+<p>
+This property is a shorthand property that joins grid-row-start / grid-column-start / grid-row-start / grid-row-end;
+</p>
+
+<pre><span class="org-css-selector">.grid-container-3 </span>{
+    <span class="org-css-property">display</span>: grid;
+    <span class="org-css-property">grid-template-columns</span>: 1fr 2fr 1fr;  
+    <span class="org-css-property">gap</span>: 10px;
+}
+
+<span class="org-css-selector">.grid-container-3 div:nth-child(4) </span>{    
+    <span class="org-css-property">background</span>: <span class="custom">magenta</span>;  
+    <span class="org-css-property">grid-area</span>: 3 / 2 / 5 / 3;
+    <span class="org-comment-delimiter">/*</span>
+<span class="org-comment">        grid-row-start: 3;</span>
+<span class="org-comment">        grid-column-start: 2;</span>
+<span class="org-comment">        grid-row-end: 5;</span>
+<span class="org-comment">        grid-column-end: 3;</span>
+<span class="org-comment">   </span><span class="org-comment-delimiter">*/</span>
+}</pre>
+
+<style>
+.grid-container-3 {
+	display: grid;
+	grid-template-columns: 1fr 2fr 1fr;  
+  gap: 10px;
+}
+
+.grid-container-3 div:nth-child(1) {
+	grid-column-start: 2;
+	grid-column-end: 4;
+  background: red;
+}
+.grid-container-3 div:nth-child(2) {
+	grid-column: 2 /3;
+  background: orange;
+}
+
+.grid-container-3 div:nth-child(3) {	
+  background: cyan;
+}
+.grid-container-3 div:nth-child(4) {	
+  background: magenta;  
+  /*
+  grid-row: 3 / 5;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  */
+  grid-area: 3 / 2 / 5 / 3;
+}
+.grid-container-3 div:nth-child(5) {
+	grid-row-start: 1;
+	grid-row-end: 4;
+  background: blue;
+  color: white;
+}
+</style>
+
+<div class="grid-container-3">
+<div>1</div>
+<div>2</div>
+<div>3</div>
+<div>4</div>
+<div>5</div>
+<div>6</div>
+<div>7</div>
+<div>8</div>
+</div>
+
+<hr />
+<p>
+References:
+</p>
+<ul class="org-ul">
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout">mdn css grid layout</a></li>
+<li><a href="https://www.w3schools.com/css/css_grid.asp">w3schools css grid layout</a></li>
+<li><a href="https://www.w3schools.com/css/css_grid_container.asp">w3schools css grid container</a></li>
+<li><a href="https://www.w3schools.com/css/css_grid_item.asp">w3schools css grid items</a></li>
+</ul>
+</div>
+</div>
+</div>
+</article></section></main><footer class="footer-site"><div class="copyright"><p>© 2023-2024 Lucas Elvira Martín <br/><a href="mailto:luelvira@pa.uc3m.es">luelvira@pa.uc3m.es</a></p></div><div class="Generated"><p>Generated with Emacs 27.1 (Org mode 9.3)</p></div><div class="colabore"><a href="https://github.com/luelvira/interfaces-usuario/" target="_blank"><img src="https://luelvira.github.io/interfaces-usuario/img/github-mark-white.png" alt="Link to the github repository"/></a></div></footer></body></html>

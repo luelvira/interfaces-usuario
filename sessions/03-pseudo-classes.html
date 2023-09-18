@@ -1,0 +1,149 @@
+<!-- Generate from "2023/09/18 12:13:29" 2712ddc with Emacs 27.1 (Org mode 9.3) -->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"/><meta author="Lucas Elvira Martín"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="https://luelvira.github.io/interfaces-usuario/css/code.css"/><link rel="stylesheet" href="https://luelvira.github.io/interfaces-usuario/css/style.css"/><title>03 PSEUDO-CLASSES - UI 2023-2024</title><script defer="defer" data-domain="luelvira.github.io/interfaces-usuario" src="https://plausible.io/js/script.js"></script></head><body><header class="site-header"><h1>03 PSEUDO-CLASSES</h1><p class="date">Date: September 18, 2023</p><nav class="nav-side"><ul class="nav-categories"><li><a href="https://luelvira.github.io/interfaces-usuario/">Home</a></li><li><a href="https://luelvira.github.io/interfaces-usuario/sessions.html">Theory</a></li><li><a href="https://luelvira.github.io/interfaces-usuario/practice.html">Practice</a></li></ul></nav></header><main class="main-content"><section><article class="post">
+<div id="outline-container-org187d35b" class="outline-2">
+<h2 id="org187d35b">The CSS pseudo-class</h2>
+<div class="outline-text-2" id="text-org187d35b">
+<p>
+The pseudo-class are keywords added to a selector that specifies a special state
+of a selector or a set of selectors. There are different types of pseudo-classes
+depending on the behavior we want to emulate.
+</p>
+
+<p>
+<code>The syntax</code> of a pseudo-class consist in a colon, <code>:</code> and the name of the
+pseudo-class. In case of the pseudo-class acts as a function, the keyword is combine
+with a pair of parentheses and its arguments.
+</p>
+</div>
+
+<div id="outline-container-org80897f6" class="outline-3">
+<h3 id="org80897f6">Display pseudo-classes</h3>
+<div class="outline-text-3" id="text-org80897f6">
+<p>
+The display pseudo-classes enable select elements based on their display state
+like fullscreen, modal, etc&#x2026;
+</p>
+
+<ol class="org-ol">
+<li><code>:fullscreen</code>: This property matches elements that are in fullscreen mode, for
+example a video</li>
+<li><code>:modal</code>: This property matches elements are in modal state.</li>
+<li><code>:picture-in-picture</code>: This property is used for elements in PIP state <code>NOTE:
+   This property is relative new and doesn't have full compatibility</code></li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org521997a" class="outline-3">
+<h3 id="org521997a">Input pseudo-classes</h3>
+<div class="outline-text-3" id="text-org521997a">
+<p>
+The input pseudo-classes relate to form elements and enable selecting some HTML
+attributes after and before the user interacts with them.
+</p>
+
+<ol class="org-ol">
+<li><code>:autofill</code> Match with an input element which was auto-filed by the
+browser. It means that the browser sets the login and password input values
+without the user interaction.</li>
+<li><code>:enabled</code> Any HTML element could be in enable or disable state. These states
+are more common in interactive elements like inputs or buttons. In this case,
+the enable pseudo-class discards any element with the <code>disable</code> attribute set
+to true.</li>
+<li><code>:disabled</code> Any HTML element in disable state.</li>
+<li><code>:read-only</code> The difference between a <code>read-only</code> input and a <code>disabled</code>
+input is that the read-only is sent with the form, and the disabled element
+is not.</li>
+<li><code>:read-write</code> Select elements which are editable by the user</li>
+<li><code>:placeholder-show</code></li>
+<li><code>:checked</code></li>
+<li><code>:indeterminate</code> Match input with the attribute indeterminate. This is the
+case of some inputs as a checkbox that we can&rsquo;t determine if the value is
+true or false.</li>
+<li><code>:blank</code></li>
+<li><code>:valid</code>,  <code>:invalid</code> and <code>user-invalid</code> The difference between <code>user-invalid</code>
+and <code>invalid</code> is that the first one requires an user interaction.</li>
+<li><code>in-range</code> and <code>:out-of-range</code></li>
+<li><code>:required</code> and <code>:optional</code>. An input is required if it has the required
+attribute set to true (or not false)</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org04a7c8f" class="outline-3">
+<h3 id="org04a7c8f">Location pseudo-classes</h3>
+<div class="outline-text-3" id="text-org04a7c8f">
+<p>
+These pseudo-classes are related to the states of the links. There are a lot of options:
+</p>
+<ol class="org-ol">
+<li><code>any-link</code>,  <code>link</code>, and <code>visited</code>. These pseudo-classes affect links that
+were visited or not visited, visited and not visited respectively.</li>
+<li><code>local-link</code>: matches only links whose absolute URLs are the same as the
+target URL.</li>
+<li><code>:target</code> Matches elements that act as the target of a link. And
+<code>:target-within</code> is the same, but in this case, the target element has a
+child who acts as another target.</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-orga7d8c75" class="outline-3">
+<h3 id="orga7d8c75">Tree structural pseudo-classes</h3>
+<div class="outline-text-3" id="text-orga7d8c75">
+<p>
+Represent the position of an element in the DOM tree
+</p>
+<ol class="org-ol">
+<li><code>:root</code></li>
+<li><code>:empty</code></li>
+<li><code>:nth-child</code></li>
+<li><code>:first-child</code></li>
+<li><code>:only-child</code></li>
+<li><code>:nth-of-type</code></li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-orgf5ae44c" class="outline-3">
+<h3 id="orgf5ae44c">User action pseudo-classes</h3>
+<div class="outline-text-3" id="text-orgf5ae44c">
+<p>
+These pseudo-classes respond to a user interaction like selecting or hovering an element
+</p>
+
+<ol class="org-ol">
+<li><code>:hover</code>: Pass the mouse over an element.</li>
+<li><code>:active</code>: Matches when a user activates an element. An example could be a button
+that is activated while the user is pressing it with the mouse</li>
+<li><code>:focus</code>: Matches when the user sets the focus on an element.</li>
+<li><code>:focus-visible</code>:  The main difference between focus and focus-visible is
+that the first one affects all elements, and the second one, only affects
+elements that the user agent considers should be visible that the
+user is focused on. For example, a button can be focused, but in most case, we
+don&rsquo;t want it displays a ring around it. But, if the user navigates with the
+keyboard, the focus ring is mandatory, so we can use the focus-visible to
+only highlight the focus when it is required.</li>
+<li><code>:focus-within</code>: Affect to the focused element and a container element which
+has the focused element</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org04d0b5f" class="outline-3">
+<h3 id="org04d0b5f">Functional pseudo-classes</h3>
+<div class="outline-text-3" id="text-org04d0b5f">
+<p>
+Accepts a selector or negation list as parameters
+</p>
+<ol class="org-ol">
+<li><code>:is()</code>: Allows you to select any element that matches a variety of options</li>
+<li><code>:not()</code>: Allows you to discard selecting elements that match some selection</li>
+<li><code>:where()</code>: Like is, but without adding specify weight</li>
+<li><code>:has()</code>: Match any element that has relative selectors that match with the
+selectors inside the has function.</li>
+</ol>
+</div>
+</div>
+</div>
+</article></section></main><footer class="footer-site"><div class="copyright"><p>© 2023-2024 Lucas Elvira Martín <br/><a href="mailto:luelvira@pa.uc3m.es">luelvira@pa.uc3m.es</a></p></div><div class="Generated"><p>Generated with Emacs 27.1 (Org mode 9.3)</p></div><div class="colabore"><a href="https://github.com/luelvira/interfaces-usuario/" target="_blank"><img src="https://luelvira.github.io/interfaces-usuario/img/github-mark-white.png" alt="Link to the github repository"/></a></div></footer></body></html>
