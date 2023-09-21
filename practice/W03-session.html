@@ -1,0 +1,154 @@
+<!-- Generate from "2023/09/21 14:13:59" 44a9512 with Emacs 27.1 (Org mode 9.3) -->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"/><meta author="Lucas Elvira Martín"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="https://luelvira.github.io/interfaces-usuario/css/code.css"/><link rel="stylesheet" href="https://luelvira.github.io/interfaces-usuario/css/style.css"/><title>Week 3 - CSS - UI 2023-2024</title><script defer="defer" data-domain="luelvira.github.io/interfaces-usuario" src="https://plausible.io/js/script.js"></script></head><body><header class="site-header"><h1>Week 3 - CSS</h1><p class="date">Date: September 18, 2023</p><nav class="nav-side"><ul class="nav-categories"><li><a href="https://luelvira.github.io/interfaces-usuario/">Home</a></li><li><a href="https://luelvira.github.io/interfaces-usuario/sessions.html">Theory</a></li><li><a href="https://luelvira.github.io/interfaces-usuario/practice.html">Practice</a></li></ul></nav></header><main class="main-content"><section><article class="post"><p>
+:HEADER-ARGS:html: :tangle w3/index.html
+:HEADER-ARGS:css: :tangle w3/css/style.css
+</p>
+
+<div id="outline-container-org230eba4" class="outline-2">
+<h2 id="org230eba4">Prepare the structure</h2>
+<div class="outline-text-2" id="text-org230eba4">
+<p>
+As always, first we prepare the folder structure.
+</p>
+
+<pre>mkdir -p w3/{css,js,media}
+mkdir -p w3/media/{img,video,fonts}
+<span class="org-builtin">cd</span> w3
+touch index.html
+touch css/style.css</pre>
+
+
+<p>
+Then we can start with the skeleton of our html file
+</p>
+
+<pre>&lt;<span class="org-keyword">!DOCTYPE</span> html&gt;
+  &lt;<span class="org-function-name">html</span> <span class="org-variable-name">lang</span>=<span class="org-string">"en"</span>&gt;
+    &lt;<span class="org-function-name">head</span>&gt;
+      &lt;<span class="org-function-name">meta</span> <span class="org-variable-name">charset</span>=<span class="org-string">"UTF-8"</span>&gt;
+      &lt;<span class="org-function-name">title</span>&gt;<span class="org-underline"><span class="org-bold">Week 3</span></span>&lt;/<span class="org-function-name">title</span>&gt;
+      &lt;<span class="org-function-name">link</span> <span class="org-variable-name">href</span>=<span class="org-string">"css/style.css"</span> <span class="org-variable-name">rel</span>=<span class="org-string">"stylesheet"</span>&gt;
+      &lt;<span class="org-function-name">meta</span> <span class="org-variable-name">name</span>=<span class="org-string">"viewport"</span> <span class="org-variable-name">content</span>=<span class="org-string">"width=device-width, initial-scale=1"</span>&gt;
+    &lt;/<span class="org-function-name">head</span>&gt;
+    &lt;<span class="org-function-name">body</span>&gt;</pre>
+</div>
+</div>
+
+<div id="outline-container-org5860549" class="outline-2">
+<h2 id="org5860549">Pseudo-class</h2>
+<div class="outline-text-2" id="text-org5860549">
+<p>
+In this example we use a paragraph which will change the color
+</p>
+<pre>&lt;<span class="org-function-name">p</span>&gt;The following words will change the color&lt;/<span class="org-function-name">p</span>&gt;
+&lt;<span class="org-function-name">button</span>&gt;Toggle full screen&lt;/<span class="org-function-name">button</span>&gt;</pre>
+
+<pre><span class="org-css-selector">body </span>{
+  <span class="org-css-property">background-color</span>: <span class="custom-4">#ffeeee</span>;
+  <span class="org-css-property">font-size</span>: 16px; <span class="org-comment-delimiter">/*</span><span class="org-comment">Default font size </span><span class="org-comment-delimiter">*/</span>
+  <span class="org-css-property">font-family</span>: sans-serif;
+}
+<span class="org-css-selector">button </span>{
+  <span class="org-css-property">box-sizing</span>: content-box;
+  <span class="org-css-property">border-radius</span>: 0.2em;
+  <span class="org-css-property">color</span>: <span class="custom-3">white</span>;
+  <span class="org-css-property">background-color</span>: <span class="custom-2">#007bff</span>;
+  <span class="org-css-property">padding</span>: 1%;
+  <span class="org-css-property">border</span>: none;
+  <span class="org-css-property">cursor</span>: pointer;
+}
+<span class="org-css-selector">p </span>{
+  <span class="org-css-property">font-size</span>: 2em;
+  <span class="org-css-property">color</span>: <span class="custom-1">black</span>;
+}
+<span class="org-css-property">p</span>:fullscreen {
+  <span class="org-css-property">color</span>: <span class="custom">#55a0ff</span>; 
+}</pre>
+
+<p>
+This code only works in server with <code>https</code> or localhost, because the browser
+consider localhost a secure site.
+</p>
+
+<p>
+<code>Disclaimer</code> You can ignore this part. It is used only for enabling the example
+</p>
+
+<pre><span class="org-keyword">let</span> <span class="org-variable-name">button</span> = document.querySelector(<span class="org-string">"button"</span>);
+ <span class="org-keyword">let</span> <span class="org-variable-name">paragraph</span> = document.querySelector(<span class="org-string">"p"</span>);
+ button.addEventListener(<span class="org-string">"click"</span>, () =&gt; {
+!document.fullScreen &amp;&amp; paragraph.requestFullscreen() || document.exitFullscreen();
+ });</pre>
+</div>
+
+<div id="outline-container-org3eb32e7" class="outline-3">
+<h3 id="org3eb32e7">Status selectors</h3>
+<div class="outline-text-3" id="text-org3eb32e7">
+<p>
+The status selectors are used to select elements based on the state of the
+element. In this case, we will change the color of the button when it is
+disabled.
+</p>
+
+<pre>&lt;<span class="org-function-name">button</span> <span class="org-variable-name">disabled</span>=<span class="org-string">"true"</span>&gt;Disable&lt;/<span class="org-function-name">button</span>&gt;</pre>
+
+<pre><span class="org-css-selector">button:disabled </span>{
+  <span class="org-css-property">color</span>: <span class="custom">red</span>;
+}</pre>
+</div>
+</div>
+
+<div id="outline-container-org9eba2be" class="outline-3">
+<h3 id="org9eba2be">Action pseudo-class</h3>
+<div class="outline-text-3" id="text-org9eba2be">
+<p>
+The action pseudo-class is used to select and style elements that are the target
+of and action of the user.
+</p>
+
+<pre>&lt;<span class="org-function-name">button</span> <span class="org-variable-name">id</span>=<span class="org-string">"hover-button"</span>&gt;Hover over me&lt;/<span class="org-function-name">button</span>&gt;</pre>
+
+<p>
+With the following CSS we apply three states to the last button. The normal
+state has a default shadow outside it. The second state, when we pass the mouse
+over the button, it will lost the shadow and while we push it, the button get a
+inner shadow.
+</p>
+
+<pre><span class="org-css-selector">#hover-button </span>{
+    <span class="org-css-property">display</span>: block;
+  <span class="org-css-property">box-shadow</span>: 2px 2px 2px 2px <span class="custom-1">#888888</span>, inset 0px 0px 0px <span class="custom-1">#888888</span>;
+  <span class="org-css-property">margin</span>: 2% 0%;
+  <span class="org-css-property">transition-property</span>: box-shadow;
+  <span class="org-css-property">transition-duration</span>: 0.5s;
+}
+<span class="org-css-selector">#hover-button:active </span>{<span class="org-css-property">box-shadow</span>: 0px 0px 0px <span class="custom-1">#888888</span>, inset 4px 4px 5px <span class="custom">#ffffff</span>;}
+<span class="org-css-selector">#hover-button:hover </span>{<span class="org-css-property">box-shadow</span>: 0px 0px 0px <span class="custom-1">#888888</span>, inset 0px 0px 0px <span class="custom">#ffffff</span>;}</pre>
+
+<p>
+And the end of the file
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org87d6dd2" class="outline-2">
+<h2 id="org87d6dd2">EOF</h2>
+<div class="outline-text-2" id="text-org87d6dd2">
+<pre>&lt;<span class="org-function-name">script</span> <span class="org-variable-name">src</span>=<span class="org-string">"js/main.js"</span>&gt;&lt;/<span class="org-function-name">script</span>&gt;
+&lt;/<span class="org-function-name">body</span>&gt;
+&lt;/<span class="org-function-name">html</span>&gt;</pre>
+
+<hr />
+<p>
+The resulting code can be found in:
+</p>
+<ul class="org-ul">
+<li></li>
+
+<li></li>
+
+<li></li>
+</ul>
+</div>
+</div>
+</article></section></main><footer class="footer-site"><div class="copyright"><p>© 2023-2024 Lucas Elvira Martín <br/><a href="mailto:luelvira@pa.uc3m.es">luelvira@pa.uc3m.es</a></p></div><div class="Generated"><p>Generated with Emacs 27.1 (Org mode 9.3)</p></div><div class="colabore"><a href="https://github.com/luelvira/interfaces-usuario/" target="_blank"><img src="https://luelvira.github.io/interfaces-usuario/img/github-mark-white.png" alt="Link to the github repository"/></a></div></footer></body></html>
