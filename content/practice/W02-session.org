@@ -121,6 +121,11 @@ Also this week, we talk about the =anchor= tag, which is represented by an
     <meta charset="UTF-8"/>
     <title>Document</title>
     <style>
+
+    html {
+	scroll-behavior: smooth;
+    }
+
     section {
     height: 60vh;
     }

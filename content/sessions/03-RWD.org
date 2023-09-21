@@ -92,7 +92,7 @@ use the =developer tools=
   </html>
 #+end_src
 
-#+begin_src css :tangle ../practice/examples/style.css
+#+begin_src css :tangle ../practice/examples/css/style.css
 
 /* css/style.css */
   #cont {
@@ -178,3 +178,5 @@ use the =developer tools=
       </div>
 
 #+end_export
+
+The full example can be found in

@@ -48,18 +48,18 @@ In this example, the grid has four equally-sized columns and three rows, with he
 #+begin_export html
 <style>
 [class^="grid-container"] {
-all: initial;
-  display: grid;
-  width: 500px;
-  height: 200px;
-  border: 1px solid #2c1159;
-  margin: 10px;
+    all: initial;
+    display: grid;
+    width: 500px;
+    height: 200px;
+    border: 1px solid #2c1159;
+    margin: 10px;
 }
-    .grid-container {
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        grid-template-rows: 30px 50px 30px;
-        gap: 10px;
-    }
+.grid-container {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 30px 50px 30px;
+    gap: 10px;
+}
 [class^="grid-container"] > div {
   background: #429365;
 }
@@ -107,37 +107,37 @@ This property allows to specify named grid areas, establishing the cells in the 
       grid-template-rows: 1fr 3fr 30px;
       grid-template-columns: 2fr 50% 1fr;
   }
-  /*
-    Note that the number of rows/columns must match in the grid-template-areas and in the grid-template-rows/columns
-  ,*/
 #+end_src
 
+    Note that the number of rows/columns must match in the grid-template-areas
+    and in the grid-template-rows/columns.
+    
 #+begin_export html
 <style>
-.grid-container-2 {
-      display: grid;	
-      grid-template-areas: "header header header"
-                           "nav col1 col1"
-                           "nav footer footer";
-      grid-template-rows: 1fr 3fr 30px;
-      grid-template-columns: 2fr 50% 1fr;
+ .grid-container-2 {
+   display: grid;	
+   grid-template-areas: "header header header"
+                        "nav col1 col1"
+                        "nav footer footer";
+   grid-template-rows: 1fr 3fr 30px;
+   grid-template-columns: 2fr 50% 1fr;
   }
 
-  .grid-container-2 header {  
+.grid-container-2 header {  
   background: red;
   grid-area: header;
 }
 .grid-container-2 nav {
   background-color: blue;
-   grid-area: nav;
+  grid-area: nav;
 }
 .grid-container-2  article {
   background-color: cyan;
-   grid-area: col1;
+  grid-area: col1;
 }
 .grid-container-2 footer {
   background-color: orange;
-   grid-area: footer;
+  grid-area: footer;
 }
 
 </style>
@@ -216,22 +216,22 @@ This property is a shorthand property that joins grid-row-start / grid-column-st
 <style>
 .grid-container-3 {
 	display: grid;
-	grid-template-columns: 1fr 2fr 1fr;  
-  gap: 10px;
+    grid-template-columns: 1fr 2fr 1fr;  
+    gap: 10px;
 }
 
 .grid-container-3 div:nth-child(1) {
 	grid-column-start: 2;
 	grid-column-end: 4;
-  background: red;
+    background: red;
 }
 .grid-container-3 div:nth-child(2) {
 	grid-column: 2 /3;
-  background: orange;
+    background: orange;
 }
 
 .grid-container-3 div:nth-child(3) {	
-  background: cyan;
+    background: cyan;
 }
 .grid-container-3 div:nth-child(4) {	
   background: magenta;  

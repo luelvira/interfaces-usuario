@@ -1,0 +1,148 @@
+:PROPERTIES:
+:HEADER-ARGS:html: :tangle w3/index.html
+:HEADER-ARGS:css: :tangle w3/css/style.css
+:END:
+#+TITLE: Week 3 - CSS
+#+DATE:  [2023-09-18 Mon]
+#+AUTHOR: Lucas Elvira Martín
+#+EMAIL: luelvira@pa.uc3m.es
+
+* Table of Content :TOC:noexport:
+- [[#prepare-the-structure][Prepare the structure]]
+- [[#pseudo-class][Pseudo-class]]
+  - [[#status-selectors][Status selectors]]
+  - [[#action-pseudo-class][Action pseudo-class]]
+- [[#eof][EOF]]
+
+* Prepare the structure
+
+As always, first we prepare the folder structure.
+
+#+begin_src shell
+    mkdir -p w3/{css,js,media}
+    mkdir -p w3/media/{img,video,fonts}
+    cd w3
+    touch index.html
+    touch css/style.css
+#+end_src
+
+
+Then we can start with the skeleton of our html file
+
+#+begin_src html
+<!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <title>Week 3</title>
+      <link href="css/style.css" rel="stylesheet">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+#+end_src
+
+* Pseudo-class
+
+
+In this example we use a paragraph which will change the color
+#+begin_src html
+
+  <p>The following words will change the color</p>
+<button>Toggle full screen</button>
+
+#+end_src
+
+#+begin_src css
+
+body {
+  background-color: #ffeeee;
+  font-size: 16px; /*Default font size */
+  font-family: sans-serif;
+}
+button {
+  box-sizing: content-box;
+  border-radius: 0.2em;
+  color: white;
+  background-color: #007bff;
+  padding: 1%;
+  border: none;
+  cursor: pointer;
+}
+p {
+  font-size: 2em;
+  color: black;
+}
+p:fullscreen {
+  color: #55a0ff; 
+}
+#+end_src
+
+This code only works in server with =https= or localhost, because the browser
+consider localhost a secure site.
+
+=Disclaimer= You can ignore this part. It is used only for enabling the example
+
+#+begin_src js :tangle w3/js/main.js
+  let button = document.querySelector("button");
+  let paragraph = document.querySelector("p");
+  button.addEventListener("click", () => {
+ !document.fullScreen && paragraph.requestFullscreen() || document.exitFullscreen();
+  });
+#+end_src
+
+** Status selectors
+
+The status selectors are used to select elements based on the state of the
+element. In this case, we will change the color of the button when it is
+disabled.
+
+#+begin_src html
+<button disabled="true">Disable</button>
+#+end_src
+
+#+begin_src css
+button:disabled {
+  color: red;
+}
+#+end_src
+
+** Action pseudo-class
+
+The action pseudo-class is used to select and style elements that are the target
+of and action of the user.
+
+#+begin_src html
+<button id="hover-button">Hover over me</button>
+#+end_src
+
+With the following CSS we apply three states to the last button. The normal
+state has a default shadow outside it. The second state, when we pass the mouse
+over the button, it will lost the shadow and while we push it, the button get a
+inner shadow.
+
+#+begin_src css
+  #hover-button {
+      display: block;
+    box-shadow: 2px 2px 2px 2px #888888, inset 0px 0px 0px #888888;
+    margin: 2% 0%;
+    transition-property: box-shadow;
+    transition-duration: 0.5s;
+  }
+  #hover-button:active {box-shadow: 0px 0px 0px #888888, inset 4px 4px 5px #ffffff;}
+  #hover-button:hover {box-shadow: 0px 0px 0px #888888, inset 0px 0px 0px #ffffff;}
+
+#+end_src
+
+And the end of the file
+* EOF
+#+begin_src html
+  <script src="js/main.js"></script>
+  </body>
+  </html>
+#+end_src
+
+-----
+The resulting code can be found in:
+- 
+- 
+- 
