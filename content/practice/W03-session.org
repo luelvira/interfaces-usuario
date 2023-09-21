@@ -143,6 +143,6 @@ And the end of the file
 
 -----
 The resulting code can be found in:
-- 
-- 
-- 
+- [[https://github.com/luelvira/interfaces-usuario/blob/44a95126a535d063b6ed5962b7ff8e25d1c0371a/content/practice/w3/index.html][index.html]]
+- [[https://github.com/luelvira/interfaces-usuario/blob/44a95126a535d063b6ed5962b7ff8e25d1c0371a/content/practice/w3/css/style.css][style.css]]
+-[[https://github.com/luelvira/interfaces-usuario/blob/44a95126a535d063b6ed5962b7ff8e25d1c0371a/content/practice/w3/js/main.js][main.js]] 

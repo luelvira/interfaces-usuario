@@ -111,3 +111,5 @@ Accepts a selector or negation list as parameters
 3. ~:where()~: Like is, but without adding specify weight
 4. ~:has()~: Match any element that has relative selectors that match with the
    selectors inside the has function.
+
+For examples go to [[file:/practice/W03-session.org][W03-session]]
