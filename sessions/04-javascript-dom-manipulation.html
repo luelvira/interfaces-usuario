@@ -1,0 +1,173 @@
+<!-- Generate from "2023/10/02 17:33:16" 377e2a7 with Emacs 27.1 (Org mode 9.3) -->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"/><meta author="Lucas Elvira Martín"/><meta description="Session for Week 5. Tutorial for DOM manipulation"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="https://luelvira.github.io/interfaces-usuario/css/code.css"/><link rel="stylesheet" href="https://luelvira.github.io/interfaces-usuario/css/style.css"/><title>04 JAVASCRIPT DOM Manipulation - UI 2023-2024</title><script defer="defer" data-domain="luelvira.github.io/interfaces-usuario" src="https://plausible.io/js/script.js"></script></head><body><header class="site-header"><h1>04 JAVASCRIPT DOM Manipulation</h1><p class="date">Date: October  2, 2023</p><nav class="nav-side"><ul class="nav-categories"><li><a href="https://luelvira.github.io/interfaces-usuario/">Home</a></li><li><a href="https://luelvira.github.io/interfaces-usuario/sessions.html">Theory</a></li><li><a href="https://luelvira.github.io/interfaces-usuario/practice.html">Practice</a></li></ul></nav></header><main class="main-content"><section><article class="post">
+<div id="outline-container-orge5f58fd" class="outline-2">
+<h2 id="orge5f58fd">JavaScript Document Object Model</h2>
+<div class="outline-text-2" id="text-orge5f58fd">
+<p>
+The Document Object Model (DOM) is a model that represents XML or HTML documents
+as tree structure, where each node in the tree is an object representing a part of the
+document.
+</p>
+
+<p>
+The DOM represents a logical tree where each node has its own methods, allowing
+programmers to manipulate the document&rsquo;s structure, style, or
+content. Additionally, events can be attached to any node within the tree.
+</p>
+</div>
+
+<div id="outline-container-org472ac81" class="outline-3">
+<h3 id="org472ac81">Parts of the DOM</h3>
+<div class="outline-text-3" id="text-org472ac81">
+<p>
+The DOM is composed by three main components
+</p>
+
+<ul class="org-ul">
+<li><b>WINDOW</b>: The browser tab that a page is loaded into. We can access it with the
+<code>Window</code> object. The Window object has its methods, like returning the
+window&rsquo;s size, manipulating the document loaded, and storing data in the
+browser with different mechanisms.</li>
+<li><b>NAVIGATOR</b>: Represent the state and identity of the browser. JavaScript
+represents it with <code>navigator</code>.</li>
+<li><b>DOCUMENT</b>, represented by the DOM. It is the actual page loaded. To access
+it, we use in JavaScript the <code>document</code> keyword.</li>
+</ul>
+</div>
+
+<div id="outline-container-org975dbbe" class="outline-4">
+<h4 id="org975dbbe">DOM vs HTML</h4>
+<div class="outline-text-4" id="text-org975dbbe">
+<p>
+Consider the following HTML example
+</p>
+
+<pre>&lt;<span class="org-keyword">!DOCTYPE</span> html&gt;
+&lt;<span class="org-function-name">html</span> <span class="org-variable-name">lang</span>=<span class="org-string">"es"</span>&gt;
+        &lt;<span class="org-function-name">head</span>&gt;
+                &lt;<span class="org-function-name">meta</span> <span class="org-variable-name">charset</span>=<span class="org-string">"UTF-8"</span> /&gt;
+                &lt;<span class="org-function-name">title</span>&gt;<span class="org-underline"><span class="org-bold">DOM EXAMPLE</span></span>&lt;/<span class="org-function-name">title</span>&gt;
+        &lt;/<span class="org-function-name">head</span>&gt;
+        &lt;<span class="org-function-name">body</span>&gt;
+                &lt;<span class="org-function-name">section</span>&gt;
+                        &lt;<span class="org-function-name">h2</span>&gt;<span class="org-underline"><span class="org-bold-italic">my tittle</span></span>&lt;/<span class="org-function-name">h2</span>&gt;
+                        &lt;<span class="org-function-name">article</span>&gt;
+                                &lt;<span class="org-function-name">h3</span>&gt;<span class="org-underline"><span class="org-italic">My article title</span></span>&lt;/<span class="org-function-name">h3</span>&gt;
+                                &lt;<span class="org-function-name">p</span>&gt;lorem text&lt;/<span class="org-function-name">p</span>&gt;
+                        &lt;/<span class="org-function-name">article</span>&gt;
+                        &lt;<span class="org-function-name">article</span>&gt;
+                                &lt;<span class="org-function-name">h3</span>&gt;<span class="org-underline"><span class="org-italic">Other article</span></span>&lt;/<span class="org-function-name">h3</span>&gt;
+                                &lt;<span class="org-function-name">img</span> <span class="org-variable-name">src</span>=<span class="org-string">"myimg.png"</span> <span class="org-variable-name">alt</span>=<span class="org-string">"It isn't an image"</span> &gt;
+                                &lt;<span class="org-function-name">p</span>&gt;This text prevent you..&lt;<span class="org-function-name">a</span> <span class="org-variable-name">href</span>=<span class="org-string">"#"</span>&gt;dont move!&lt;/<span class="org-function-name">a</span>&gt; and continue&lt;/<span class="org-function-name">p</span>&gt;
+                        &lt;/<span class="org-function-name">article</span>&gt;
+                &lt;/<span class="org-function-name">section</span>&gt;
+        &lt;/<span class="org-function-name">body</span>&gt;
+&lt;/<span class="org-function-name">html</span>&gt;</pre>
+
+<pre class="example">
+|
+|_DOCTYPE: html
+|_HTML
+| |_HEAD
+| | |_META charshet="UTF-8"
+| | |_title
+| | | |_#text:DOM EXAMPLE
+| |_BODY
+| | |_SECTION
+| | | |_H2
+| | | | |_#TEXT
+| | | |_ARTICLE
+| | | | |_H3
+| | | | | |_TEXT
+| | | | |_p
+| | | | | |_TEXT
+| | | |_ARTICLE
+| | | | |_H3
+| | | | | |_TEXT
+| | | | |_IMG src="myimg.png" alt="It is't an image"
+| | | | |_P
+| | | | | |_TEXT (1)
+| | | | | |_A href="#" 
+| | | | | | |_TEXT (a)
+| | | | | |_TEXT (2)
+</pre>
+
+<p>
+In the case of the <code>P</code> with an anchor tag inside, the text nodes are
+recursive joined. This means, first, get the text (1), then get the text from the
+anchor tag (1.a), and finally are concatenating with text (2)
+</p>
+</div>
+</div>
+
+<div id="outline-container-org5bca80a" class="outline-4">
+<h4 id="org5bca80a">Access to node elements</h4>
+<div class="outline-text-4" id="text-org5bca80a">
+<p>
+When you want to store or use an HTML element or a list of elements, you can use the
+document&rsquo;s method. As all nodes are instances of the document, they share some
+properties and methods.
+</p>
+
+<pre><span class="org-keyword">let</span> <span class="org-variable-name">a</span> = document.querySelector(<span class="org-string">"a"</span>); <span class="org-comment-delimiter">//</span><span class="org-comment">return the first anchor tag</span>
+<span class="org-keyword">let</span> <span class="org-variable-name">p</span> = document.querySelectorAll(<span class="org-string">"p.danger"</span>); <span class="org-comment-delimiter">//</span><span class="org-comment">return all paragraph tags with a danger class</span>
+<span class="org-keyword">let</span> <span class="org-variable-name">main</span> = document.getElementById(<span class="org-string">"main"</span>); <span class="org-comment-delimiter">//</span><span class="org-comment">return the node with this id</span>
+<span class="org-keyword">let</span> <span class="org-variable-name">allP</span> = document.getElementsByTagName(<span class="org-string">"p"</span>); <span class="org-comment-delimiter">//</span><span class="org-comment">return all p group as HTMLCollection</span></pre>
+
+<p>
+You can also use a node to search within it using the same methods.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgc3c3e4d" class="outline-4">
+<h4 id="orgc3c3e4d">Add or remove nodes</h4>
+<div class="outline-text-4" id="text-orgc3c3e4d">
+<p>
+Sometimes, you need to add, remove, or move a node. We provides some methods to
+assist with these tasks.
+</p>
+
+<p>
+To create a new element, we use the method <code>createElement</code>. This method accepts
+the name of the tag as parameter.
+</p>
+
+<p>
+After you have created the new element, you need to insert it into the DOC.
+First, select the element where you want to insert and use some of the following methods:
+</p>
+
+<ul class="org-ul">
+<li><code>appendChild</code>,</li>
+<li><code>insertBefore</code></li>
+<li><code>insertAdjacentElement</code></li>
+<li><code>prepend</code></li>
+</ul>
+
+<pre><span class="org-keyword">let</span> <span class="org-variable-name">newPara</span> = document.createElement(<span class="org-string">"p"</span>);
+<span class="org-comment-delimiter">// </span><span class="org-comment">block of code that manipulates the new paragraph</span>
+body.appendChild(newPara)</pre>
+
+<p>
+<code>appendChild</code> will insert the node as a child of the element that calls the
+ method. <code>insertBefore</code> needs a second parameter, which is the node that will be used as a
+ reference, and <code>insertAdjacentElemsent</code> creates the element as a sibling of the
+ current node. <code>prepend</code> inserts a set of nodes before the first element.
+</p>
+
+
+<p>
+To remove nodes, you can use <code>Node.remove</code> if you want to remove the current
+node or <code>Node.removeChild</code> if we want to delete some node inside the node that is
+selected
+</p>
+
+<pre><span class="org-keyword">let</span> <span class="org-variable-name">a</span> = document.querySelector(<span class="org-string">"a"</span>); <span class="org-comment-delimiter">//</span><span class="org-comment">return the first anchor tag</span>
+body.remove() <span class="org-comment-delimiter">//</span><span class="org-comment">delete all body</span>
+body.removeChild(a) <span class="org-comment-delimiter">//</span><span class="org-comment">remove the previously selected anchor element</span></pre>
+</div>
+</div>
+</div>
+</div>
+</article></section></main><footer class="footer-site"><div class="copyright"><p>© 2023-2024 Lucas Elvira Martín <br/><a href="mailto:luelvira@pa.uc3m.es">luelvira@pa.uc3m.es</a></p></div><div class="Generated"><p>Generated with Emacs 27.1 (Org mode 9.3)</p></div><div class="colabore"><a href="https://github.com/luelvira/interfaces-usuario/" target="_blank"><img src="https://luelvira.github.io/interfaces-usuario/img/github-mark-white.png" alt="Link to the github repository"/></a></div></footer></body></html>

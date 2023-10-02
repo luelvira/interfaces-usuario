@@ -1,0 +1,171 @@
+<!-- Generate from "2023/10/02 17:33:16" 377e2a7 with Emacs 27.1 (Org mode 9.3) -->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"/><meta author="Lucas Elvira Martín"/><meta description="Session for week 5. Basic syntax for javascript in the browser"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="https://luelvira.github.io/interfaces-usuario/css/code.css"/><link rel="stylesheet" href="https://luelvira.github.io/interfaces-usuario/css/style.css"/><title>04 JAVASCRIPT SYNTAX - UI 2023-2024</title><script defer="defer" data-domain="luelvira.github.io/interfaces-usuario" src="https://plausible.io/js/script.js"></script></head><body><header class="site-header"><h1>04 JAVASCRIPT SYNTAX</h1><p class="date">Date: October  2, 2023</p><nav class="nav-side"><ul class="nav-categories"><li><a href="https://luelvira.github.io/interfaces-usuario/">Home</a></li><li><a href="https://luelvira.github.io/interfaces-usuario/sessions.html">Theory</a></li><li><a href="https://luelvira.github.io/interfaces-usuario/practice.html">Practice</a></li></ul></nav></header><main class="main-content"><section><article class="post">
+<div id="outline-container-orga85cad9" class="outline-2">
+<h2 id="orga85cad9">JavaScript syntax</h2>
+<div class="outline-text-2" id="text-orga85cad9">
+</div>
+<div id="outline-container-orgf7c3319" class="outline-3">
+<h3 id="orgf7c3319">In the browser</h3>
+<div class="outline-text-3" id="text-orgf7c3319">
+<p>
+To include a JavaScript in a web page, you need to use the following HTML tag
+</p>
+<pre>&lt;<span class="org-function-name">script</span> <span class="org-variable-name">src</span>=<span class="org-string">"path"</span>&gt;&lt;/<span class="org-function-name">script</span>&gt;</pre>
+
+<p>
+This script tag can be placed either within the <code>&lt;head&gt;</code> tag or just before the
+closing  <code>&lt;/body&gt;</code> tag. The main difference between these options is when the
+script is loaded. If you place it inside the <code>&lt;head&gt;</code>, you won&rsquo;t have access to
+any DOM elements because they haven&rsquo;t been created yet. In such cases, you need
+to add some function that will be triggered when the full page is loaded and,
+then, executes the script.
+</p>
+
+<p>
+If you use the second approach, the website will already be fully loaded,
+therefore, you will have access to all DOM elements. However the script will be the
+last thing loaded and executed.
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-orgbef54ca" class="outline-3">
+<h3 id="orgbef54ca">Basic syntax</h3>
+<div class="outline-text-3" id="text-orgbef54ca">
+</div>
+<div id="outline-container-org324bd0c" class="outline-4">
+<h4 id="org324bd0c">Vars declaration</h4>
+<div class="outline-text-4" id="text-org324bd0c">
+<p>
+In JavaScript, there are 3 options for declaring variables. As we said in <a href="04-javascript-introduction.html">What
+it javascript</a>, JavaScript is weakly typed, so you don&rsquo;t need to specify the data
+type. The main difference between the 3 options is the scope of the
+declaration.
+</p>
+
+<ul class="org-ul">
+<li><code>var</code>: This is the classic way. When we use this kind of declaration the scope
+of the var is global or local (if it is inside a function)</li>
+<li><code>let</code>: This keyword is preferred over <code>var</code> because it has a block scope and can&rsquo;t be redefined</li>
+<li><code>const</code>: Like <code>let</code> has a block scope and can&rsquo;t be modified its value or re-declare</li>
+</ul>
+
+<pre><span class="org-keyword">function</span> <span class="org-function-name">closeScope</span>(<span class="org-variable-name">pass</span>) {
+    <span class="org-keyword">let</span> <span class="org-variable-name">x</span> = 5;
+    <span class="org-keyword">if</span> (pass) {
+        <span class="org-keyword">let</span> <span class="org-variable-name">x</span> = 9;
+        console.log(x); <span class="org-comment-delimiter">// </span><span class="org-comment">9</span>
+    }
+    console.log(x); <span class="org-comment-delimiter">// </span><span class="org-comment">5</span>
+}
+<span class="org-keyword">try</span> {
+    console.log(x); <span class="org-comment-delimiter">// </span><span class="org-comment">ERROR</span>
+
+} <span class="org-keyword">catch</span> (e) {
+    console.log(<span class="org-string">"Error"</span>);
+}
+closeScope(<span class="org-constant">false</span>);
+closeScope(<span class="org-constant">true</span>);</pre>
+</div>
+</div>
+
+
+<div id="outline-container-org798987c" class="outline-4">
+<h4 id="org798987c">Hoisting</h4>
+<div class="outline-text-4" id="text-org798987c">
+<p>
+In JS there is the concept of hoisting. This process consist in moving the
+variables and functions declarations to the top of there scops. This allows you to
+call a function before it is declared and use a variable (defined with <code>var</code>)
+before its declaration. But it haven´t any value jet 
+</p>
+
+<pre>sayHello(<span class="org-string">"name"</span>);
+<span class="org-keyword">function</span> <span class="org-function-name">sayHello</span>(<span class="org-variable-name">name</span>) {
+        console.log(name);
+}</pre>
+
+<p>
+It is equivalent to
+</p>
+
+<pre><span class="org-keyword">function</span> <span class="org-function-name">sayHello</span>(<span class="org-variable-name">name</span>) {
+        console.log(name);
+}
+sayHello(<span class="org-string">"name"</span>);</pre>
+
+<p>
+It also works with variables.
+</p>
+
+<pre>console.log(x) <span class="org-comment-delimiter">// </span><span class="org-comment">undefined;</span>
+<span class="org-keyword">var</span> <span class="org-variable-name">x</span> = 5;
+<span class="org-keyword">var</span> <span class="org-variable-name">x</span> = <span class="org-constant">undefined</span>;
+console.log(x);
+x = 5;</pre>
+
+<p>
+<b>Warning</b>
+<code>let</code> and <code>const</code> have hoisting, but unlike var, they are not initialized, causing an
+exception if we try to read them before the initialization.
+</p>
+
+<pre>console.log(x); <span class="org-comment-delimiter">//</span><span class="org-comment">throw error</span>
+<span class="org-keyword">let</span> <span class="org-variable-name">x</span> = 5;</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org01b581d" class="outline-3">
+<h3 id="org01b581d">functions declaration</h3>
+<div class="outline-text-3" id="text-org01b581d">
+<p>
+In JavaScript, you can declare functions in multiple  ways. This is because js
+is a language with First-class functions.
+</p>
+
+<pre><span class="org-keyword">function</span> <span class="org-function-name">standarSyntax</span>() {
+        <span class="org-keyword">return</span> <span class="org-string">"Hello world"</span>
+}
+ <span class="org-keyword">let</span> <span class="org-variable-name">variableSyntax</span> = <span class="org-keyword">function</span>() {
+         <span class="org-keyword">return</span> <span class="org-string">"Hello world"</span>
+ }
+
+<span class="org-keyword">const</span> <span class="org-variable-name">constSyntax</span> = <span class="org-keyword">function</span>() {
+         <span class="org-keyword">return</span> <span class="org-string">"Hello world"</span>
+ }
+
+console.log(standarSyntax());
+console.log(variableSyntax());
+console.log(constSyntax());</pre>
+</div>
+</div>
+
+<div id="outline-container-org22a2642" class="outline-3">
+<h3 id="org22a2642">Types in JavaScript:</h3>
+<div class="outline-text-3" id="text-org22a2642">
+<ul class="org-ul">
+<li>Basics types:
+<ul class="org-ul">
+<li><code>bool</code></li>
+<li><code>char/string</code></li>
+<li><code>number</code></li>
+<li><code>null</code></li>
+<li><code>undefined</code></li>
+<li><code>NaN</code></li>
+</ul></li>
+<li>Objects:
+<ul class="org-ul">
+<li><code>Strings</code></li>
+<li><code>Regex</code></li>
+<li><code>Object</code> (dictionary)</li>
+<li><code>Function</code></li>
+<li><code>Symbols</code></li>
+<li><code>Promise</code></li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+</article></section></main><footer class="footer-site"><div class="copyright"><p>© 2023-2024 Lucas Elvira Martín <br/><a href="mailto:luelvira@pa.uc3m.es">luelvira@pa.uc3m.es</a></p></div><div class="Generated"><p>Generated with Emacs 27.1 (Org mode 9.3)</p></div><div class="colabore"><a href="https://github.com/luelvira/interfaces-usuario/" target="_blank"><img src="https://luelvira.github.io/interfaces-usuario/img/github-mark-white.png" alt="Link to the github repository"/></a></div></footer></body></html>
