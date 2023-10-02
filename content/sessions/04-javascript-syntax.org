@@ -1,0 +1,148 @@
+#+title: 04 JAVASCRIPT SYNTAX
+#+date: [2023-10-02 Mon 00:01]
+#+author: Lucas Elvira Martín
+#+description: Session for week 5. Basic syntax for javascript in the browser
+#+language: en
+#+exclude_tags: noexport
+
+* Table of console :TOC:noexport:
+- [[#javascript-syntax][JavaScript syntax]]
+  - [[#in-the-browser][In the browser]]
+  -  [[#basic-syntax][Basic syntax]]
+  - [[#functions-declaration][functions declaration]]
+  -  [[#types-in-javascript][Types in JavaScript:]]
+
+* JavaScript syntax
+
+** In the browser
+
+To include a JavaScript in a web page, you need to use the following HTML tag
+#+begin_src html
+<script src="path"></script>
+#+end_src
+
+This script tag can be placed either within the ~<head>~ tag or just before the
+closing  ~</body>~ tag. The main difference between these options is when the
+script is loaded. If you place it inside the ~<head>~, you won't have access to
+any DOM elements because they haven't been created yet. In such cases, you need
+to add some function that will be triggered when the full page is loaded and,
+then, executes the script.
+
+If you use the second approach, the website will already be fully loaded,
+therefore, you will have access to all DOM elements. However the script will be the
+last thing loaded and executed.
+
+
+**  Basic syntax
+
+***  Vars declaration
+In JavaScript, there are 3 options for declaring variables. As we said in [[file:04-javascript-introduction.org][What
+it javascript]], JavaScript is weakly typed, so you don't need to specify the data
+type. The main difference between the 3 options is the scope of the
+declaration.
+
+- ~var~: This is the classic way. When we use this kind of declaration the scope
+  of the var is global or local (if it is inside a function)
+- ~let~: This keyword is preferred over ~var~ because it has a block scope and can't be redefined
+- ~const~: Like ~let~ has a block scope and can't be modified its value or re-declare
+
+#+begin_src js
+  function closeScope(pass) {
+      let x = 5;
+      if (pass) {
+          let x = 9;
+          console.log(x); // 9
+      }
+      console.log(x); // 5
+  }
+  try {
+      console.log(x); // ERROR
+
+  } catch (e) {
+      console.log("Error");
+  }
+  closeScope(false);
+  closeScope(true);
+#+end_src
+
+
+*** Hoisting
+In JS there is the concept of hoisting. This process consist in moving the
+variables and functions declarations to the top of there scops. This allows you to
+call a function before it is declared and use a variable (defined with ~var~)
+before its declaration. But it haven´t any value jet 
+
+#+begin_src js
+sayHello("name");
+function sayHello(name) {
+	console.log(name);
+}
+#+end_src
+
+It is equivalent to
+
+#+begin_src js
+function sayHello(name) {
+	console.log(name);
+}
+sayHello("name");
+#+end_src
+
+It also works with variables.
+
+#+begin_src js
+console.log(x) // undefined;
+var x = 5;
+var x = undefined;
+console.log(x);
+x = 5;
+#+end_src
+
+*Warning*
+~let~ and ~const~ have hoisting, but unlike var, they are not initialized, causing an
+exception if we try to read them before the initialization.
+
+#+begin_src js
+  console.log(x); //throw error
+  let x = 5;
+#+end_src
+
+** functions declaration
+
+In JavaScript, you can declare functions in multiple  ways. This is because js
+is a language with First-class functions.
+
+#+begin_src js
+function standarSyntax() {
+	return "Hello world"
+}
+ let variableSyntax = function() {
+	 return "Hello world"
+ }
+
+const constSyntax = function() {
+	 return "Hello world"
+ }
+
+console.log(standarSyntax());
+console.log(variableSyntax());
+console.log(constSyntax());
+#+end_src
+
+**  Types in JavaScript:
+
+- Basics types:
+  - =bool=
+  - =char/string=
+  - =number=
+  - =null=
+  - =undefined=
+  - =NaN=
+- Objects:
+  - =Strings=
+  - =Regex=
+  - =Object= (dictionary)
+  - =Function=
+  - =Symbols=
+  - =Promise=
+

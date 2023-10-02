@@ -8,27 +8,34 @@
 This repository aims to provide some notes about the practical class given by me on the subject of
 "Interfaces de usuario".
 
-** Structure
-
-As I only give the subject to two groups, the repository will have 3 branches. One for each group on
-which I will use in the classes and the main branch with the content of the course update with the
-changes on the other branch, but adapting these changes for a better publication.
-
 ** Planning
 
 *Note*: This planning is temporal and may suffer some changes
 
-*** Week 1 
-SCHEDULED: [2023-09-05 Tue]
+*** Week 1  - HTML + CSS
+SCHEDULED: [2023-09-04 Mon]
 This week, we introduce the subject, with the first  practice, the evaluation rules, and a short
 introduction to the web (HTML)
 
-*** Week 2
-SCHEDULED: [2023-09-12 Tue]
+*** Week 2 - CSS
+SCHEDULED: [2023-09-11 Mon]
 Basic concept of CSS as selectors, display and flows of elements
 
-*** Week 3
-SCHEDULED: [2023-09-19 Tue]
+*** Week 3 - CSS
+SCHEDULED: [2023-09-18 Mon]
+
+This week, we work with the pseudo-class and pseudo-elements selectors, we
+introduce the display grid and talk about the Responsive Web Design (RWD)
+
+*** Week 4 - Work Session
+SCHEDULED: [2023-09-25 Mon]
+Work session
+
+*** Week 5 - Introduction to JavaScript
+SCHEDULED: [2023-10-02 Mon]
+Introduction to JavaScript in the browser. Some topic we talked about will be
+the how to include a JS script in the web-site, the basic syntax, and some
+methods to manipulate the DOM.
 
 
 

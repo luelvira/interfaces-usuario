@@ -58,15 +58,13 @@
 	      (with-current-buffer standard-output
 		(vc-git-command t nil nil "rev-parse" "--short" "HEAD"))))))
 
-(defun lem/include-date (publish-date)
-  (list `(p "hola")))
-
 (cl-defun  lem/generate-page (
 			      title
 			      content
 			      info
 			      &key
-			      (publish-date))
+			      (publish-date)
+				  description)
   (concat
    "<!-- Generate from " (lem/get-commit) " with " org-export-creator-string " -->\n"
    "<!DOCTYPE html>"
@@ -75,6 +73,7 @@
 	   (head
 	    (meta (@ (charset "utf-8")))
 	    (meta (@ (author ,user-full-name)))
+	    (meta (@ (description ,description)))
 	    (meta (@ (name "viewport")
 		     (content "width=device-width, initial-scale=1")))
 	    (link (@ (rel "stylesheet") (href ,(concat lem/site-url "/css/code.css"))))
@@ -119,7 +118,9 @@
   (lem/generate-page (org-export-data (plist-get info :title) info)
 		     contents
 		     info
-		     :publish-date (org-export-data (org-export-get-date info "%B %e, %Y") info)))
+		     :publish-date (org-export-data (org-export-get-date info "%B %e, %Y") info)
+		     :description (org-export-data (plist-get info :description) info)
+		     ))
 
 (defun lem/org-html-src-block (src-block _contents info)
   (let* ((lang (org-element-property :language src-block))
@@ -215,12 +216,15 @@
 	 :publishing-function org-publish-attachment)
 	("myproject" :components( "theory" "practice" "attachment" "jumble"))))
 
+(defun lem/force ()
+  (interactive)
+  (string-equal (or (getenv "FORCE") (getenv "CI")) "true"))
+
 (defun lem/publish ()
   "Start the publish process"
   (interactive)
-  (org-publish-all (string-equal (or (getenv "FORCE")
-				     (getenv "CI"))
-				 "true")))
+  (org-publish-all (lem/force)))
+
 
 (provide  'publish)
 

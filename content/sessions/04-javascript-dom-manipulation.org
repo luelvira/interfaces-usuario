@@ -1,0 +1,152 @@
+#+TITLE: 04 JAVASCRIPT DOM Manipulation
+#+DATE: [2023-10-02 Mon 00:02]
+#+AUTHOR: Lucas Elvira Martín
+#+DESCRIPTION: Session for Week 5. Tutorial for DOM manipulation
+#+language: en
+#+exclude_tags: noexport
+
+* Table of content :TOC_6_gh:noexport:
+- [[#javascript-document-object-model][JavaScript Document Object Model]]
+  - [[#parts-of-the-dom][Parts of the DOM]]
+    - [[#dom-vs-html][DOM vs HTML]]
+    - [[#access-to-node-elements][Access to node elements]]
+    - [[#add-or-remove-nodes][Add or remove nodes]]
+
+* JavaScript Document Object Model
+
+The Document Object Model (DOM) is a model that represents XML or HTML documents
+as tree structure, where each node in the tree is an object representing a part of the
+document.
+
+The DOM represents a logical tree where each node has its own methods, allowing
+programmers to manipulate the document's structure, style, or
+content. Additionally, events can be attached to any node within the tree.
+
+** Parts of the DOM
+
+The DOM is composed by three main components
+
+- *WINDOW*: The browser tab that a page is loaded into. We can access it with the
+  ~Window~ object. The Window object has its methods, like returning the
+  window's size, manipulating the document loaded, and storing data in the
+  browser with different mechanisms.
+- *NAVIGATOR*: Represent the state and identity of the browser. JavaScript
+  represents it with ~navigator~.
+-  *DOCUMENT*, represented by the DOM. It is the actual page loaded. To access
+  it, we use in JavaScript the ~document~ keyword.
+
+*** DOM vs HTML
+
+Consider the following HTML example
+
+#+begin_src html
+
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<title>DOM EXAMPLE</title>
+	</head>
+	<body>
+		<section>
+			<h2>my tittle</h2>
+			<article>
+				<h3>My article title</h3>
+				<p>lorem text</p>
+			</article>
+			<article>
+				<h3>Other article</h3>
+				<img src="myimg.png" alt="It isn't an image" >
+				<p>This text prevent you..<a href="#">dont move!</a> and continue</p>
+			</article>
+		</section>
+	</body>
+</html>
+#+end_src
+
+#+begin_example
+|
+|_DOCTYPE: html
+|_HTML
+| |_HEAD
+| | |_META charshet="UTF-8"
+| | |_title
+| | | |_#text:DOM EXAMPLE
+| |_BODY
+| | |_SECTION
+| | | |_H2
+| | | | |_#TEXT
+| | | |_ARTICLE
+| | | | |_H3
+| | | | | |_TEXT
+| | | | |_p
+| | | | | |_TEXT
+| | | |_ARTICLE
+| | | | |_H3
+| | | | | |_TEXT
+| | | | |_IMG src="myimg.png" alt="It is't an image"
+| | | | |_P
+| | | | | |_TEXT (1)
+| | | | | |_A href="#" 
+| | | | | | |_TEXT (a)
+| | | | | |_TEXT (2)
+#+end_example
+
+In the case of the ~P~ with an anchor tag inside, the text nodes are
+recursive joined. This means, first, get the text (1), then get the text from the
+anchor tag (1.a), and finally are concatenating with text (2)
+
+*** Access to node elements
+When you want to store or use an HTML element or a list of elements, you can use the
+document's method. As all nodes are instances of the document, they share some
+properties and methods.
+
+#+begin_src js
+let a = document.querySelector("a"); //return the first anchor tag
+let p = document.querySelectorAll("p.danger"); //return all paragraph tags with a danger class
+let main = document.getElementById("main"); //return the node with this id
+let allP = document.getElementsByTagName("p"); //return all p group as HTMLCollection
+
+#+end_src
+
+#+RESULTS:
+
+You can also use a node to search within it using the same methods.
+
+*** Add or remove nodes
+Sometimes, you need to add, remove, or move a node. We provides some methods to
+assist with these tasks.
+
+To create a new element, we use the method ~createElement~. This method accepts
+the name of the tag as parameter.
+
+After you have created the new element, you need to insert it into the DOC.
+First, select the element where you want to insert and use some of the following methods:
+
+- ~appendChild~,
+- ~insertBefore~
+- ~insertAdjacentElement~
+- ~prepend~
+
+#+begin_src js
+let newPara = document.createElement("p");
+// block of code that manipulates the new paragraph
+body.appendChild(newPara)
+#+end_src
+
+~appendChild~ will insert the node as a child of the element that calls the
+ method. ~insertBefore~ needs a second parameter, which is the node that will be used as a
+ reference, and ~insertAdjacentElemsent~ creates the element as a sibling of the
+ current node. ~prepend~ inserts a set of nodes before the first element.
+
+
+To remove nodes, you can use ~Node.remove~ if you want to remove the current
+node or ~Node.removeChild~ if we want to delete some node inside the node that is
+selected
+
+#+begin_src js
+let a = document.querySelector("a"); //return the first anchor tag
+body.remove() //delete all body
+body.removeChild(a) //remove the previously selected anchor element
+#+end_src
+

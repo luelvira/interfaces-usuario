@@ -1,0 +1,61 @@
+#+title:04  JAVASCRIPT INTRODUCTION
+#+date: [2023-10-02 Mon 00:00]
+#+author: Lucas Elvira Martín
+#+DESCRIPTION: Session for Week 5. A short instroduction to js
+#+language: en
+#+exclude_tags: noexport
+
+* Table of conforms :TOC:noexport:
+- [[#what-is-javascript][What is JavaScript]]
+  - [[#history][History]]
+  - [[#characteristics][Characteristics]]
+  - [[#other-uses][Other uses]]
+
+* What is JavaScript
+
+** History
+JavaScript, a scripting programming language, was originally created by *Brendam
+Eich* in just 10 days. It plays a fundamental role in the technologies of the [[file:../01-introduction.org][WWW]]. In 2022,
+98% of websites use JavaScript. It is a high-level (just-in-time compiled)
+language. JavaScript conforms the EcmaScript standards.
+
+** Characteristics
+Some of the most relevant characteristics of the language are:
+1. Dynamic and weakly typing
+2. prototype-bases object orientation
+3. First class functions
+
+Moreover, JavaScript is versatile in terms of programming paradigms. It can be
+used in various styles:
+1. Event-driven
+2. functional
+3. Imperative
+4. Programming Object-Oriented (more or less)
+5. Prototype-based programming 
+
+*IMPORTANT*
+JavaScript doesn't support I/O operations by itself. It requires the runtime
+system provide this functionality.
+
+** Other uses
+
+JavaScript has application in diverse domains:
+
+1. *Web Browser*
+2. *Server side* (node.js, bun.sh, deno)
+3. *Multi-plataform* JavaScript is employed in building desktop and mobile
+   applications with frameworks such:
+   - Desktop:
+     - Electron
+   - Mobile:
+     - Cordoba/ionic 
+     - React Native 
+4. Specific desktop applications:
+   - Gnome-shell
+   - Some LSP (language server protocol)
+
+-----
+Reference links:
+- [[https://en.wikipedia.org/wiki/JavaScript][Wikipedia JavaScript]]
+- [[https://developer.mozilla.org/en-US/docs/Web/JavaScript][mdn JavaScript]]
+
