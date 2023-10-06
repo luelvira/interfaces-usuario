@@ -1,0 +1,308 @@
+<!-- Generate from "2023/10/06 22:06:02" 743a598 with Emacs 27.1 (Org mode 9.3) -->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"/><meta author="Lucas Elvira Martín"/><meta description=""/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="https://luelvira.github.io/interfaces-usuario/css/code.css"/><link rel="stylesheet" href="https://luelvira.github.io/interfaces-usuario/css/style.css"/><title>Week 3 - CSSUI 2023-2024</title><script defer="defer" data-domain="luelvira.github.io/interfaces-usuario" src="https://plausible.io/js/script.js"></script></head><body><header class="site-header"><h1>Week 3 - CSS</h1><p class="date">Date: October  2, 2023</p><nav class="nav-side"><ul class="nav-categories"><li><a href="https://luelvira.github.io/interfaces-usuario/">Home</a></li><li><a href="https://luelvira.github.io/interfaces-usuario/sessions.html">Theory</a></li><li><a href="https://luelvira.github.io/interfaces-usuario/practice.html">Practice</a></li></ul></nav></header><main class="main-content"><section><article class="post"><p>
+:HEADER-ARGS:html: :tangle w04/index.html
+:HEADER-ARGS:css: :tangle w04/css/style.css
+:HEADER-ARGS:js: :tangle w04/js/main.js
+</p>
+
+<div id="outline-container-org0adb1df" class="outline-2">
+<h2 id="org0adb1df">Prepare the environment</h2>
+<div class="outline-text-2" id="text-org0adb1df">
+<pre>mkdir -p w04/{css,js,media}
+mkdir -p w04/media/{img,video,fonts}
+touch w04/index.html
+touch w04/css/style.css
+touch w04/js/main.js</pre>
+</div>
+</div>
+
+<div id="outline-container-org26a27a0" class="outline-2">
+<h2 id="org26a27a0">Prepare the index html file</h2>
+<div class="outline-text-2" id="text-org26a27a0">
+</div>
+<div id="outline-container-orgbba9b24" class="outline-3">
+<h3 id="orgbba9b24">Include the Javascript</h3>
+<div class="outline-text-3" id="text-orgbba9b24">
+<p>
+Consider the distinctions between placing the script tag at the end of the body or at the
+begin (or within the head tag). When you intend to select specific elements in
+the DOM, it&rsquo;s crucial to be sure that the DOM nodes are fully rendered. To
+archive this, you have two options:
+</p>
+<ol class="org-ol">
+<li><b>Set the script tag at the end of the body</b></li>
+<li><b>Wrap the code into a function and call it when the web-site is fully loaded</b></li>
+</ol>
+</div>
+
+<div id="outline-container-org17addf9" class="outline-4">
+<h4 id="org17addf9">First option</h4>
+<div class="outline-text-4" id="text-org17addf9">
+<pre>&lt;<span class="org-keyword">!DOCTYPE</span> html&gt;
+&lt;<span class="org-function-name">html</span> <span class="org-variable-name">lang</span>=<span class="org-string">"en"</span>&gt;
+  &lt;<span class="org-function-name">head</span>&gt;
+    &lt;<span class="org-function-name">meta</span> <span class="org-variable-name">charset</span>=<span class="org-string">"UTF-8"</span>/&gt;
+    &lt;<span class="org-function-name">title</span>&gt;<span class="org-underline"><span class="org-bold">Document</span></span>&lt;/<span class="org-function-name">title</span>&gt;
+  &lt;/<span class="org-function-name">head</span>&gt;
+  &lt;<span class="org-function-name">body</span>&gt;
+    &lt;<span class="org-function-name">p</span>&gt;La madre de Beth tiene tres hijas. La mayor se llama Clara, la peque&#241;a Sara. &#191;C&#243;mo se llama la mediana?&lt;/<span class="org-function-name">p</span>&gt;
+    &lt;<span class="org-function-name">button</span>&gt;Show answer&lt;/<span class="org-function-name">button</span>&gt;
+    &lt;<span class="org-function-name">script</span> <span class="org-variable-name">src</span>=<span class="org-string">"js/example1.js"</span>&gt;&lt;/<span class="org-function-name">script</span>&gt;
+  &lt;/<span class="org-function-name">body</span>&gt;
+&lt;/<span class="org-function-name">html</span>&gt;</pre>
+
+<p>
+And the js:
+</p>
+
+<pre><span class="org-keyword">let</span> <span class="org-variable-name">paragraph</span> = document.querySelector(<span class="org-string">"p"</span>),
+      button = document.querySelector(<span class="org-string">"button"</span>),
+      texts = [<span class="org-string">"Beth"</span>];
+
+button.addEventListener(<span class="org-string">"click"</span>, <span class="org-keyword">function</span>(<span class="org-variable-name">e</span>) {
+    <span class="org-keyword">if</span> (<span class="org-keyword">typeof</span>(button.dataset.isShow) === <span class="org-string">"undefined"</span>) { 
+        texts.push(paragraph.innerText); <span class="org-comment-delimiter">// </span><span class="org-comment">insert the text of the paragraph as a new entry in the array</span>
+        button.dataset.isShow = 0;
+    } 
+    paragraph.innerText = texts[button.dataset.isShow++];
+    button.dataset.isShow %= 2;
+});</pre>
+</div>
+</div>
+
+<div id="outline-container-org8999cc4" class="outline-4">
+<h4 id="org8999cc4">Second Option</h4>
+<div class="outline-text-4" id="text-org8999cc4">
+<pre>&lt;<span class="org-keyword">!DOCTYPE</span> html&gt;
+&lt;<span class="org-function-name">html</span> <span class="org-variable-name">lang</span>=<span class="org-string">"en"</span>&gt;
+  &lt;<span class="org-function-name">head</span>&gt;
+    &lt;<span class="org-function-name">meta</span> <span class="org-variable-name">charset</span>=<span class="org-string">"UTF-8"</span>/&gt;
+    &lt;<span class="org-function-name">title</span>&gt;<span class="org-underline"><span class="org-bold">Document</span></span>&lt;/<span class="org-function-name">title</span>&gt;
+  &lt;/<span class="org-function-name">head</span>&gt;
+  &lt;<span class="org-function-name">body</span>&gt;
+    &lt;<span class="org-function-name">p</span>&gt;La madre de Beth tiene tres hijas. La mayor se llama Clara, la peque&#241;a Sara. &#191;C&#243;mo se llama la mediana?&lt;/<span class="org-function-name">p</span>&gt;
+    &lt;<span class="org-function-name">button</span>&gt;Show answer&lt;/<span class="org-function-name">button</span>&gt;
+    &lt;<span class="org-function-name">script</span> <span class="org-variable-name">src</span>=<span class="org-string">"js/example2.js"</span>&gt;&lt;/<span class="org-function-name">script</span>&gt;
+  &lt;/<span class="org-function-name">body</span>&gt;
+&lt;/<span class="org-function-name">html</span>&gt;</pre>
+
+<p>
+The js/example2.js file 
+</p>
+
+<pre><span class="org-comment-delimiter">//</span><span class="org-comment">The function passes as argument, receives another arguments with the Event object</span>
+document.addEventListener(<span class="org-string">"DOMContentLoaded"</span>, <span class="org-keyword">function</span>(<span class="org-variable-name">event</span>) {
+     <span class="org-keyword">let</span> <span class="org-variable-name">paragraph</span> = document.querySelector(<span class="org-string">"p"</span>),
+         button = document.querySelector(<span class="org-string">"button"</span>),
+         texts = [<span class="org-string">"Beth"</span>];
+
+     button.addEventListener(<span class="org-string">"click"</span>, <span class="org-keyword">function</span>(<span class="org-variable-name">event</span>) {
+         <span class="org-keyword">if</span> (<span class="org-keyword">typeof</span>(button.dataset.isShow) === <span class="org-string">"undefined"</span>) { 
+             texts.push(paragraph.innerText); <span class="org-comment-delimiter">// </span><span class="org-comment">insert the text of the paragraph as a new entry in the array</span>
+             button.dataset.isShow = 0;
+         } 
+         paragraph.innerText = texts[button.dataset.isShow++];
+         button.dataset.isShow %= 2;
+     });
+ });</pre>
+
+<p>
+For more information about the DOMContentLoaded event, go to <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/DOMContentLoaded_event">MDN documentation</a>
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org26198d9" class="outline-3">
+<h3 id="org26198d9">Prepare the HTML</h3>
+<div class="outline-text-3" id="text-org26198d9">
+<p>
+For the moment, we continue with the basic example
+</p>
+<pre>&lt;<span class="org-keyword">!DOCTYPE</span> html&gt;
+&lt;<span class="org-function-name">html</span> <span class="org-variable-name">lang</span>=<span class="org-string">"es"</span>&gt;
+  &lt;<span class="org-function-name">head</span>&gt;
+    &lt;<span class="org-function-name">meta</span> <span class="org-variable-name">charset</span>=<span class="org-string">"UTF-8"</span>&gt;
+    &lt;<span class="org-function-name">meta</span> <span class="org-variable-name">name</span>=<span class="org-string">"viewport"</span> <span class="org-variable-name">content</span>=<span class="org-string">"width=device-width, initial-scale=1.0"</span>&gt;
+    &lt;<span class="org-function-name">link</span> <span class="org-variable-name">href</span>=<span class="org-string">"css/style.css"</span> <span class="org-variable-name">rel</span>=<span class="org-string">"stylesheet"</span>&gt;
+  &lt;/<span class="org-function-name">head</span>&gt;
+  &lt;<span class="org-function-name">body</span>&gt;
+    &lt;<span class="org-function-name">p</span>&gt;This is the default text&lt;/<span class="org-function-name">p</span>&gt;
+    &lt;<span class="org-function-name">script</span> <span class="org-variable-name">src</span>=<span class="org-string">"js/main.js"</span>&gt;&lt;/<span class="org-function-name">script</span>&gt;
+  &lt;/<span class="org-function-name">body</span>&gt;
+&lt;/<span class="org-function-name">html</span>&gt;</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org11975a4" class="outline-2">
+<h2 id="org11975a4">Play with js</h2>
+<div class="outline-text-2" id="text-org11975a4">
+</div>
+<div id="outline-container-orgb6e4c90" class="outline-3">
+<h3 id="orgb6e4c90">Why is important the use of semicolon <code>;</code></h3>
+<div class="outline-text-3" id="text-orgb6e4c90">
+<p>
+You can run the following code, and compare the results before and after removing the semicolon from line 7;
+</p>
+
+<pre><span class="org-keyword">function</span> <span class="org-function-name">sayHello</span> (<span class="org-variable-name">name</span>) {
+    console.log(<span class="org-string">"Hola "</span> + name );
+    <span class="org-keyword">return</span> name;
+}
+
+  sayHello(<span class="org-string">"Pepe"</span>);
+  <span class="org-keyword">const</span> <span class="org-variable-name">greeter</span> = sayHello;
+  (<span class="org-keyword">function</span> pow(<span class="org-variable-name">base</span>, <span class="org-variable-name">exp</span>) {
+      console.log(base**exp);
+      <span class="org-keyword">return</span> pow;
+  })(2, 6)
+greeter(6, 6);</pre>
+</div>
+</div>
+
+<div id="outline-container-orga1e255f" class="outline-3">
+<h3 id="orga1e255f">Select elements from the DOM</h3>
+<div class="outline-text-3" id="text-orga1e255f">
+<p>
+As we have viewed in <a href="file:///home/runner/Documents/uc3m/doctorado/curso23_24/interfaces-usuario/content/sessions/04-javascript-dom-manipulation.html">DOM Manipulation</a>, there are many ways to select elements
+and manipulate them. In this example we will change  a image src when user click
+the button
+</p>
+</div>
+
+<div id="outline-container-orga5b20f2" class="outline-4">
+<h4 id="orga5b20f2">Manipulate attributes</h4>
+<div class="outline-text-4" id="text-orga5b20f2">
+<pre>&lt;<span class="org-keyword">!DOCTYPE</span> html&gt;
+&lt;<span class="org-function-name">html</span> <span class="org-variable-name">lang</span>=<span class="org-string">"es"</span>&gt;
+  &lt;<span class="org-function-name">head</span>&gt;
+    &lt;<span class="org-function-name">meta</span> <span class="org-variable-name">charset</span>=<span class="org-string">"UTF-8"</span>&gt;
+    &lt;<span class="org-function-name">meta</span> <span class="org-variable-name">name</span>=<span class="org-string">"viewport"</span> <span class="org-variable-name">content</span>=<span class="org-string">"width=device-width, initial-scale=1.0"</span>&gt;
+    &lt;<span class="org-function-name">link</span> <span class="org-variable-name">href</span>=<span class="org-string">"css/style.css"</span> <span class="org-variable-name">rel</span>=<span class="org-string">"stylesheet"</span>&gt;
+  &lt;/<span class="org-function-name">head</span>&gt;
+  &lt;<span class="org-function-name">body</span>&gt;
+  &lt;<span class="org-function-name">img</span> <span class="org-variable-name">src</span>=<span class="org-string">"https://www.divinacocina.es/wp-content/uploads/2022/03/filetes-empanados-1.jpg.webp"</span> &gt;
+  &lt;<span class="org-function-name">button</span> <span class="org-variable-name">id</span>=<span class="org-string">"changeMe"</span>&gt;Cambia&lt;/<span class="org-function-name">button</span>&gt;
+  &lt;<span class="org-function-name">hr</span>&gt;
+  &lt;<span class="org-function-name">p</span>&gt;La madre de Beth tiene tres hijas. La mayor se llama Clara, la peque&#241;a Sara. &#191;C&#243;mo se llama la mediana?&lt;/<span class="org-function-name">p</span>&gt;
+  &lt;<span class="org-function-name">button</span> <span class="org-variable-name">id</span>=<span class="org-string">"answer"</span>&gt;Show answer&lt;/<span class="org-function-name">button</span>&gt;
+
+  &lt;<span class="org-function-name">script</span> <span class="org-variable-name">src</span>=<span class="org-string">"js/main.js"</span>&gt;&lt;/<span class="org-function-name">script</span>&gt;
+  &lt;/<span class="org-function-name">body</span>&gt;
+&lt;/<span class="org-function-name">html</span>&gt;</pre>
+
+<p>
+And the javascript code
+</p>
+
+<pre><span class="org-comment-delimiter">// </span><span class="org-comment">define some vars</span>
+  <span class="org-keyword">let</span> <span class="org-variable-name">img</span> = document.querySelector(<span class="org-string">"img"</span>);
+  <span class="org-keyword">let</span> <span class="org-variable-name">routes</span> = [<span class="org-string">"https://recetasdecocina.elmundo.es/wp-content/uploads/2023/09/patatas-fritas-perfectas.jpg"</span>, <span class="org-string">"https://www.divinacocina.es/wp-content/uploads/2022/03/filetes-empanados-1.jpg.webp"</span>];
+  <span class="org-keyword">let</span> <span class="org-variable-name">pos</span> = 1;
+<span class="org-comment-delimiter">//</span><span class="org-comment">define a simple function to change the src</span>
+  <span class="org-keyword">function</span> <span class="org-function-name">changes</span>() {
+      pos = ++pos%2;
+      img.setAttribute(<span class="org-string">"src"</span>, routes[pos]);
+      console.log(<span class="org-string">"The current value is "</span> + img.getAttribute(<span class="org-string">"src"</span>));
+  }
+
+<span class="org-comment-delimiter">// </span><span class="org-comment">Select the button by the ID and add the event onclick</span>
+<span class="org-keyword">let</span> <span class="org-variable-name">changeMe</span> = document.getElementById(<span class="org-string">"changeMe"</span>);
+changeMe.addEventListener(<span class="org-string">"click"</span>, changes);</pre>
+
+<p>
+If we want to ask for the current value, we can use the method <code>getAttribute</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org0623cdb" class="outline-4">
+<h4 id="org0623cdb">Manipulate text</h4>
+<div class="outline-text-4" id="text-org0623cdb">
+<p>
+In the first example, we can see the process following to change the text inside
+a paragraph. But this process could be used with any other tag
+</p>
+
+<p>
+At the beginning of the course, we talked about the attributes of  the tags, and I
+emphasized the fact that we can create and use our own attributes, <b>But we
+have to prepend it with the <code>data-</code> strings</b>
+</p>
+
+<p>
+Now we can see why. All the attributes that begin with <code>data-</code> are accessible by
+the <code>dataset</code> attribute of any node.
+</p>
+
+<p>
+In this example, I will use the <code>data-is-show</code> attribute from the button. You
+can see who the button is changing the value from the developer tool of the browser.
+</p>
+<pre><span class="org-keyword">let</span> <span class="org-variable-name">paragraph</span> = document.querySelector(<span class="org-string">"p"</span>);
+<span class="org-keyword">let</span> <span class="org-variable-name">answer</span> = document.getElementById(<span class="org-string">"answer"</span>);
+<span class="org-keyword">let</span> <span class="org-variable-name">texts</span> = [<span class="org-string">"Beth"</span>];
+
+answer.addEventListener(<span class="org-string">"click"</span>, <span class="org-keyword">function</span>(<span class="org-variable-name">e</span>) {
+    <span class="org-keyword">if</span> (<span class="org-keyword">typeof</span>(answer.dataset.isShow) === <span class="org-string">"undefined"</span>) { 
+        texts.push(paragraph.innerText); <span class="org-comment-delimiter">// </span><span class="org-comment">insert the text of the paragraph as a new entry in the array</span>
+        answer.dataset.isShow = 0;
+    } 
+    paragraph.innerText = texts[answer.dataset.isShow++];
+    answer.dataset.isShow %= 2;
+});</pre>
+</div>
+</div>
+
+<div id="outline-container-org194cbd6" class="outline-4">
+<h4 id="org194cbd6">Insert new node</h4>
+<div class="outline-text-4" id="text-org194cbd6">
+<p>
+If we want to insert a new node or remove another, there are a few steps we have
+to follow. First the node must be created, then we modify it as needed, and
+finally we insert it into the node which will be its parents. The process could
+be repeated as many times as we needed.
+</p>
+
+<p>
+Look the difference between <code>appendChild</code> and <code>insertBefore</code>
+</p>
+
+<pre><span class="org-keyword">function</span> <span class="org-function-name">appendWeirdText</span>() {
+    <span class="org-keyword">let</span> <span class="org-variable-name">numberOfSections</span> = 3,
+        numberOfArticles = 4,
+        numberOfParagraphs = 12;
+
+    <span class="org-keyword">for</span> (<span class="org-keyword">let</span> <span class="org-variable-name">i</span> = 0; i &lt; numberOfSections; ++i) {
+        <span class="org-keyword">const</span> <span class="org-variable-name">section</span> = document.createElement(<span class="org-string">"section"</span>);
+        <span class="org-keyword">const</span> <span class="org-variable-name">title</span> = document.createElement(<span class="org-string">"h2"</span>);
+        title.innerText = <span class="org-string">"Soy la secci&#243;n "</span> + i;
+        section.appendChild(title);
+        <span class="org-keyword">for</span> (<span class="org-keyword">let</span> <span class="org-variable-name">j</span> = 0; j &lt; numberOfArticles; ++j) {
+            <span class="org-keyword">const</span> <span class="org-variable-name">article</span> = document.createElement(<span class="org-string">"article"</span>);
+            <span class="org-keyword">const</span> <span class="org-variable-name">subtitle</span> = document.createElement(<span class="org-string">"h3"</span>);
+            subtitle.innerText = <span class="org-string">"Soy el art&#237;culo "</span> + j + <span class="org-string">" en la secci&#243;n "</span> + i;
+            article.appendChild(subtitle);
+            <span class="org-keyword">for</span> (<span class="org-keyword">let</span> <span class="org-variable-name">k</span> = 0; k &lt; numberOfParagraphs; ++k) {
+                <span class="org-keyword">const</span> <span class="org-variable-name">paragraph</span> = document.createElement(<span class="org-string">"p"</span>);
+                paragraph.innerText = <span class="org-string">"Soy el parrafo "</span> + k + <span class="org-string">" en el art&#237;culo "</span> + j + <span class="org-string">" y la secci&#243;n "</span> + i;
+                article.appendChild(paragraph);
+            }
+            <span class="org-comment-delimiter">// </span><span class="org-comment">When the article wont be updated more, add it to the section</span>
+            section.appendChild(article);
+        }
+        document.body.insertBefore(section, document.getElementsByTagName(<span class="org-string">"script"</span>)[0]);
+    }
+  }
+
+<span class="org-keyword">const</span> <span class="org-variable-name">newButton</span> = document.createElement(<span class="org-string">"button"</span>);
+newButton.innerText = <span class="org-string">"Insert random text"</span>;
+newButton.addEventListener(<span class="org-string">"click"</span>, appendWeirdText);
+document.body.insertBefore(newButton, document.getElementsByTagName(<span class="org-string">"script"</span>)[0]);</pre>
+</div>
+</div>
+</div>
+</div>
+</article></section></main><footer class="footer-site"><div class="copyright"><p>© 2023-2024 Lucas Elvira Martín <br/><a href="mailto:luelvira@pa.uc3m.es">luelvira@pa.uc3m.es</a></p></div><div class="Generated"><p>Generated with Emacs 27.1 (Org mode 9.3)</p></div><div class="colabore"><a href="https://github.com/luelvira/interfaces-usuario/" target="_blank"><img src="https://luelvira.github.io/interfaces-usuario/img/github-mark-white.png" alt="Link to the github repository"/></a></div></footer></body></html>

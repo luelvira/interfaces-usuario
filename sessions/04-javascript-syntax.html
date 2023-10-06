@@ -1,12 +1,12 @@
-<!-- Generate from "2023/10/02 17:33:16" 377e2a7 with Emacs 27.1 (Org mode 9.3) -->
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"/><meta author="Lucas Elvira Martín"/><meta description="Session for week 5. Basic syntax for javascript in the browser"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="https://luelvira.github.io/interfaces-usuario/css/code.css"/><link rel="stylesheet" href="https://luelvira.github.io/interfaces-usuario/css/style.css"/><title>04 JAVASCRIPT SYNTAX - UI 2023-2024</title><script defer="defer" data-domain="luelvira.github.io/interfaces-usuario" src="https://plausible.io/js/script.js"></script></head><body><header class="site-header"><h1>04 JAVASCRIPT SYNTAX</h1><p class="date">Date: October  2, 2023</p><nav class="nav-side"><ul class="nav-categories"><li><a href="https://luelvira.github.io/interfaces-usuario/">Home</a></li><li><a href="https://luelvira.github.io/interfaces-usuario/sessions.html">Theory</a></li><li><a href="https://luelvira.github.io/interfaces-usuario/practice.html">Practice</a></li></ul></nav></header><main class="main-content"><section><article class="post">
-<div id="outline-container-orga85cad9" class="outline-2">
-<h2 id="orga85cad9">JavaScript syntax</h2>
-<div class="outline-text-2" id="text-orga85cad9">
+<!-- Generate from "2023/10/06 22:06:02" 743a598 with Emacs 27.1 (Org mode 9.3) -->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"/><meta author="Lucas Elvira Martín"/><meta description="Session for week 5. Basic syntax for javascript in the browser"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="https://luelvira.github.io/interfaces-usuario/css/code.css"/><link rel="stylesheet" href="https://luelvira.github.io/interfaces-usuario/css/style.css"/><title>04 JAVASCRIPT SYNTAXUI 2023-2024</title><script defer="defer" data-domain="luelvira.github.io/interfaces-usuario" src="https://plausible.io/js/script.js"></script></head><body><header class="site-header"><h1>04 JAVASCRIPT SYNTAX</h1><p class="date">Date: October  2, 2023</p><nav class="nav-side"><ul class="nav-categories"><li><a href="https://luelvira.github.io/interfaces-usuario/">Home</a></li><li><a href="https://luelvira.github.io/interfaces-usuario/sessions.html">Theory</a></li><li><a href="https://luelvira.github.io/interfaces-usuario/practice.html">Practice</a></li></ul></nav></header><main class="main-content"><section><article class="post">
+<div id="outline-container-org95930f0" class="outline-2">
+<h2 id="org95930f0">JavaScript syntax</h2>
+<div class="outline-text-2" id="text-org95930f0">
 </div>
-<div id="outline-container-orgf7c3319" class="outline-3">
-<h3 id="orgf7c3319">In the browser</h3>
-<div class="outline-text-3" id="text-orgf7c3319">
+<div id="outline-container-orgf118cdd" class="outline-3">
+<h3 id="orgf118cdd">In the browser</h3>
+<div class="outline-text-3" id="text-orgf118cdd">
 <p>
 To include a JavaScript in a web page, you need to use the following HTML tag
 </p>
@@ -30,13 +30,13 @@ last thing loaded and executed.
 </div>
 
 
-<div id="outline-container-orgbef54ca" class="outline-3">
-<h3 id="orgbef54ca">Basic syntax</h3>
-<div class="outline-text-3" id="text-orgbef54ca">
+<div id="outline-container-org3dc6999" class="outline-3">
+<h3 id="org3dc6999">Basic syntax</h3>
+<div class="outline-text-3" id="text-org3dc6999">
 </div>
-<div id="outline-container-org324bd0c" class="outline-4">
-<h4 id="org324bd0c">Vars declaration</h4>
-<div class="outline-text-4" id="text-org324bd0c">
+<div id="outline-container-orgbf5585d" class="outline-4">
+<h4 id="orgbf5585d">Vars declaration</h4>
+<div class="outline-text-4" id="text-orgbf5585d">
 <p>
 In JavaScript, there are 3 options for declaring variables. As we said in <a href="04-javascript-introduction.html">What
 it javascript</a>, JavaScript is weakly typed, so you don&rsquo;t need to specify the data
@@ -67,13 +67,21 @@ of the var is global or local (if it is inside a function)</li>
 }
 closeScope(<span class="org-constant">false</span>);
 closeScope(<span class="org-constant">true</span>);</pre>
+
+<pre class="example">
+Error
+5
+9
+5
+undefined
+</pre>
 </div>
 </div>
 
 
-<div id="outline-container-org798987c" class="outline-4">
-<h4 id="org798987c">Hoisting</h4>
-<div class="outline-text-4" id="text-org798987c">
+<div id="outline-container-org23ccc49" class="outline-4">
+<h4 id="org23ccc49">Hoisting</h4>
+<div class="outline-text-4" id="text-org23ccc49">
 <p>
 In JS there is the concept of hoisting. This process consist in moving the
 variables and functions declarations to the top of there scops. This allows you to
@@ -100,8 +108,8 @@ It also works with variables.
 </p>
 
 <pre>console.log(x) <span class="org-comment-delimiter">// </span><span class="org-comment">undefined;</span>
-<span class="org-keyword">var</span> <span class="org-variable-name">x</span> = 5;
-<span class="org-keyword">var</span> <span class="org-variable-name">x</span> = <span class="org-constant">undefined</span>;
+<span class="org-keyword">let</span> <span class="org-variable-name">x</span> = 5;
+<span class="org-keyword">let</span> <span class="org-variable-name">x</span> = <span class="org-constant">undefined</span>;
 console.log(x);
 x = 5;</pre>
 
@@ -117,9 +125,9 @@ exception if we try to read them before the initialization.
 </div>
 </div>
 
-<div id="outline-container-org01b581d" class="outline-3">
-<h3 id="org01b581d">functions declaration</h3>
-<div class="outline-text-3" id="text-org01b581d">
+<div id="outline-container-org21190a5" class="outline-3">
+<h3 id="org21190a5">functions declaration</h3>
+<div class="outline-text-3" id="text-org21190a5">
 <p>
 In JavaScript, you can declare functions in multiple  ways. This is because js
 is a language with First-class functions.
@@ -142,9 +150,9 @@ console.log(constSyntax());</pre>
 </div>
 </div>
 
-<div id="outline-container-org22a2642" class="outline-3">
-<h3 id="org22a2642">Types in JavaScript:</h3>
-<div class="outline-text-3" id="text-org22a2642">
+<div id="outline-container-org58db20f" class="outline-3">
+<h3 id="org58db20f">Types in JavaScript:</h3>
+<div class="outline-text-3" id="text-org58db20f">
 <ul class="org-ul">
 <li>Basics types:
 <ul class="org-ul">

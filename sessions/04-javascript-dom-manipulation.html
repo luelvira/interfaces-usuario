@@ -1,8 +1,8 @@
-<!-- Generate from "2023/10/02 17:33:16" 377e2a7 with Emacs 27.1 (Org mode 9.3) -->
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"/><meta author="Lucas Elvira Martín"/><meta description="Session for Week 5. Tutorial for DOM manipulation"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="https://luelvira.github.io/interfaces-usuario/css/code.css"/><link rel="stylesheet" href="https://luelvira.github.io/interfaces-usuario/css/style.css"/><title>04 JAVASCRIPT DOM Manipulation - UI 2023-2024</title><script defer="defer" data-domain="luelvira.github.io/interfaces-usuario" src="https://plausible.io/js/script.js"></script></head><body><header class="site-header"><h1>04 JAVASCRIPT DOM Manipulation</h1><p class="date">Date: October  2, 2023</p><nav class="nav-side"><ul class="nav-categories"><li><a href="https://luelvira.github.io/interfaces-usuario/">Home</a></li><li><a href="https://luelvira.github.io/interfaces-usuario/sessions.html">Theory</a></li><li><a href="https://luelvira.github.io/interfaces-usuario/practice.html">Practice</a></li></ul></nav></header><main class="main-content"><section><article class="post">
-<div id="outline-container-orge5f58fd" class="outline-2">
-<h2 id="orge5f58fd">JavaScript Document Object Model</h2>
-<div class="outline-text-2" id="text-orge5f58fd">
+<!-- Generate from "2023/10/06 22:06:02" 743a598 with Emacs 27.1 (Org mode 9.3) -->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"/><meta author="Lucas Elvira Martín"/><meta description="Session for Week 5. Tutorial for DOM manipulation"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="https://luelvira.github.io/interfaces-usuario/css/code.css"/><link rel="stylesheet" href="https://luelvira.github.io/interfaces-usuario/css/style.css"/><title>04 JAVASCRIPT DOM ManipulationUI 2023-2024</title><script defer="defer" data-domain="luelvira.github.io/interfaces-usuario" src="https://plausible.io/js/script.js"></script></head><body><header class="site-header"><h1>04 JAVASCRIPT DOM Manipulation</h1><p class="date">Date: October  2, 2023</p><nav class="nav-side"><ul class="nav-categories"><li><a href="https://luelvira.github.io/interfaces-usuario/">Home</a></li><li><a href="https://luelvira.github.io/interfaces-usuario/sessions.html">Theory</a></li><li><a href="https://luelvira.github.io/interfaces-usuario/practice.html">Practice</a></li></ul></nav></header><main class="main-content"><section><article class="post">
+<div id="outline-container-org2ff5a9e" class="outline-2">
+<h2 id="org2ff5a9e">JavaScript Document Object Model</h2>
+<div class="outline-text-2" id="text-org2ff5a9e">
 <p>
 The Document Object Model (DOM) is a model that represents XML or HTML documents
 as tree structure, where each node in the tree is an object representing a part of the
@@ -16,9 +16,9 @@ content. Additionally, events can be attached to any node within the tree.
 </p>
 </div>
 
-<div id="outline-container-org472ac81" class="outline-3">
-<h3 id="org472ac81">Parts of the DOM</h3>
-<div class="outline-text-3" id="text-org472ac81">
+<div id="outline-container-org34dccc9" class="outline-3">
+<h3 id="org34dccc9">Parts of the DOM</h3>
+<div class="outline-text-3" id="text-org34dccc9">
 <p>
 The DOM is composed by three main components
 </p>
@@ -34,10 +34,11 @@ represents it with <code>navigator</code>.</li>
 it, we use in JavaScript the <code>document</code> keyword.</li>
 </ul>
 </div>
+</div>
 
-<div id="outline-container-org975dbbe" class="outline-4">
-<h4 id="org975dbbe">DOM vs HTML</h4>
-<div class="outline-text-4" id="text-org975dbbe">
+<div id="outline-container-orgecc8216" class="outline-3">
+<h3 id="orgecc8216">DOM vs HTML</h3>
+<div class="outline-text-3" id="text-orgecc8216">
 <p>
 Consider the following HTML example
 </p>
@@ -100,9 +101,9 @@ anchor tag (1.a), and finally are concatenating with text (2)
 </div>
 </div>
 
-<div id="outline-container-org5bca80a" class="outline-4">
-<h4 id="org5bca80a">Access to node elements</h4>
-<div class="outline-text-4" id="text-org5bca80a">
+<div id="outline-container-org587e13b" class="outline-3">
+<h3 id="org587e13b">Access to node elements</h3>
+<div class="outline-text-3" id="text-org587e13b">
 <p>
 When you want to store or use an HTML element or a list of elements, you can use the
 document&rsquo;s method. As all nodes are instances of the document, they share some
@@ -120,9 +121,9 @@ You can also use a node to search within it using the same methods.
 </div>
 </div>
 
-<div id="outline-container-orgc3c3e4d" class="outline-4">
-<h4 id="orgc3c3e4d">Add or remove nodes</h4>
-<div class="outline-text-4" id="text-orgc3c3e4d">
+<div id="outline-container-org7d7cfa8" class="outline-3">
+<h3 id="org7d7cfa8">Add or remove nodes</h3>
+<div class="outline-text-3" id="text-org7d7cfa8">
 <p>
 Sometimes, you need to add, remove, or move a node. We provides some methods to
 assist with these tasks.
@@ -156,7 +157,6 @@ body.appendChild(newPara)</pre>
  current node. <code>prepend</code> inserts a set of nodes before the first element.
 </p>
 
-
 <p>
 To remove nodes, you can use <code>Node.remove</code> if you want to remove the current
 node or <code>Node.removeChild</code> if we want to delete some node inside the node that is
@@ -166,7 +166,6 @@ selected
 <pre><span class="org-keyword">let</span> <span class="org-variable-name">a</span> = document.querySelector(<span class="org-string">"a"</span>); <span class="org-comment-delimiter">//</span><span class="org-comment">return the first anchor tag</span>
 body.remove() <span class="org-comment-delimiter">//</span><span class="org-comment">delete all body</span>
 body.removeChild(a) <span class="org-comment-delimiter">//</span><span class="org-comment">remove the previously selected anchor element</span></pre>
-</div>
 </div>
 </div>
 </div>
