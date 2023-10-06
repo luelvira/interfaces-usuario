@@ -1,0 +1,271 @@
+:PROPERTIES:
+:HEADER-ARGS:html: :tangle w04/index.html
+:HEADER-ARGS:css: :tangle w04/css/style.css
+:HEADER-ARGS:js: :tangle w04/js/main.js
+:END:
+#+TITLE: Week 3 - CSS
+#+DATE:  [2023-10-02 Mon]
+#+AUTHOR: Lucas Elvira Martín
+#+EMAIL: luelvira@pa.uc3m.es
+
+* Table of Content                                             :noexport:TOC:
+- [[#prepare-the-environment][Prepare the environment]]
+- [[#prepare-the-index-html-file][Prepare the index html file]]
+  - [[#include-the-javascript][Include the Javascript]]
+  - [[#prepare-the-html][Prepare the HTML]]
+- [[#play-with-js][Play with js]]
+  - [[#why-is-important-the-use-of-semicolon-][Why is important the use of semicolon ~;~]]
+  - [[#select-elements-from-the-dom][Select elements from the DOM]]
+
+* Prepare the environment
+
+#+begin_src shell
+  mkdir -p w04/{css,js,media}
+  mkdir -p w04/media/{img,video,fonts}
+  touch w04/index.html
+  touch w04/css/style.css
+  touch w04/js/main.js
+#+end_src
+
+* Prepare the index html file
+
+** Include the Javascript
+
+Consider the distinctions between placing the script tag at the end of the body or at the
+begin (or within the head tag). When you intend to select specific elements in
+the DOM, it's crucial to be sure that the DOM nodes are fully rendered. To
+archive this, you have two options:
+1. *Set the script tag at the end of the body*
+2. *Wrap the code into a function and call it when the web-site is fully loaded*
+
+*** First option
+#+begin_src html :tangle w04/ex1.html
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8"/>
+      <title>Document</title>
+    </head>
+    <body>
+      <p>La madre de Beth tiene tres hijas. La mayor se llama Clara, la pequeña Sara. ¿Cómo se llama la mediana?</p>
+      <button>Show answer</button>
+      <script src="js/example1.js"></script>
+    </body>
+  </html>
+#+end_src
+
+And the js:
+
+#+begin_src js :tangle w04/js/example1.js
+    let paragraph = document.querySelector("p"),
+        button = document.querySelector("button"),
+        texts = ["Beth"];
+
+  button.addEventListener("click", function(e) {
+      if (typeof(button.dataset.isShow) === "undefined") { 
+          texts.push(paragraph.innerText); // insert the text of the paragraph as a new entry in the array
+          button.dataset.isShow = 0;
+      } 
+      paragraph.innerText = texts[button.dataset.isShow++];
+      button.dataset.isShow %= 2;
+  });
+#+end_src
+
+*** Second Option
+#+begin_src html :tangle w04/ex2.html
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8"/>
+      <title>Document</title>
+    </head>
+    <body>
+      <p>La madre de Beth tiene tres hijas. La mayor se llama Clara, la pequeña Sara. ¿Cómo se llama la mediana?</p>
+      <button>Show answer</button>
+      <script src="js/example2.js"></script>
+    </body>
+  </html>
+#+end_src
+
+The js/example2.js file 
+
+#+begin_src js :tangle w04/js/example2.js
+  //The function passes as argument, receives another arguments with the Event object
+  document.addEventListener("DOMContentLoaded", function(event) {
+       let paragraph = document.querySelector("p"),
+           button = document.querySelector("button"),
+           texts = ["Beth"];
+
+       button.addEventListener("click", function(event) {
+           if (typeof(button.dataset.isShow) === "undefined") { 
+               texts.push(paragraph.innerText); // insert the text of the paragraph as a new entry in the array
+               button.dataset.isShow = 0;
+           } 
+           paragraph.innerText = texts[button.dataset.isShow++];
+           button.dataset.isShow %= 2;
+       });
+   });
+#+end_src
+
+For more information about the DOMContentLoaded event, go to [[https://developer.mozilla.org/en-US/docs/Web/API/Document/DOMContentLoaded_event][MDN documentation]]
+
+** Prepare the HTML
+For the moment, we continue with the basic example
+#+begin_src html :tangle no
+    <!DOCTYPE html>
+    <html lang="es">
+      <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/style.css" rel="stylesheet">
+      </head>
+      <body>
+        <p>This is the default text</p>
+        <script src="js/main.js"></script>
+      </body>
+    </html>
+#+end_src
+
+
+* Play with js
+
+** Why is important the use of semicolon ~;~
+
+You can run the following code, and compare the results before and after removing the semicolon from line 7;
+
+#+begin_src js :tangle no
+  function sayHello (name) {
+      console.log("Hola " + name );
+      return name;
+  }
+
+    sayHello("Pepe");
+    const greeter = sayHello;
+    (function pow(base, exp) {
+        console.log(base**exp);
+        return pow;
+    })(2, 6)
+  greeter(6, 6);
+#+end_src
+
+** Select elements from the DOM
+
+As we have viewed in [[file:~/Documents/uc3m/doctorado/curso23_24/interfaces-usuario/content/sessions/04-javascript-dom-manipulation.org][DOM Manipulation]], there are many ways to select elements
+and manipulate them. In this example we will change  a image src when user click
+the button
+
+*** Manipulate attributes
+#+begin_src html
+    <!DOCTYPE html>
+    <html lang="es">
+      <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/style.css" rel="stylesheet">
+      </head>
+      <body>
+      <img src="https://www.divinacocina.es/wp-content/uploads/2022/03/filetes-empanados-1.jpg.webp" >
+      <button id="changeMe">Cambia</button>
+      <hr>
+      <p>La madre de Beth tiene tres hijas. La mayor se llama Clara, la pequeña Sara. ¿Cómo se llama la mediana?</p>
+      <button id="answer">Show answer</button>
+
+      <script src="js/main.js"></script>
+      </body>
+    </html>
+#+end_src
+
+And the javascript code
+
+#+begin_src js
+    // define some vars
+    let img = document.querySelector("img");
+    let routes = ["https://recetasdecocina.elmundo.es/wp-content/uploads/2023/09/patatas-fritas-perfectas.jpg", "https://www.divinacocina.es/wp-content/uploads/2022/03/filetes-empanados-1.jpg.webp"];
+    let pos = 1;
+  //define a simple function to change the src
+    function changes() {
+        pos = ++pos%2;
+        img.setAttribute("src", routes[pos]);
+        console.log("The current value is " + img.getAttribute("src"));
+    }
+
+  // Select the button by the ID and add the event onclick
+  let changeMe = document.getElementById("changeMe");
+  changeMe.addEventListener("click", changes);
+#+end_src
+
+If we want to ask for the current value, we can use the method ~getAttribute~
+
+*** Manipulate text
+
+In the first example, we can see the process following to change the text inside
+a paragraph. But this process could be used with any other tag
+
+At the beginning of the course, we talked about the attributes of  the tags, and I
+emphasized the fact that we can create and use our own attributes, *But we
+have to prepend it with the ~data-~ strings*
+
+Now we can see why. All the attributes that begin with ~data-~ are accessible by
+the ~dataset~ attribute of any node.
+
+In this example, I will use the ~data-is-show~ attribute from the button. You
+can see who the button is changing the value from the developer tool of the browser.
+#+begin_src js
+  let paragraph = document.querySelector("p");
+  let answer = document.getElementById("answer");
+  let texts = ["Beth"];
+
+  answer.addEventListener("click", function(e) {
+      if (typeof(answer.dataset.isShow) === "undefined") { 
+          texts.push(paragraph.innerText); // insert the text of the paragraph as a new entry in the array
+          answer.dataset.isShow = 0;
+      } 
+      paragraph.innerText = texts[answer.dataset.isShow++];
+      answer.dataset.isShow %= 2;
+  });
+
+#+end_src
+
+*** Insert new node
+
+If we want to insert a new node or remove another, there are a few steps we have
+to follow. First the node must be created, then we modify it as needed, and
+finally we insert it into the node which will be its parents. The process could
+be repeated as many times as we needed.
+
+Look the difference between ~appendChild~ and ~insertBefore~
+
+#+begin_src js
+
+    function appendWeirdText() {
+      let numberOfSections = 3,
+          numberOfArticles = 4,
+          numberOfParagraphs = 12;
+
+      for (let i = 0; i < numberOfSections; ++i) {
+          const section = document.createElement("section");
+          const title = document.createElement("h2");
+          title.innerText = "Soy la sección " + i;
+          section.appendChild(title);
+          for (let j = 0; j < numberOfArticles; ++j) {
+              const article = document.createElement("article");
+              const subtitle = document.createElement("h3");
+              subtitle.innerText = "Soy el artículo " + j + " en la sección " + i;
+              article.appendChild(subtitle);
+              for (let k = 0; k < numberOfParagraphs; ++k) {
+                  const paragraph = document.createElement("p");
+                  paragraph.innerText = "Soy el parrafo " + k + " en el artículo " + j + " y la sección " + i;
+                  article.appendChild(paragraph);
+              }
+              // When the article wont be updated more, add it to the section
+              section.appendChild(article);
+          }
+          document.body.insertBefore(section, document.getElementsByTagName("script")[0]);
+      }
+    }
+
+  const newButton = document.createElement("button");
+  newButton.innerText = "Insert random text";
+  newButton.addEventListener("click", appendWeirdText);
+  document.body.insertBefore(newButton, document.getElementsByTagName("script")[0]);
+#+end_src

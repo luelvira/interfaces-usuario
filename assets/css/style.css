@@ -139,3 +139,7 @@ footer .colabore a{
     display: block;
     width: 90px;
 }
+
+pre {
+    overflow-x: scroll;
+}

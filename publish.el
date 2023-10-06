@@ -78,7 +78,7 @@
 		     (content "width=device-width, initial-scale=1")))
 	    (link (@ (rel "stylesheet") (href ,(concat lem/site-url "/css/code.css"))))
 	    (link (@ (rel "stylesheet") (href ,(concat lem/site-url "/css/style.css"))))
-	    (title ,(concat title " - UI 2023-2024"))
+	    (title ,(concat title "UI 2023-2024"))
 	    (script (@ (defer "defer" )
 		       (data-domain "luelvira.github.io/interfaces-usuario")
 		       (src "https://plausible.io/js/script.js"))
@@ -188,7 +188,7 @@
 	 :base-extension "org"
 	 :publishing-directory "./public/sessions"
 	 :publishing-function org-html-publish-to-html
-	 :recursive t
+	 :recursive nil
 	 :headline-levels 4
 	 :auto-sitemap t
 	 :sitemap-style list
@@ -202,6 +202,7 @@
 	 :publishing-directory "./public/practice/"
 	 :publishing-function org-html-publish-to-html
 	 :headline-levels 4
+	 :recursive nil
 	 :auto-sitemap t
 	 :sitemap-style list
 	 :sitemap-filename "practice.org"

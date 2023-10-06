@@ -5,12 +5,12 @@
 #+language: en
 #+exclude_tags: noexport
 
-* Table of content :TOC_6_gh:noexport:
+* Table of content :TOC:noexport:
 - [[#javascript-document-object-model][JavaScript Document Object Model]]
   - [[#parts-of-the-dom][Parts of the DOM]]
-    - [[#dom-vs-html][DOM vs HTML]]
-    - [[#access-to-node-elements][Access to node elements]]
-    - [[#add-or-remove-nodes][Add or remove nodes]]
+  - [[#dom-vs-html][DOM vs HTML]]
+  - [[#access-to-node-elements][Access to node elements]]
+  - [[#add-or-remove-nodes][Add or remove nodes]]
 
 * JavaScript Document Object Model
 
@@ -35,7 +35,7 @@ The DOM is composed by three main components
 -  *DOCUMENT*, represented by the DOM. It is the actual page loaded. To access
   it, we use in JavaScript the ~document~ keyword.
 
-*** DOM vs HTML
+** DOM vs HTML
 
 Consider the following HTML example
 
@@ -96,7 +96,7 @@ In the case of the ~P~ with an anchor tag inside, the text nodes are
 recursive joined. This means, first, get the text (1), then get the text from the
 anchor tag (1.a), and finally are concatenating with text (2)
 
-*** Access to node elements
+** Access to node elements
 When you want to store or use an HTML element or a list of elements, you can use the
 document's method. As all nodes are instances of the document, they share some
 properties and methods.
@@ -113,7 +113,7 @@ let allP = document.getElementsByTagName("p"); //return all p group as HTMLColle
 
 You can also use a node to search within it using the same methods.
 
-*** Add or remove nodes
+** Add or remove nodes
 Sometimes, you need to add, remove, or move a node. We provides some methods to
 assist with these tasks.
 
@@ -138,7 +138,6 @@ body.appendChild(newPara)
  method. ~insertBefore~ needs a second parameter, which is the node that will be used as a
  reference, and ~insertAdjacentElemsent~ creates the element as a sibling of the
  current node. ~prepend~ inserts a set of nodes before the first element.
-
 
 To remove nodes, you can use ~Node.remove~ if you want to remove the current
 node or ~Node.removeChild~ if we want to delete some node inside the node that is

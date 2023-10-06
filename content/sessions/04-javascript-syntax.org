@@ -65,6 +65,13 @@ declaration.
   closeScope(true);
 #+end_src
 
+#+RESULTS:
+: Error
+: 5
+: 9
+: 5
+: undefined
+
 
 *** Hoisting
 In JS there is the concept of hoisting. This process consist in moving the
@@ -92,11 +99,13 @@ It also works with variables.
 
 #+begin_src js
 console.log(x) // undefined;
-var x = 5;
-var x = undefined;
+let x = 5;
+let x = undefined;
 console.log(x);
 x = 5;
 #+end_src
+
+#+RESULTS:
 
 *Warning*
 ~let~ and ~const~ have hoisting, but unlike var, they are not initialized, causing an
