@@ -1,0 +1,234 @@
+#+TITLE: 05 JAVASCRIPT STRINGS
+#+DATE: [2023-10-09 Mon 00:01]
+#+AUTHOR: Lucas Elvira Martín
+#+DESCRIPTION: Session for Week 6 - Introduction to Arrays in JavaScript
+#+language: en
+#+exclude_tags: noexport
+
+* Table of content                                             :noexport:TOC:
+- [[#arrays-in-javascript][Arrays in JavaScript]]
+  - [[#iterate-over-an-array][Iterate over an array]]
+  - [[#some-methods-from-the-array-class][Some methods from the Array class]]
+
+* Arrays in JavaScript
+
+The ~Array~ object is a class that enables you to store a set of elements in
+order under a single variable name. This class has methods to perform the most
+common Array operations.
+
+~Array~ in JS have a variable length and can store elements of any type. *You
+can access an arbitrary position of the array, without being consecutive with
+the last item.* This fact implies you can have a non-dense array.
+
+#+begin_src js
+  let myList = [0, 1, 2];
+  myList[6] = 6;
+  console.log(myList.length);
+  console.log(myList);
+  for (let pos of myList) {
+      console.log(pos);
+  }
+#+end_src
+
+Also, we can make the array smaller by changing the array length
+
+#+begin_src js
+  let myList = [];
+  let n = 100;
+  console.log(myList.length);
+  for (let i = 0; i < n; ++i) myList.push(i); // append the new value
+  console.log(myList.length);
+  myList.length = 3;
+  console.log(myList);
+  console.log(myList.length);
+#+end_src
+
+** Iterate over an array
+
+You can iterate over all the elements from the array in different ways, by using
+the JavaScript ~for~ syntax
+#+begin_src js
+
+  let myList = [1, 2, 3];
+
+  for (let i = 0; i < myList.length; ++i)
+      console.log(myList[i]) // access an item by its position
+
+  for (let value of myList)
+      console.log(value) // value is assigned in each iteration to the next item in the array
+
+  for (let pos in myList)
+      console.log(pos) // Iter over the keys of the array, in this case, the position
+
+#+end_src
+
+** Some methods from the Array class
+- ~concat~: Concatenates 2 arrays and returns a new one
+  #+begin_src js :results output
+
+  let a = [1, 2, 3],
+      b = [4, 5, 6];
+  let c = a.concat(b);
+  console.log(c);
+  console.log(a);
+
+  #+end_src
+- ~every~: This method gets a function as an argument and returns ~true~ if all the
+  items in the array return a non-false value.
+  #+begin_src js
+  let a = [2, 6, "hola", []];
+  function test(item) {
+      console.log(item);
+      return item;
+  }
+  console.log(a.every(test));
+  a.push("");
+  console.log(a.every(test));
+
+  #+end_src
+- ~filter~: Returns a new ~array~ with the items  that return ~true~ by the
+  provided function.
+  #+begin_src js :results output
+  let old = [];
+  for (let i = 0; i < 50; ++i) old.push(i);
+  let noPrime = new Set();
+  let prime = old.filter(function(number) {
+      if (number in noPrime) return false;
+      for (let i = 2, s = Math.sqrt(number); i <= s; ++i) {
+          if (number % i === 0) {
+              noPrime.add(i);
+              noPrime.add(number/i);
+              return false;
+          }
+    }
+    return true
+  });
+ console.log(prime);
+
+  #+end_src
+- ~fill~: Changes items of the array with a static value into the range passed as
+  arguments
+  #+begin_src js :results output
+
+    let a = [];
+    a.length = 10;
+    console.log(a);
+    let value = 0,
+        startPos = 4,
+        endPos = 6;
+    console.log(a.fill(value, startPos, endPos));
+
+  #+end_src
+- ~find~, ~findLast~, ~findIndex~: These methods get a callback function and
+  return the first and last item, respectively, from the array which the callback function return
+  true. In the case of ~findIndex~, it returns the position of the first matching item.
+  #+begin_src js
+
+        let a = [1, 2, 3, 5, 7, 10, 11];
+        console.log(a.find(function(item) {
+            return item%5 === 0
+        }));
+
+        console.log(a.findLast(function(item) {return item%5 === 0}));
+
+        console.log(a.findIndex(function(item) {
+            return item%5 === 0
+        }));
+
+  #+end_src
+- ~forEach~: Executes a function for each element in the array, without editing it
+- ~includes~: check if an item is in the array
+- ~indexOf~, ~lastIndexOf~: return the position of the first or last item found in the
+  array; -1 if the argument does not exist.
+- ~join~:  This method joins all items from the array using the character passed
+  as argument
+- ~map~: Run a function for each item of the ~array~ and return a new one with
+  the same length and the values returned by the function
+  #+begin_src js
+
+    let names = "john smith";
+    let tmpNames = names.split(" ").map(function(name) {
+        return name[0].toUpperCase() + name.slice(1);
+    });
+    console.log(tmpNames.join(" "));
+  #+end_src
+- ~pop~: Returns the last item from the ~array~ and remove it
+- ~push~: append a new item (or a list of items)
+  #+begin_src js :results output
+    let a = [];
+    a.push(1,2,3);
+    console.log(a);
+  #+end_src
+- ~reduce~, ~reduceRight~: Return a value as the result of an operation repeated across all
+  elements from the array
+  #+begin_src js
+  let first = [];
+  for (let i = 0; i < 100; ++i)
+      first.push(i + 1);
+  function sumOfNFirst(n) {
+      return n*(n+1)/2;
+  }
+
+  let sum = first.reduce(function(accumulator, actual) {
+      return accumulator + actual;
+  }, 0);
+  console.log(sum === sumOfNFirst(100));
+
+  #+end_src
+- ~reverse~: Return a new array with the order reverted
+- ~shift~ : removes the first or last element from the ~array~ and
+  returns it
+- ~slice~: This function gets 2 arguments and returns a new ~array~ from the first
+  to the last argument. If the last argument is omitted, get all the items from
+  the value passed.
+  #+begin_src js :results output
+    let first = [];
+    for (let i = 0; i < 100; ++i)
+        first.push(i + 1);
+  console.log(first.slice(1,5));
+  #+end_src
+- ~some~: Return ~true~ if *any* item pass a condition
+- ~sort~: Sort the array *in place*, in order ascending and with a conversion to
+  ~UTF-16 char~. If you want to change the sort function,
+  you can pass as an argument a function that gets as arguments 2 consecutive items
+  in the ~array.~ If the function returns a negative value, it implies that the first
+  argument goes before the second argument. Otherwise, the second argument goes before.
+  #+begin_src js :results output
+    let a = [1, 5, 4, 10, 2, 60, 7];
+    let copy = [1, 5, 4, 10, 2, 60, 7];
+    let b = a.sort();
+    //console.log(a)
+    //console.log(a === b);
+    copy.sort(function(a, b) {
+        return a - b
+    });
+    console.log(copy);
+
+  #+end_src
+- ~splice~:  Edit the content of an array by removing, editing, or adding elements
+  to the original ~array~.  This function returns a new array with the removed items.
+  #+begin_src js :results output
+
+        let a = [1, 5, 4, 10, 2, 60, 7];
+        let b = [1, 5, 4, 10, 2, 60, 7];
+        let c = [1, 5, 4, 10, 2, 60, 7];
+        let start = 0,
+            editCount = 0,
+            replaceValue = null;
+    // remove all elements from the start position
+        console.log(a.splice());
+        console.log(a);
+    // Insert a new item in an arbitrary position
+        console.log(b.splice());
+        console.log(b);
+    // Remove an item and insert other one
+    console.log(c.splice())
+    console.log(c);
+
+  #+end_src
+- ~unshift~: insert a new item as the first position of the array
+
+-----
+References:
+- JavaScript: The definitive guide : Master the world's most-used programming language
+- [[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array][MDN Arrays]]

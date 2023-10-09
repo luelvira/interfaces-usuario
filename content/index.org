@@ -37,5 +37,12 @@ Introduction to JavaScript in the browser. Some topic we talked about will be
 the how to include a JS script in the web-site, the basic syntax, and some
 methods to manipulate the DOM.
 
-
+*** Week 6 - JavaScript II
+SCHEDULED: [2023-10-09 Mon]
+- HTML selectors review
+- Operations with forms
+- Strings
+- Function and callback
+- Arrays
+- Cookies and LocalStorage
 
