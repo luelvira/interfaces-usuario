@@ -1,13 +1,13 @@
-<!-- Generate from "2023/10/06 22:06:02" 743a598 with Emacs 27.1 (Org mode 9.3) -->
+<!-- Generate from "2023/10/09 11:33:47" 95b8894 with Emacs 27.1 (Org mode 9.3) -->
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"/><meta author="Lucas Elvira Martín"/><meta description=""/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="https://luelvira.github.io/interfaces-usuario/css/code.css"/><link rel="stylesheet" href="https://luelvira.github.io/interfaces-usuario/css/style.css"/><title>Week 3 - CSSUI 2023-2024</title><script defer="defer" data-domain="luelvira.github.io/interfaces-usuario" src="https://plausible.io/js/script.js"></script></head><body><header class="site-header"><h1>Week 3 - CSS</h1><p class="date">Date: October  2, 2023</p><nav class="nav-side"><ul class="nav-categories"><li><a href="https://luelvira.github.io/interfaces-usuario/">Home</a></li><li><a href="https://luelvira.github.io/interfaces-usuario/sessions.html">Theory</a></li><li><a href="https://luelvira.github.io/interfaces-usuario/practice.html">Practice</a></li></ul></nav></header><main class="main-content"><section><article class="post"><p>
 :HEADER-ARGS:html: :tangle w04/index.html
 :HEADER-ARGS:css: :tangle w04/css/style.css
 :HEADER-ARGS:js: :tangle w04/js/main.js
 </p>
 
-<div id="outline-container-org0adb1df" class="outline-2">
-<h2 id="org0adb1df">Prepare the environment</h2>
-<div class="outline-text-2" id="text-org0adb1df">
+<div id="outline-container-org1d42407" class="outline-2">
+<h2 id="org1d42407">Prepare the environment</h2>
+<div class="outline-text-2" id="text-org1d42407">
 <pre>mkdir -p w04/{css,js,media}
 mkdir -p w04/media/{img,video,fonts}
 touch w04/index.html
@@ -16,13 +16,13 @@ touch w04/js/main.js</pre>
 </div>
 </div>
 
-<div id="outline-container-org26a27a0" class="outline-2">
-<h2 id="org26a27a0">Prepare the index html file</h2>
-<div class="outline-text-2" id="text-org26a27a0">
+<div id="outline-container-orgf0bf022" class="outline-2">
+<h2 id="orgf0bf022">Prepare the index html file</h2>
+<div class="outline-text-2" id="text-orgf0bf022">
 </div>
-<div id="outline-container-orgbba9b24" class="outline-3">
-<h3 id="orgbba9b24">Include the Javascript</h3>
-<div class="outline-text-3" id="text-orgbba9b24">
+<div id="outline-container-org41c3733" class="outline-3">
+<h3 id="org41c3733">Include the Javascript</h3>
+<div class="outline-text-3" id="text-org41c3733">
 <p>
 Consider the distinctions between placing the script tag at the end of the body or at the
 begin (or within the head tag). When you intend to select specific elements in
@@ -35,9 +35,9 @@ archive this, you have two options:
 </ol>
 </div>
 
-<div id="outline-container-org17addf9" class="outline-4">
-<h4 id="org17addf9">First option</h4>
-<div class="outline-text-4" id="text-org17addf9">
+<div id="outline-container-orgf137a39" class="outline-4">
+<h4 id="orgf137a39">First option</h4>
+<div class="outline-text-4" id="text-orgf137a39">
 <pre>&lt;<span class="org-keyword">!DOCTYPE</span> html&gt;
 &lt;<span class="org-function-name">html</span> <span class="org-variable-name">lang</span>=<span class="org-string">"en"</span>&gt;
   &lt;<span class="org-function-name">head</span>&gt;
@@ -70,9 +70,9 @@ button.addEventListener(<span class="org-string">"click"</span>, <span class="or
 </div>
 </div>
 
-<div id="outline-container-org8999cc4" class="outline-4">
-<h4 id="org8999cc4">Second Option</h4>
-<div class="outline-text-4" id="text-org8999cc4">
+<div id="outline-container-org2de2b6d" class="outline-4">
+<h4 id="org2de2b6d">Second Option</h4>
+<div class="outline-text-4" id="text-org2de2b6d">
 <pre>&lt;<span class="org-keyword">!DOCTYPE</span> html&gt;
 &lt;<span class="org-function-name">html</span> <span class="org-variable-name">lang</span>=<span class="org-string">"en"</span>&gt;
   &lt;<span class="org-function-name">head</span>&gt;
@@ -113,9 +113,9 @@ For more information about the DOMContentLoaded event, go to <a href="https://de
 </div>
 </div>
 
-<div id="outline-container-org26198d9" class="outline-3">
-<h3 id="org26198d9">Prepare the HTML</h3>
-<div class="outline-text-3" id="text-org26198d9">
+<div id="outline-container-orgfe96cd1" class="outline-3">
+<h3 id="orgfe96cd1">Prepare the HTML</h3>
+<div class="outline-text-3" id="text-orgfe96cd1">
 <p>
 For the moment, we continue with the basic example
 </p>
@@ -136,13 +136,13 @@ For the moment, we continue with the basic example
 </div>
 
 
-<div id="outline-container-org11975a4" class="outline-2">
-<h2 id="org11975a4">Play with js</h2>
-<div class="outline-text-2" id="text-org11975a4">
+<div id="outline-container-orgd2461aa" class="outline-2">
+<h2 id="orgd2461aa">Play with js</h2>
+<div class="outline-text-2" id="text-orgd2461aa">
 </div>
-<div id="outline-container-orgb6e4c90" class="outline-3">
-<h3 id="orgb6e4c90">Why is important the use of semicolon <code>;</code></h3>
-<div class="outline-text-3" id="text-orgb6e4c90">
+<div id="outline-container-orgba187b1" class="outline-3">
+<h3 id="orgba187b1">Why is important the use of semicolon <code>;</code></h3>
+<div class="outline-text-3" id="text-orgba187b1">
 <p>
 You can run the following code, and compare the results before and after removing the semicolon from line 7;
 </p>
@@ -162,9 +162,9 @@ greeter(6, 6);</pre>
 </div>
 </div>
 
-<div id="outline-container-orga1e255f" class="outline-3">
-<h3 id="orga1e255f">Select elements from the DOM</h3>
-<div class="outline-text-3" id="text-orga1e255f">
+<div id="outline-container-org6c2c026" class="outline-3">
+<h3 id="org6c2c026">Select elements from the DOM</h3>
+<div class="outline-text-3" id="text-org6c2c026">
 <p>
 As we have viewed in <a href="file:///home/runner/Documents/uc3m/doctorado/curso23_24/interfaces-usuario/content/sessions/04-javascript-dom-manipulation.html">DOM Manipulation</a>, there are many ways to select elements
 and manipulate them. In this example we will change  a image src when user click
@@ -172,9 +172,9 @@ the button
 </p>
 </div>
 
-<div id="outline-container-orga5b20f2" class="outline-4">
-<h4 id="orga5b20f2">Manipulate attributes</h4>
-<div class="outline-text-4" id="text-orga5b20f2">
+<div id="outline-container-org6589f32" class="outline-4">
+<h4 id="org6589f32">Manipulate attributes</h4>
+<div class="outline-text-4" id="text-org6589f32">
 <pre>&lt;<span class="org-keyword">!DOCTYPE</span> html&gt;
 &lt;<span class="org-function-name">html</span> <span class="org-variable-name">lang</span>=<span class="org-string">"es"</span>&gt;
   &lt;<span class="org-function-name">head</span>&gt;
@@ -218,9 +218,9 @@ If we want to ask for the current value, we can use the method <code>getAttribut
 </div>
 </div>
 
-<div id="outline-container-org0623cdb" class="outline-4">
-<h4 id="org0623cdb">Manipulate text</h4>
-<div class="outline-text-4" id="text-org0623cdb">
+<div id="outline-container-org33c4c44" class="outline-4">
+<h4 id="org33c4c44">Manipulate text</h4>
+<div class="outline-text-4" id="text-org33c4c44">
 <p>
 In the first example, we can see the process following to change the text inside
 a paragraph. But this process could be used with any other tag
@@ -256,9 +256,9 @@ answer.addEventListener(<span class="org-string">"click"</span>, <span class="or
 </div>
 </div>
 
-<div id="outline-container-org194cbd6" class="outline-4">
-<h4 id="org194cbd6">Insert new node</h4>
-<div class="outline-text-4" id="text-org194cbd6">
+<div id="outline-container-org8ebf0d1" class="outline-4">
+<h4 id="org8ebf0d1">Insert new node</h4>
+<div class="outline-text-4" id="text-org8ebf0d1">
 <p>
 If we want to insert a new node or remove another, there are a few steps we have
 to follow. First the node must be created, then we modify it as needed, and

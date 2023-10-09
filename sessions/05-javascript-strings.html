@@ -1,0 +1,129 @@
+<!-- Generate from "2023/10/09 11:33:47" 95b8894 with Emacs 27.1 (Org mode 9.3) -->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"/><meta author="Lucas Elvira Martín"/><meta description="Session for Week 6 - Introduction to Strings in JavaScript"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="https://luelvira.github.io/interfaces-usuario/css/code.css"/><link rel="stylesheet" href="https://luelvira.github.io/interfaces-usuario/css/style.css"/><title>05 JAVASCRIPT STRINGSUI 2023-2024</title><script defer="defer" data-domain="luelvira.github.io/interfaces-usuario" src="https://plausible.io/js/script.js"></script></head><body><header class="site-header"><h1>05 JAVASCRIPT STRINGS</h1><p class="date">Date: October  9, 2023</p><nav class="nav-side"><ul class="nav-categories"><li><a href="https://luelvira.github.io/interfaces-usuario/">Home</a></li><li><a href="https://luelvira.github.io/interfaces-usuario/sessions.html">Theory</a></li><li><a href="https://luelvira.github.io/interfaces-usuario/practice.html">Practice</a></li></ul></nav></header><main class="main-content"><section><article class="post">
+<div id="outline-container-orgc8889e4" class="outline-2">
+<h2 id="orgc8889e4">JavaScript Strings</h2>
+<div class="outline-text-2" id="text-orgc8889e4">
+<p>
+JavaScript Strings are immutable sequences of ordered characters, which are
+stored in 16 bits. If a character can&rsquo;t fit in 16 bits, JavaScript use the
+<code>UTF-16</code> encoding. As the length of the string is determinate by the number of 10-bits that
+compose it, if a character needs 32 bits, its <code>length</code> will be reported as 2.
+</p>
+
+<pre><span class="org-keyword">let</span> <span class="org-variable-name">euro</span> = <span class="org-string">"&#8364;"</span>;
+<span class="org-keyword">let</span> <span class="org-variable-name">smile</span> = <span class="org-string">"&#128516;"</span>;
+console.log(euro.length);  <span class="org-comment-delimiter">// </span><span class="org-comment">=&gt; 1: this character has one 16-bit element</span>
+console.log(smile.length);  <span class="org-comment-delimiter">// </span><span class="org-comment">=&gt; 2</span></pre>
+
+<p>
+<b>When JavaScript iterates over a string, this issue disappears</b>
+</p>
+
+<pre><span class="org-keyword">let</span> <span class="org-variable-name">text</span> = <span class="org-string">"This string has a &#128516; smile"</span>;
+<span class="org-keyword">for</span> (<span class="org-keyword">let</span> <span class="org-variable-name">i</span> = 0; i &lt; text.length; ++i)
+    process.stdout.write(text[i]);
+process.stdout.write(<span class="org-string">"\n"</span>);
+
+<span class="org-keyword">for</span> (<span class="org-keyword">let</span> <span class="org-variable-name">c</span> of text)
+    process.stdout.write(c);
+process.stdout.write(<span class="org-string">"\n"</span>);</pre>
+</div>
+
+<div id="outline-container-org0ee35e0" class="outline-3">
+<h3 id="org0ee35e0">Strings literals</h3>
+<div class="outline-text-3" id="text-org0ee35e0">
+<p>
+To include a string in JavaScript, you can enclose the characters in either
+single quotes, double quotes, or back-ticks.
+</p>
+
+<pre><span class="org-keyword">let</span> <span class="org-variable-name">s1</span> = <span class="org-string">"This is a string"</span>;
+<span class="org-keyword">let</span> <span class="org-variable-name">s2</span> = <span class="org-string">'This is another string'</span>;
+<span class="org-keyword">let</span> <span class="org-variable-name">s3</span> = <span class="org-string">`This is also a valid string`</span>;</pre>
+</div>
+</div>
+<div id="outline-container-org8bd75e3" class="outline-3">
+<h3 id="org8bd75e3">Operations with Strings</h3>
+<div class="outline-text-3" id="text-org8bd75e3">
+<p>
+To create a string from different variables, we can use the <code>+</code> operator
+</p>
+<pre><span class="org-keyword">let</span> <span class="org-variable-name">user</span> = <span class="org-string">"Pepe"</span>
+  <span class="org-keyword">let</span> <span class="org-variable-name">static_string</span> = <span class="org-string">"Hello "</span> + <span class="org-string">"World"</span>;
+  <span class="org-keyword">let</span> <span class="org-variable-name">dynamic_string</span> = <span class="org-string">"Hello, "</span> + user
+
+console.log(static_string);
+console.log(dynamic_string);</pre>
+
+<p>
+Alternative, you can use string templates with back-ticks for a more readable
+approach. The string templates allows to insert break lines into the text
+</p>
+<pre><span class="org-keyword">let</span> <span class="org-variable-name">user</span> = <span class="org-string">"Pepe"</span>;
+  <span class="org-keyword">let</span> <span class="org-variable-name">age</span> = 22;
+  <span class="org-keyword">let</span> <span class="org-variable-name">msg</span> = <span class="org-string">`Hy! I'm ${user} and I'm ${age}`</span>;
+console.log(msg);</pre>
+
+<pre><span class="org-keyword">let</span> <span class="org-variable-name">text1</span> = <span class="org-string">"This text has 2 lines\nThis is the second line"</span>;
+<span class="org-keyword">let</span> <span class="org-variable-name">text2</span> = <span class="org-string">`This text has 2 lines</span>
+<span class="org-string">This is the second line`</span>;
+
+console.log(text2);
+<span class="org-keyword">return</span> text1 === text2;</pre>
+</div>
+</div>
+<div id="outline-container-org1e13ad5" class="outline-3">
+<h3 id="org1e13ad5">Strings templates</h3>
+<div class="outline-text-3" id="text-org1e13ad5">
+<pre><span class="org-keyword">let</span> <span class="org-variable-name">n1</span> = parseInt(Math.random()*10),
+    n2 = parseInt(Math.random()*10);
+console.log(<span class="org-string">`${n1} + ${n2} = ${n1 + n2}`</span>);</pre>
+</div>
+</div>
+
+<div id="outline-container-org553b129" class="outline-3">
+<h3 id="org553b129">Strings&rsquo; methods</h3>
+<div class="outline-text-3" id="text-org553b129">
+<p>
+Here are some common string methods in JavaScript:
+</p>
+
+<pre><span class="org-keyword">let</span> <span class="org-variable-name">myString</span> = <span class="org-string">"This is a string"</span>;
+
+console.log(myString.length);
+console.log(myString.indexOf(<span class="org-string">"is"</span>));
+console.log(myString.substring(5));
+console.log(myString.substring(5, 8));
+console.log(myString.at(-1)); <span class="org-comment-delimiter">// </span><span class="org-comment">allows negative index</span>
+console.log(myString.charAt(0)); <span class="org-comment-delimiter">// </span><span class="org-comment">does not allow negative index</span>
+console.log(myString.charCodeAt(myString.indexOf(<span class="org-string">"a"</span>)));
+console.log(myString.toUpperCase());
+console.log(myString.toLowerCase());
+console.log(myString.startsWith(<span class="org-string">"This"</span>));
+console.log(myString.endsWith(<span class="org-string">"This"</span>));
+console.log(myString.includes(<span class="org-string">"tri"</span>));
+console.log(myString.search(<span class="org-string">/\w{5}/</span>));
+console.log(myString.replace(<span class="org-string">"is"</span>, <span class="org-string">"ese"</span>).replace(<span class="org-string">"is"</span>, <span class="org-string">"are"</span>));
+console.log(myString.replaceAll(<span class="org-string">"is"</span>, <span class="org-string">"all"</span>));
+console.log(myString.slice(5));
+console.log(myString.slice(5, 8));
+console.log(myString.slice(-5));
+console.log(myString.split(<span class="org-string">" "</span>));
+myString = <span class="org-string">" "</span>.repeat(4) + myString + <span class="org-string">" "</span>.repeat(4);
+console.log(<span class="org-string">`'${myString.trim()}'`</span>);
+console.log(<span class="org-string">`'${myString.trimStart()}'`</span>);
+console.log(<span class="org-string">`'${myString.trimEnd()}'`</span>);</pre>
+
+
+<hr />
+<p>
+References:
+</p>
+<ul class="org-ul">
+<li>JavaScript: The definitive guide : Master the world&rsquo;s most-used programming language</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">MDN Strings</a></li>
+</ul>
+</div>
+</div>
+</div>
+</article></section></main><footer class="footer-site"><div class="copyright"><p>© 2023-2024 Lucas Elvira Martín <br/><a href="mailto:luelvira@pa.uc3m.es">luelvira@pa.uc3m.es</a></p></div><div class="Generated"><p>Generated with Emacs 27.1 (Org mode 9.3)</p></div><div class="colabore"><a href="https://github.com/luelvira/interfaces-usuario/" target="_blank"><img src="https://luelvira.github.io/interfaces-usuario/img/github-mark-white.png" alt="Link to the github repository"/></a></div></footer></body></html>

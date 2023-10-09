@@ -1,8 +1,8 @@
-<!-- Generate from "2023/10/06 22:06:02" 743a598 with Emacs 27.1 (Org mode 9.3) -->
+<!-- Generate from "2023/10/09 11:33:47" 95b8894 with Emacs 27.1 (Org mode 9.3) -->
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"/><meta author="Lucas Elvira Martín"/><meta description="Session for Week 2. Display flex I"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="https://luelvira.github.io/interfaces-usuario/css/code.css"/><link rel="stylesheet" href="https://luelvira.github.io/interfaces-usuario/css/style.css"/><title>02 CSS DISPLAY FLEXUI 2023-2024</title><script defer="defer" data-domain="luelvira.github.io/interfaces-usuario" src="https://plausible.io/js/script.js"></script></head><body><header class="site-header"><h1>02 CSS DISPLAY FLEX</h1><p class="date">Date: September 11, 2023</p><nav class="nav-side"><ul class="nav-categories"><li><a href="https://luelvira.github.io/interfaces-usuario/">Home</a></li><li><a href="https://luelvira.github.io/interfaces-usuario/sessions.html">Theory</a></li><li><a href="https://luelvira.github.io/interfaces-usuario/practice.html">Practice</a></li></ul></nav></header><main class="main-content"><section><article class="post">
-<div id="outline-container-org3067440" class="outline-2">
-<h2 id="org3067440">FLEXBOX</h2>
-<div class="outline-text-2" id="text-org3067440">
+<div id="outline-container-org1822b00" class="outline-2">
+<h2 id="org1822b00">FLEXBOX</h2>
+<div class="outline-text-2" id="text-org1822b00">
 <p>
 The main idea behind the flex layout is to give the container the
 ability to alter its items&rsquo; with/height and order the best fill the
@@ -20,38 +20,38 @@ Flexbox allows to:
 </ul>
 </div>
 
-<div id="outline-container-orgf6ad9f2" class="outline-3">
-<h3 id="orgf6ad9f2">Basic concepts</h3>
-<div class="outline-text-3" id="text-orgf6ad9f2">
+<div id="outline-container-org3aaee97" class="outline-3">
+<h3 id="org3aaee97">Basic concepts</h3>
+<div class="outline-text-3" id="text-org3aaee97">
 <p>
 There are two axes. The main and the cross. The main axis is defined
-with <a href="#org8ee1195">flex-direction</a> property and the cross runs perpendicular
+with <a href="#org59e558b">flex-direction</a> property and the cross runs perpendicular
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgc342648" class="outline-3">
-<h3 id="orgc342648">Properties</h3>
-<div class="outline-text-3" id="text-orgc342648">
+<div id="outline-container-org4df4d63" class="outline-3">
+<h3 id="org4df4d63">Properties</h3>
+<div class="outline-text-3" id="text-org4df4d63">
 </div>
-<div id="outline-container-orgf03639d" class="outline-4">
-<h4 id="orgf03639d">Default values</h4>
-<div class="outline-text-4" id="text-orgf03639d">
+<div id="outline-container-orgb4c24f9" class="outline-4">
+<h4 id="orgb4c24f9">Default values</h4>
+<div class="outline-text-4" id="text-orgb4c24f9">
 <ul class="org-ul">
-<li>Items display in a row (the <a href="#org8ee1195">flex-direction</a>  property&rsquo;s default is <code>row</code>).</li>
+<li>Items display in a row (the <a href="#org59e558b">flex-direction</a>  property&rsquo;s default is <code>row</code>).</li>
 <li>The items start from the start edge of the main axis.</li>
 <li>The items do not stretch on the main dimension, but can shrink.</li>
 <li>The items will stretch to fill the size of the cross axis.</li>
-<li>The <a href="02-css-display-flex-child.html#org5f09e00">flex-basis</a>i property is
+<li>The <a href="02-css-display-flex-child.html#orgf85c173">flex-basis</a>i property is
 set to <code>auto</code>.</li>
-<li>The <a href="#orgf8bd10e">flex-wrap</a> property is set to <code>nowrap</code>.</li>
+<li>The <a href="#orgad4e288">flex-wrap</a> property is set to <code>nowrap</code>.</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org8ee1195" class="outline-4">
-<h4 id="org8ee1195">flex-direction</h4>
-<div class="outline-text-4" id="text-org8ee1195">
+<div id="outline-container-org59e558b" class="outline-4">
+<h4 id="org59e558b">flex-direction</h4>
+<div class="outline-text-4" id="text-org59e558b">
 <p>
 Define the direction in which the elements will be positioned. Can be:
 </p>
@@ -66,9 +66,9 @@ up all the horizontal space</li>
 </div>
 </div>
 
-<div id="outline-container-orgf8bd10e" class="outline-4">
-<h4 id="orgf8bd10e">flex-wrap</h4>
-<div class="outline-text-4" id="text-orgf8bd10e">
+<div id="outline-container-orgad4e288" class="outline-4">
+<h4 id="orgad4e288">flex-wrap</h4>
+<div class="outline-text-4" id="text-orgad4e288">
 <p>
 Flexbox is one dimensional model. Its mean, if the content not fit into
 the parent, they will overflow the container. To prevent it, we can use
@@ -78,9 +78,9 @@ display in one line, they will wrap onto another line
 </div>
 </div>
 
-<div id="outline-container-org0584570" class="outline-4">
-<h4 id="org0584570">flex-flow</h4>
-<div class="outline-text-4" id="text-org0584570">
+<div id="outline-container-orgb555600" class="outline-4">
+<h4 id="orgb555600">flex-flow</h4>
+<div class="outline-text-4" id="text-orgb555600">
 <p>
 This property combine the flex-direction and flex-wrap properties. The
 first value is flex-direction and the second one is flex-wrap
@@ -88,9 +88,9 @@ first value is flex-direction and the second one is flex-wrap
 </div>
 </div>
 
-<div id="outline-container-orgedfedcf" class="outline-4">
-<h4 id="orgedfedcf">align-items</h4>
-<div class="outline-text-4" id="text-orgedfedcf">
+<div id="outline-container-orge6c7790" class="outline-4">
+<h4 id="orge6c7790">align-items</h4>
+<div class="outline-text-4" id="text-orge6c7790">
 <p>
 This property align items in the cross axis. The default value is <b>stretch</b>. The values allowed are:
 </p>
@@ -104,9 +104,9 @@ This property align items in the cross axis. The default value is <b>stretch</b>
 </div>
 </div>
 
-<div id="outline-container-orgef0e5b8" class="outline-4">
-<h4 id="orgef0e5b8">justify-content</h4>
-<div class="outline-text-4" id="text-orgef0e5b8">
+<div id="outline-container-orge5377aa" class="outline-4">
+<h4 id="orge5377aa">justify-content</h4>
+<div class="outline-text-4" id="text-orge5377aa">
 <p>
 Same as the align-item property bud in the main axis. The initial value
 is <b>flex-start</b>. The values allowed are:
@@ -123,9 +123,9 @@ is <b>flex-start</b>. The values allowed are:
 </div>
 </div>
 
-<div id="outline-container-orgb27add1" class="outline-3">
-<h3 id="orgb27add1">Properties applied to <a href="02-css-display-flex-child.html">flex items</a></h3>
-<div class="outline-text-3" id="text-orgb27add1">
+<div id="outline-container-org36b85ab" class="outline-3">
+<h3 id="org36b85ab">Properties applied to <a href="02-css-display-flex-child.html">flex items</a></h3>
+<div class="outline-text-3" id="text-org36b85ab">
 <hr />
 
 <p>

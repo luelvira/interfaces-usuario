@@ -1,0 +1,228 @@
+<!-- Generate from "2023/10/09 11:33:47" 95b8894 with Emacs 27.1 (Org mode 9.3) -->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"/><meta author="Lucas Elvira Martín"/><meta description="Session for Week 6 - Introduction to Arrays in JavaScript"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="https://luelvira.github.io/interfaces-usuario/css/code.css"/><link rel="stylesheet" href="https://luelvira.github.io/interfaces-usuario/css/style.css"/><title>05 JAVASCRIPT STRINGSUI 2023-2024</title><script defer="defer" data-domain="luelvira.github.io/interfaces-usuario" src="https://plausible.io/js/script.js"></script></head><body><header class="site-header"><h1>05 JAVASCRIPT STRINGS</h1><p class="date">Date: October  9, 2023</p><nav class="nav-side"><ul class="nav-categories"><li><a href="https://luelvira.github.io/interfaces-usuario/">Home</a></li><li><a href="https://luelvira.github.io/interfaces-usuario/sessions.html">Theory</a></li><li><a href="https://luelvira.github.io/interfaces-usuario/practice.html">Practice</a></li></ul></nav></header><main class="main-content"><section><article class="post">
+<div id="outline-container-orgdd61716" class="outline-2">
+<h2 id="orgdd61716">Arrays in JavaScript</h2>
+<div class="outline-text-2" id="text-orgdd61716">
+<p>
+The <code>Array</code> object is a class that enables you to store a set of elements in
+order under a single variable name. This class has methods to perform the most
+common Array operations.
+</p>
+
+<p>
+<code>Array</code> in JS have a variable length and can store elements of any type. *You
+can access an arbitrary position of the array, without being consecutive with
+the last item.* This fact implies you can have a non-dense array.
+</p>
+
+<pre><span class="org-keyword">let</span> <span class="org-variable-name">myList</span> = [0, 1, 2];
+myList[6] = 6;
+console.log(myList.length);
+console.log(myList);
+<span class="org-keyword">for</span> (<span class="org-keyword">let</span> <span class="org-variable-name">pos</span> of myList) {
+    console.log(pos);
+}</pre>
+
+<p>
+Also, we can make the array smaller by changing the array length
+</p>
+
+<pre><span class="org-keyword">let</span> <span class="org-variable-name">myList</span> = [];
+<span class="org-keyword">let</span> <span class="org-variable-name">n</span> = 100;
+console.log(myList.length);
+<span class="org-keyword">for</span> (<span class="org-keyword">let</span> <span class="org-variable-name">i</span> = 0; i &lt; n; ++i) myList.push(i); <span class="org-comment-delimiter">// </span><span class="org-comment">append the new value</span>
+console.log(myList.length);
+myList.length = 3;
+console.log(myList);
+console.log(myList.length);</pre>
+</div>
+
+<div id="outline-container-org0af8715" class="outline-3">
+<h3 id="org0af8715">Iterate over an array</h3>
+<div class="outline-text-3" id="text-org0af8715">
+<p>
+You can iterate over all the elements from the array in different ways, by using
+the JavaScript <code>for</code> syntax
+</p>
+<pre><span class="org-keyword">let</span> <span class="org-variable-name">myList</span> = [1, 2, 3];
+
+<span class="org-keyword">for</span> (<span class="org-keyword">let</span> <span class="org-variable-name">i</span> = 0; i &lt; myList.length; ++i)
+    console.log(myList[i]) <span class="org-comment-delimiter">// </span><span class="org-comment">access an item by its position</span>
+
+<span class="org-keyword">for</span> (<span class="org-keyword">let</span> <span class="org-variable-name">value</span> of myList)
+    console.log(value) <span class="org-comment-delimiter">// </span><span class="org-comment">value is assigned in each iteration to the next item in the array</span>
+
+<span class="org-keyword">for</span> (<span class="org-keyword">let</span> <span class="org-variable-name">pos</span> <span class="org-keyword">in</span> myList)
+    console.log(pos) <span class="org-comment-delimiter">// </span><span class="org-comment">Iter over the keys of the array, in this case, the position</span></pre>
+</div>
+</div>
+
+<div id="outline-container-orgeb9b148" class="outline-3">
+<h3 id="orgeb9b148">Some methods from the Array class</h3>
+<div class="outline-text-3" id="text-orgeb9b148">
+<ul class="org-ul">
+<li><p>
+<code>concat</code>: Concatenates 2 arrays and returns a new one
+</p>
+<pre><span class="org-keyword">let</span> <span class="org-variable-name">a</span> = [1, 2, 3],
+    b = [4, 5, 6];
+<span class="org-keyword">let</span> <span class="org-variable-name">c</span> = a.concat(b);
+console.log(c);
+console.log(a);</pre></li>
+<li><p>
+<code>every</code>: This method gets a function as an argument and returns <code>true</code> if all the
+items in the array return a non-false value.
+</p>
+<pre><span class="org-keyword">let</span> <span class="org-variable-name">a</span> = [2, 6, <span class="org-string">"hola"</span>, []];
+<span class="org-keyword">function</span> <span class="org-function-name">test</span>(<span class="org-variable-name">item</span>) {
+    console.log(item);
+    <span class="org-keyword">return</span> item;
+}
+console.log(a.every(test));
+a.push(<span class="org-string">""</span>);
+console.log(a.every(test));</pre></li>
+<li><p>
+<code>filter</code>: Returns a new <code>array</code> with the items  that return <code>true</code> by the
+provided function.
+</p>
+<pre><span class="org-keyword">let</span> <span class="org-variable-name">old</span> = [];
+ <span class="org-keyword">for</span> (<span class="org-keyword">let</span> <span class="org-variable-name">i</span> = 0; i &lt; 50; ++i) old.push(i);
+ <span class="org-keyword">let</span> <span class="org-variable-name">noPrime</span> = <span class="org-keyword">new</span> <span class="org-type">Set</span>();
+ <span class="org-keyword">let</span> <span class="org-variable-name">prime</span> = old.filter(<span class="org-keyword">function</span>(<span class="org-variable-name">number</span>) {
+     <span class="org-keyword">if</span> (number <span class="org-keyword">in</span> noPrime) <span class="org-keyword">return</span> <span class="org-constant">false</span>;
+     <span class="org-keyword">for</span> (<span class="org-keyword">let</span> <span class="org-variable-name">i</span> = 2, <span class="org-variable-name">s</span> = Math.sqrt(number); i &lt;= s; ++i) {
+         <span class="org-keyword">if</span> (number % i === 0) {
+             noPrime.add(i);
+             noPrime.add(number/i);
+             <span class="org-keyword">return</span> <span class="org-constant">false</span>;
+         }
+   }
+   <span class="org-keyword">return</span> <span class="org-constant">true</span>
+ });
+console.log(prime);</pre></li>
+<li><p>
+<code>fill</code>: Changes items of the array with a static value into the range passed as
+arguments
+</p>
+<pre><span class="org-keyword">let</span> <span class="org-variable-name">a</span> = [];
+a.length = 10;
+console.log(a);
+<span class="org-keyword">let</span> <span class="org-variable-name">value</span> = 0,
+    startPos = 4,
+    endPos = 6;
+console.log(a.fill(value, startPos, endPos));</pre></li>
+<li><p>
+<code>find</code>, <code>findLast</code>, <code>findIndex</code>: These methods get a callback function and
+return the first and last item, respectively, from the array which the callback function return
+true. In the case of <code>findIndex</code>, it returns the position of the first matching item.
+</p>
+<pre><span class="org-keyword">let</span> <span class="org-variable-name">a</span> = [1, 2, 3, 5, 7, 10, 11];
+console.log(a.find(<span class="org-keyword">function</span>(<span class="org-variable-name">item</span>) {
+    <span class="org-keyword">return</span> item%5 === 0
+}));
+
+console.log(a.findLast(<span class="org-keyword">function</span>(<span class="org-variable-name">item</span>) {<span class="org-keyword">return</span> item%5 === 0}));
+
+console.log(a.findIndex(<span class="org-keyword">function</span>(<span class="org-variable-name">item</span>) {
+    <span class="org-keyword">return</span> item%5 === 0
+}));</pre></li>
+<li><code>forEach</code>: Executes a function for each element in the array, without editing it</li>
+<li><code>includes</code>: check if an item is in the array</li>
+<li><code>indexOf</code>, <code>lastIndexOf</code>: return the position of the first or last item found in the
+array; -1 if the argument does not exist.</li>
+<li><code>join</code>:  This method joins all items from the array using the character passed
+as argument</li>
+<li><p>
+<code>map</code>: Run a function for each item of the <code>array</code> and return a new one with
+the same length and the values returned by the function
+</p>
+<pre><span class="org-keyword">let</span> <span class="org-variable-name">names</span> = <span class="org-string">"john smith"</span>;
+<span class="org-keyword">let</span> <span class="org-variable-name">tmpNames</span> = names.split(<span class="org-string">" "</span>).map(<span class="org-keyword">function</span>(<span class="org-variable-name">name</span>) {
+    <span class="org-keyword">return</span> name[0].toUpperCase() + name.slice(1);
+});
+console.log(tmpNames.join(<span class="org-string">" "</span>));</pre></li>
+<li><code>pop</code>: Returns the last item from the <code>array</code> and remove it</li>
+<li><p>
+<code>push</code>: append a new item (or a list of items)
+</p>
+<pre><span class="org-keyword">let</span> <span class="org-variable-name">a</span> = [];
+a.push(1,2,3);
+console.log(a);</pre></li>
+<li><p>
+<code>reduce</code>, <code>reduceRight</code>: Return a value as the result of an operation repeated across all
+elements from the array
+</p>
+<pre><span class="org-keyword">let</span> <span class="org-variable-name">first</span> = [];
+<span class="org-keyword">for</span> (<span class="org-keyword">let</span> <span class="org-variable-name">i</span> = 0; i &lt; 100; ++i)
+    first.push(i + 1);
+<span class="org-keyword">function</span> <span class="org-function-name">sumOfNFirst</span>(<span class="org-variable-name">n</span>) {
+    <span class="org-keyword">return</span> n*(n+1)/2;
+}
+
+<span class="org-keyword">let</span> <span class="org-variable-name">sum</span> = first.reduce(<span class="org-keyword">function</span>(<span class="org-variable-name">accumulator</span>, <span class="org-variable-name">actual</span>) {
+    <span class="org-keyword">return</span> accumulator + actual;
+}, 0);
+console.log(sum === sumOfNFirst(100));</pre></li>
+<li><code>reverse</code>: Return a new array with the order reverted</li>
+<li><code>shift</code> : removes the first or last element from the <code>array</code> and
+returns it</li>
+<li><p>
+<code>slice</code>: This function gets 2 arguments and returns a new <code>array</code> from the first
+to the last argument. If the last argument is omitted, get all the items from
+the value passed.
+</p>
+<pre><span class="org-keyword">let</span> <span class="org-variable-name">first</span> = [];
+  <span class="org-keyword">for</span> (<span class="org-keyword">let</span> <span class="org-variable-name">i</span> = 0; i &lt; 100; ++i)
+      first.push(i + 1);
+console.log(first.slice(1,5));</pre></li>
+<li><code>some</code>: Return <code>true</code> if <b>any</b> item pass a condition</li>
+<li><p>
+<code>sort</code>: Sort the array <b>in place</b>, in order ascending and with a conversion to
+<code>UTF-16 char</code>. If you want to change the sort function,
+you can pass as an argument a function that gets as arguments 2 consecutive items
+in the <code>array.</code> If the function returns a negative value, it implies that the first
+argument goes before the second argument. Otherwise, the second argument goes before.
+</p>
+<pre><span class="org-keyword">let</span> <span class="org-variable-name">a</span> = [1, 5, 4, 10, 2, 60, 7];
+<span class="org-keyword">let</span> <span class="org-variable-name">copy</span> = [1, 5, 4, 10, 2, 60, 7];
+<span class="org-keyword">let</span> <span class="org-variable-name">b</span> = a.sort();
+<span class="org-comment-delimiter">//</span><span class="org-comment">console.log(a)</span>
+<span class="org-comment-delimiter">//</span><span class="org-comment">console.log(a === b);</span>
+copy.sort(<span class="org-keyword">function</span>(<span class="org-variable-name">a</span>, <span class="org-variable-name">b</span>) {
+    <span class="org-keyword">return</span> a - b
+});
+console.log(copy);</pre></li>
+<li><p>
+<code>splice</code>:  Edit the content of an array by removing, editing, or adding elements
+to the original <code>array</code>.  This function returns a new array with the removed items.
+</p>
+<pre><span class="org-keyword">let</span> <span class="org-variable-name">a</span> = [1, 5, 4, 10, 2, 60, 7];
+    <span class="org-keyword">let</span> <span class="org-variable-name">b</span> = [1, 5, 4, 10, 2, 60, 7];
+    <span class="org-keyword">let</span> <span class="org-variable-name">c</span> = [1, 5, 4, 10, 2, 60, 7];
+    <span class="org-keyword">let</span> <span class="org-variable-name">start</span> = 0,
+        editCount = 0,
+        replaceValue = <span class="org-constant">null</span>;
+<span class="org-comment-delimiter">// </span><span class="org-comment">remove all elements from the start position</span>
+    console.log(a.splice());
+    console.log(a);
+<span class="org-comment-delimiter">// </span><span class="org-comment">Insert a new item in an arbitrary position</span>
+    console.log(b.splice());
+    console.log(b);
+<span class="org-comment-delimiter">// </span><span class="org-comment">Remove an item and insert other one</span>
+console.log(c.splice())
+console.log(c);</pre></li>
+<li><code>unshift</code>: insert a new item as the first position of the array</li>
+</ul>
+
+<hr />
+<p>
+References:
+</p>
+<ul class="org-ul">
+<li>JavaScript: The definitive guide : Master the world&rsquo;s most-used programming language</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">MDN Arrays</a></li>
+</ul>
+</div>
+</div>
+</div>
+</article></section></main><footer class="footer-site"><div class="copyright"><p>© 2023-2024 Lucas Elvira Martín <br/><a href="mailto:luelvira@pa.uc3m.es">luelvira@pa.uc3m.es</a></p></div><div class="Generated"><p>Generated with Emacs 27.1 (Org mode 9.3)</p></div><div class="colabore"><a href="https://github.com/luelvira/interfaces-usuario/" target="_blank"><img src="https://luelvira.github.io/interfaces-usuario/img/github-mark-white.png" alt="Link to the github repository"/></a></div></footer></body></html>
