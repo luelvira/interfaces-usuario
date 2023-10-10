@@ -79,10 +79,7 @@
 	    (link (@ (rel "stylesheet") (href ,(concat lem/site-url "/css/code.css"))))
 	    (link (@ (rel "stylesheet") (href ,(concat lem/site-url "/css/style.css"))))
 	    (title ,(concat title "UI 2023-2024"))
-	    (script (@ (defer "defer" )
-		       (data-domain "luelvira.github.io/interfaces-usuario")
-		       (src "https://plausible.io/js/script.js"))
-		    ""))
+	    )
 	   (body
 	    (header (@ (class "site-header"))
 		    (h1 ,title)

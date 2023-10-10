@@ -1,4 +1,4 @@
-#+TITLE: 05 JAVASCRIPT STRINGS
+#+TITLE: 05 JAVASCRIPT ARRAYS
 #+DATE: [2023-10-09 Mon 00:01]
 #+AUTHOR: Lucas Elvira Martín
 #+DESCRIPTION: Session for Week 6 - Introduction to Arrays in JavaScript
