@@ -16,9 +16,7 @@ The ~Array~ object is a class that enables you to store a set of elements in
 order under a single variable name. This class has methods to perform the most
 common Array operations.
 
-~Array~ in JS have a variable length and can store elements of any type. *You
-can access an arbitrary position of the array, without being consecutive with
-the last item.* This fact implies you can have a non-dense array.
+~Array~ in JS have a variable length and can store elements of any type. *You can access an arbitrary position of the array, without being consecutive with the last item.* This fact implies you can have a non-dense array.
 
 #+begin_src js
   let myList = [0, 1, 2];
@@ -41,6 +39,7 @@ Also, we can make the array smaller by changing the array length
   myList.length = 3;
   console.log(myList);
   console.log(myList.length);
+
 #+end_src
 
 ** Iterate over an array
@@ -203,28 +202,25 @@ the JavaScript ~for~ syntax
         return a - b
     });
     console.log(copy);
-
   #+end_src
 - ~splice~:  Edit the content of an array by removing, editing, or adding elements
   to the original ~array~.  This function returns a new array with the removed items.
   #+begin_src js :results output
-
-        let a = [1, 5, 4, 10, 2, 60, 7];
-        let b = [1, 5, 4, 10, 2, 60, 7];
-        let c = [1, 5, 4, 10, 2, 60, 7];
-        let start = 0,
-            editCount = 0,
-            replaceValue = null;
+    let a = [1, 5, 4, 10, 2, 60, 7];
+    let b = [1, 5, 4, 10, 2, 60, 7];
+    let c = [1, 5, 4, 10, 2, 60, 7];
+    let start = 0,
+        editCount = 0,
+        replaceValue = null;
     // remove all elements from the start position
-        console.log(a.splice());
-        console.log(a);
+    console.log(a.splice());
+    console.log(a);
     // Insert a new item in an arbitrary position
-        console.log(b.splice());
-        console.log(b);
+    console.log(b.splice());
+    console.log(b);
     // Remove an item and insert other one
     console.log(c.splice())
     console.log(c);
-
   #+end_src
 - ~unshift~: insert a new item as the first position of the array
 
