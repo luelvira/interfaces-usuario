@@ -1,8 +1,8 @@
-<!-- Generate from "2023/10/10 13:47:36" 922595a with Emacs 27.1 (Org mode 9.3) -->
+<!-- Generate from "2023/10/11 12:25:24" 26c16e5 with Emacs 27.1 (Org mode 9.3) -->
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"/><meta author="Lucas Elvira Martín"/><meta description="Session for Week 6 - Introduction to Arrays in JavaScript"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="https://luelvira.github.io/interfaces-usuario/css/code.css"/><link rel="stylesheet" href="https://luelvira.github.io/interfaces-usuario/css/style.css"/><title>05 JAVASCRIPT ARRAYSUI 2023-2024</title></head><body><header class="site-header"><h1>05 JAVASCRIPT ARRAYS</h1><p class="date">Date: October  9, 2023</p><nav class="nav-side"><ul class="nav-categories"><li><a href="https://luelvira.github.io/interfaces-usuario/">Home</a></li><li><a href="https://luelvira.github.io/interfaces-usuario/sessions.html">Theory</a></li><li><a href="https://luelvira.github.io/interfaces-usuario/practice.html">Practice</a></li></ul></nav></header><main class="main-content"><section><article class="post">
-<div id="outline-container-org29e4da4" class="outline-2">
-<h2 id="org29e4da4">Arrays in JavaScript</h2>
-<div class="outline-text-2" id="text-org29e4da4">
+<div id="outline-container-org06aacd6" class="outline-2">
+<h2 id="org06aacd6">Arrays in JavaScript</h2>
+<div class="outline-text-2" id="text-org06aacd6">
 <p>
 The <code>Array</code> object is a class that enables you to store a set of elements in
 order under a single variable name. This class has methods to perform the most
@@ -10,9 +10,7 @@ common Array operations.
 </p>
 
 <p>
-<code>Array</code> in JS have a variable length and can store elements of any type. *You
-can access an arbitrary position of the array, without being consecutive with
-the last item.* This fact implies you can have a non-dense array.
+<code>Array</code> in JS have a variable length and can store elements of any type. <b>You can access an arbitrary position of the array, without being consecutive with the last item.</b> This fact implies you can have a non-dense array.
 </p>
 
 <pre><span class="org-keyword">let</span> <span class="org-variable-name">myList</span> = [0, 1, 2];
@@ -37,9 +35,9 @@ console.log(myList);
 console.log(myList.length);</pre>
 </div>
 
-<div id="outline-container-org092c35b" class="outline-3">
-<h3 id="org092c35b">Iterate over an array</h3>
-<div class="outline-text-3" id="text-org092c35b">
+<div id="outline-container-orgd1359b9" class="outline-3">
+<h3 id="orgd1359b9">Iterate over an array</h3>
+<div class="outline-text-3" id="text-orgd1359b9">
 <p>
 You can iterate over all the elements from the array in different ways, by using
 the JavaScript <code>for</code> syntax
@@ -57,9 +55,9 @@ the JavaScript <code>for</code> syntax
 </div>
 </div>
 
-<div id="outline-container-org12a8473" class="outline-3">
-<h3 id="org12a8473">Some methods from the Array class</h3>
-<div class="outline-text-3" id="text-org12a8473">
+<div id="outline-container-orgf24af96" class="outline-3">
+<h3 id="orgf24af96">Some methods from the Array class</h3>
+<div class="outline-text-3" id="text-orgf24af96">
 <ul class="org-ul">
 <li><p>
 <code>concat</code>: Concatenates 2 arrays and returns a new one
@@ -197,17 +195,17 @@ console.log(copy);</pre></li>
 to the original <code>array</code>.  This function returns a new array with the removed items.
 </p>
 <pre><span class="org-keyword">let</span> <span class="org-variable-name">a</span> = [1, 5, 4, 10, 2, 60, 7];
-    <span class="org-keyword">let</span> <span class="org-variable-name">b</span> = [1, 5, 4, 10, 2, 60, 7];
-    <span class="org-keyword">let</span> <span class="org-variable-name">c</span> = [1, 5, 4, 10, 2, 60, 7];
-    <span class="org-keyword">let</span> <span class="org-variable-name">start</span> = 0,
-        editCount = 0,
-        replaceValue = <span class="org-constant">null</span>;
+<span class="org-keyword">let</span> <span class="org-variable-name">b</span> = [1, 5, 4, 10, 2, 60, 7];
+<span class="org-keyword">let</span> <span class="org-variable-name">c</span> = [1, 5, 4, 10, 2, 60, 7];
+<span class="org-keyword">let</span> <span class="org-variable-name">start</span> = 0,
+    editCount = 0,
+    replaceValue = <span class="org-constant">null</span>;
 <span class="org-comment-delimiter">// </span><span class="org-comment">remove all elements from the start position</span>
-    console.log(a.splice());
-    console.log(a);
+console.log(a.splice());
+console.log(a);
 <span class="org-comment-delimiter">// </span><span class="org-comment">Insert a new item in an arbitrary position</span>
-    console.log(b.splice());
-    console.log(b);
+console.log(b.splice());
+console.log(b);
 <span class="org-comment-delimiter">// </span><span class="org-comment">Remove an item and insert other one</span>
 console.log(c.splice())
 console.log(c);</pre></li>
