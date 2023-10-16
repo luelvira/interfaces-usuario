@@ -1,0 +1,190 @@
+<!-- Generate from "2023/10/16 18:35:51" dd144bf with Emacs 27.1 (Org mode 9.3) -->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"/><meta author="Lucas Elvira Martín"/><meta description="Session for Week 7 - Functions in JavaScript"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="https://luelvira.github.io/interfaces-usuario/css/code.css"/><link rel="stylesheet" href="https://luelvira.github.io/interfaces-usuario/css/style.css"/><title>06 functions in JavaScriptUI 2023-2024</title></head><body><header class="site-header"><h1>06 functions in JavaScript</h1><p class="date">Date: October 16, 2023</p><nav class="nav-side"><ul class="nav-categories"><li><a href="https://luelvira.github.io/interfaces-usuario/">Home</a></li><li><a href="https://luelvira.github.io/interfaces-usuario/sessions.html">Theory</a></li><li><a href="https://luelvira.github.io/interfaces-usuario/practice.html">Practice</a></li></ul></nav></header><main class="main-content"><section><article class="post">
+<div id="outline-container-org960d642" class="outline-2">
+<h2 id="org960d642">Functions in JavaScript</h2>
+<div class="outline-text-2" id="text-org960d642">
+</div>
+<div id="outline-container-org86d2d8f" class="outline-3">
+<h3 id="org86d2d8f">Defining functions</h3>
+<div class="outline-text-3" id="text-org86d2d8f">
+<p>
+A function is a block of code with a set of statements assigned to a name. A
+function accepts arguments <b>by value</b> and can return one element (you can store
+many in an array or object).
+</p>
+
+<p>
+When you declare a non-primitive variable, the value assigned to it is the
+address of the memory where the object is stored. For that reason, when you pass an
+object as an argument, the function can produce side effects in the object
+</p>
+
+<pre><span class="org-keyword">let</span> <span class="org-variable-name">myList</span> = [1, 1];
+<span class="org-keyword">function</span> <span class="org-function-name">fibbonacy</span>(<span class="org-variable-name">currentSequence</span>, <span class="org-variable-name">lastPosition</span>) {
+    <span class="org-comment-delimiter">// </span><span class="org-comment">get the 2 last values</span>
+    <span class="org-keyword">let</span> [<span class="org-variable-name">p1</span>, <span class="org-variable-name">p2</span>] = myList.slice(-2);
+    <span class="org-keyword">let</span> <span class="org-variable-name">sum</span> = p1 + p2;
+    <span class="org-keyword">let</span> <span class="org-variable-name">pos</span> = myList.length;
+    <span class="org-keyword">while</span> (pos &lt;= lastPosition) {
+        myList.push(sum);
+        sum+=p2;
+        p2 = sum - p2;
+        pos++;
+    }
+}
+
+console.log(myList);
+fibbonacy(myList, 5);
+console.log(myList);
+fibbonacy(myList, 2);
+console.log(myList);</pre>
+</div>
+</div>
+
+
+<div id="outline-container-org5523b67" class="outline-3">
+<h3 id="org5523b67">Function as variables</h3>
+<div class="outline-text-3" id="text-org5523b67">
+<p>
+As with any other object, JS functions can be assigned to another variable, and the
+function name would be used in the stack traces
+</p>
+
+<pre><span class="org-comment-delimiter">//</span><span class="org-comment">This block use the stderr buffer, run in a browser</span>
+
+  <span class="org-keyword">const</span> <span class="org-variable-name">fib</span> = <span class="org-keyword">function</span> fibbonacy(<span class="org-variable-name">currentSequence</span>, <span class="org-variable-name">lastPosition</span>) {
+      console.trace(lastPosition);
+  }
+  fib(<span class="org-constant">null</span>, 6);</pre>
+</div>
+
+<div id="outline-container-org69af295" class="outline-4">
+<h4 id="org69af295">Pass a function as argument</h4>
+<div class="outline-text-4" id="text-org69af295">
+<p>
+You can pass a function as an argument. This function gets the name <code>callback
+ function</code>. This kind of operation are most common within array methods.
+</p>
+
+<p>
+In the following example, I replicate the map method from the Array class
+</p>
+
+<pre><span class="org-keyword">function</span> <span class="org-function-name">map</span>(<span class="org-variable-name">list</span>, <span class="org-variable-name">func</span>) {
+    <span class="org-keyword">let</span> <span class="org-variable-name">results</span> = <span class="org-keyword">new</span> <span class="org-type">Array</span>(list.length);
+    <span class="org-keyword">for</span> (<span class="org-keyword">let</span> <span class="org-variable-name">pos</span> <span class="org-keyword">in</span> list)
+        results[pos] = func(list[pos]);
+    <span class="org-keyword">return</span> results;
+}
+
+<span class="org-keyword">let</span> <span class="org-variable-name">myList</span> = [ 1, 1, 2, 3, 5, 8 ];
+console.log(map(myList, <span class="org-keyword">function</span> <span class="org-type">double</span>(<span class="org-variable-name">val</span>) { <span class="org-keyword">return</span> val*2}));
+console.log(myList);</pre>
+</div>
+</div>
+
+
+<div id="outline-container-org48d8b36" class="outline-4">
+<h4 id="org48d8b36">Define a function inside a function</h4>
+<div class="outline-text-4" id="text-org48d8b36">
+<p>
+Another thing you can do is declare a function inside another scope block. If
+you make this, you only will get access to the new function inside the original
+function. This was very useful before the introduction of <code>class</code> in JavaScript.
+</p>
+
+<pre><span class="org-keyword">function</span> <span class="org-function-name">outsideFunction</span>() {
+    <span class="org-keyword">let</span> <span class="org-variable-name">a</span> = 5;
+    <span class="org-keyword">function</span> <span class="org-function-name">insideFunction</span>() {
+        console.log(a); <span class="org-comment-delimiter">// </span><span class="org-comment">we have access to the external variable</span>
+        a = 9;
+    }
+    insideFunction();
+    console.log(a);
+}
+
+outsideFunction();
+insideFunction();</pre>
+</div>
+</div>
+
+<div id="outline-container-org82f68aa" class="outline-4">
+<h4 id="org82f68aa">Access to the arguments</h4>
+<div class="outline-text-4" id="text-org82f68aa">
+<p>
+You can access the function arguments in different ways. By their name or as array.
+</p>
+</div>
+
+<div id="outline-container-org286dd2d" class="outline-5">
+<h5 id="org286dd2d">By their names</h5>
+<div class="outline-text-5" id="text-org286dd2d">
+<pre><span class="org-keyword">function</span> <span class="org-function-name">reduce</span>(<span class="org-variable-name">list</span>, <span class="org-variable-name">func</span>) {
+    <span class="org-comment-delimiter">// </span><span class="org-comment">check the number of arguments that are passed to the function</span>
+    console.log(reduce.length);
+    <span class="org-keyword">if</span> (reduce.length !== 2)
+        <span class="org-keyword">return</span> console.log(<span class="org-string">"Invalid number of arguments"</span>);
+    <span class="org-keyword">if</span> (!Array.isArray(list))
+        <span class="org-keyword">return</span> console.log(<span class="org-string">"List is not an Array"</span>);
+    <span class="org-keyword">let</span> <span class="org-variable-name">acumulator</span> = list[0];
+    <span class="org-keyword">for</span> (<span class="org-keyword">let</span> <span class="org-variable-name">i</span> = 1; i &lt; list.length; ++i)
+        acumulator = func(acumulator, list[i]);
+    <span class="org-keyword">return</span> acumulator;
+}
+
+<span class="org-keyword">let</span> <span class="org-variable-name">myList</span> = [ 1, 1, 2, 3, 5, 8 ];
+<span class="org-keyword">let</span> <span class="org-variable-name">result</span> = reduce(myList, (a, b) =&gt; a + b);
+console.log(result);</pre>
+</div>
+</div>
+
+
+<div id="outline-container-org357a093" class="outline-5">
+<h5 id="org357a093">By the arguments property</h5>
+<div class="outline-text-5" id="text-org357a093">
+<pre><span class="org-keyword">function</span> <span class="org-function-name">reduce</span>(<span class="org-variable-name">list</span>, <span class="org-variable-name">func</span>) {
+    <span class="org-keyword">if</span> (reduce.length !== 2)
+        <span class="org-keyword">return</span> console.log(<span class="org-string">"Invalid number of arguments"</span>);
+    <span class="org-keyword">if</span> (!Array.isArray(reduce.<span class="org-constant">arguments</span>[0]))
+        <span class="org-keyword">return</span> console.log(<span class="org-string">"List is not an Array"</span>);
+
+    <span class="org-keyword">let</span> <span class="org-variable-name">acumulator</span> = reduce.<span class="org-constant">arguments</span>[0][0];
+    <span class="org-keyword">for</span> (<span class="org-keyword">let</span> <span class="org-variable-name">i</span> = 1; i &lt; list.length; ++i)
+        acumulator = reduce.<span class="org-constant">arguments</span>[1](acumulator, reduce.<span class="org-constant">arguments</span>[0][i]);
+    <span class="org-keyword">return</span> acumulator;
+}
+
+<span class="org-keyword">let</span> <span class="org-variable-name">myList</span> = [ 1, 1, 2, 3, 5, 8 ];
+<span class="org-keyword">let</span> <span class="org-variable-name">result</span> = reduce(myList, (a, b) =&gt; a + b);
+console.log(result);</pre>
+</div>
+</div>
+
+
+<div id="outline-container-org3821078" class="outline-5">
+<h5 id="org3821078">With the spread operator</h5>
+<div class="outline-text-5" id="text-org3821078">
+<p>
+The spread operator allows you to iterate over all elements from an array or
+string and operate with them one by one.
+</p>
+
+<pre><span class="org-keyword">function</span> <span class="org-function-name">fibbonacy</span>(<span class="org-variable-name">n2</span>, <span class="org-variable-name">n1</span>) {
+      <span class="org-keyword">return</span> n2 + n1;
+  }
+
+  <span class="org-keyword">let</span> <span class="org-variable-name">myList</span> = [ 1, 1 ]
+  console.log(fibbonacy(...myList));
+
+  <span class="org-keyword">let</span> <span class="org-variable-name">list1</span> = [ 2, 3 ];
+  <span class="org-keyword">let</span> <span class="org-variable-name">totalList</span> = [...myList, ...list1];
+  console.log(totalList);
+
+<span class="org-comment-delimiter">// </span><span class="org-comment">Create a non deep-copy</span>
+  console.log(myList === [...myList]);</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</article></section></main><footer class="footer-site"><div class="copyright"><p>© 2023-2024 Lucas Elvira Martín <br/><a href="mailto:luelvira@pa.uc3m.es">luelvira@pa.uc3m.es</a></p></div><div class="Generated"><p>Generated with Emacs 27.1 (Org mode 9.3)</p></div><div class="colabore"><a href="https://github.com/luelvira/interfaces-usuario/" target="_blank"><img src="https://luelvira.github.io/interfaces-usuario/img/github-mark-white.png" alt="Link to the github repository"/></a></div></footer></body></html>
