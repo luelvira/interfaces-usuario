@@ -44,5 +44,14 @@ SCHEDULED: [2023-10-09 Mon]
 - Strings
 - Function and callback
 - Arrays
+
+*** Week 7 - JavaScript III
+SCHEDULED: [2023-10-16 Mon]
 - Cookies and LocalStorage
+- JavaScript Object
+- JavaScript Functions
+
+ 
+*** Week 8 - Work Session
+SCHEDULED: [2023-10-23 Mon]
 

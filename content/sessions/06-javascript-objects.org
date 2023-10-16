@@ -1,0 +1,124 @@
+#+title: 06 Objects in JavaScript
+#+DATE: [2023-10-16 Mon 00:00]
+#+AUTHOR: Lucas Elvira Martín
+#+DESCRIPTION: Session for Week 6 - Inherit in JavaScript
+#+language: en
+#+exclude_tags: noexport
+
+* Table of Content                                             :noexport:TOC:
+- [[#object-prototype][Object prototype]]
+  - [[#shadowing-properties][Shadowing properties]]
+  - [[#inherit][Inherit]]
+
+* Object prototype
+
+Prototypes are the mechanism by which JS objects inherit features from one
+another. Every object in JS has a built-in property, which is called its
+prototype. The prototype is another object, so it will have another prototype.
+
+#+begin_src js
+
+  myObject = {
+          city: "Leganes",
+          greet() {
+                  console.log(`Greetings from ${this.city}`);
+          }
+  }
+  // access the prototype of the object
+
+  myObject.__proto__...
+#+end_src
+
+When you try to access a property of an object, and it doesn't have the
+property, it will search on its prototype, and so on until an undefined prototype.
+
+
+** Shadowing properties
+We can shadow a property from a prototype by overwriting it in the instance object.
+
+#+begin_src js
+    const myDate = new Date();
+    console.log(myDate.getFullYear()); // 2023
+    myDate.getFullYear = function() {
+             return `The year is ${parseInt(Math.random()*100)+1950}`
+    }
+
+  console.log(myDate.getFullYear());
+  
+#+end_src
+
+
+** Inherit
+We can inherit properties from a prototype to create a new instance of an object. When
+we use the ~Object.create~ method to create an instance, we are assigned the
+original object as the prototype property. This implies the new object will be
+/empty/, but the properties of the original object will be accessible.
+
+#+begin_src js
+
+  const myPrototype = {
+            name: "randomName",
+            age: 0,
+            pos: [0, 0]
+    }
+    const instance = Object.create(myPrototype);
+  // The object is empty
+  console.log(instance === myPrototype);
+  console.log(instance.__proto__ == myPrototype);
+
+  console.log(instance);
+  console.log(instance.name) // randomName
+  myPrototype.name = "new name";
+  instance.age = 19;
+  console.log(instance.name); //new name
+  console.log(instance);
+  console.log(myPrototype); 
+
+#+end_src
+
+
+Instead of it, you can use the ~Object.assign~ method which copies all enumerable
+properties from one or more objects to a target object (the first argument) and
+return it.
+
+#+begin_src js
+  const myPrototype = {
+            name: "randomName",
+            age: 0,
+            pos: [0, 0]
+    }
+    const instance = Object.assign({}, myPrototype);
+  // The object is empty
+  console.log(instance === myPrototype);
+  console.log(instance.__proto__ == myPrototype);
+
+  console.log(instance);
+  myPrototype.name = "new name";
+  instance.age = 19;
+  console.log(instance);
+  console.log(myPrototype); 
+
+
+#+end_src
+
+If we want to replicate the ~Object.create~ method with the ~Object.assign~ we
+can do it because all Objects in JS have the prototype property. 
+
+#+begin_src js
+const myPrototype = {
+	name: "randomName",
+	age: 0,
+	pos: [0, 0]
+}
+const instance = {};
+
+Object.assign(instance.__proto__, myPrototype);
+
+  console.log(instance);
+  myPrototype.name = "new name";
+  instance.age = 19;
+  console.log(instance);
+  console.log(instance.name);
+  console.log(myPrototype); 
+#+end_src
+

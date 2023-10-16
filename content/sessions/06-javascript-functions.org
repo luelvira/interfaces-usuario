@@ -1,0 +1,177 @@
+#+TITLE: 06 functions in JavaScript
+#+DATE: [2023-10-16 Mon 00:01]
+#+AUTHOR: Lucas Elvira Martín
+#+DESCRIPTION: Session for Week 7 - Functions in JavaScript
+#+language: en
+#+exclude_tags: noexport
+
+* Table of Content                                             :noexport:TOC:
+- [[#functions-in-javascript][Functions in JavaScript]]
+  - [[#defining-functions][Defining functions]]
+  - [[#function-as-variables][Function as variables]]
+
+* Functions in JavaScript
+
+** Defining functions
+
+A function is a block of code with a set of statements assigned to a name. A
+function accepts arguments *by value* and can return one element (you can store
+many in an array or object).
+
+When you declare a non-primitive variable, the value assigned to it is the
+address of the memory where the object is stored. For that reason, when you pass an
+object as an argument, the function can produce side effects in the object
+
+#+begin_src js :results output
+
+  let myList = [1, 1];
+  function fibbonacy(currentSequence, lastPosition) {
+      // get the 2 last values
+      let [p1, p2] = myList.slice(-2);
+      let sum = p1 + p2;
+      let pos = myList.length;
+      while (pos <= lastPosition) {
+          myList.push(sum);
+          sum+=p2;
+          p2 = sum - p2;
+          pos++;
+      }
+  }
+
+  console.log(myList);
+  fibbonacy(myList, 5);
+  console.log(myList);
+  fibbonacy(myList, 2);
+  console.log(myList);
+#+end_src
+
+
+** Function as variables
+As with any other object, JS functions can be assigned to another variable, and the
+function name would be used in the stack traces
+
+#+begin_src js :results output
+//This block use the stderr buffer, run in a browser
+
+  const fib = function fibbonacy(currentSequence, lastPosition) {
+      console.trace(lastPosition);
+  }
+  fib(null, 6);
+#+end_src
+
+*** Pass a function as argument
+
+You can pass a function as an argument. This function gets the name ~callback
+ function~. This kind of operation are most common within array methods.
+
+In the following example, I replicate the map method from the Array class
+
+#+begin_src js :results output
+
+  function map(list, func) {
+      let results = new Array(list.length);
+      for (let pos in list)
+          results[pos] = func(list[pos]);
+      return results;
+  }
+
+  let myList = [ 1, 1, 2, 3, 5, 8 ];
+  console.log(map(myList, function double(val) { return val*2}));
+  console.log(myList);
+
+#+end_src
+
+
+*** Define a function inside a function
+
+Another thing you can do is declare a function inside another scope block. If
+you make this, you only will get access to the new function inside the original
+function. This was very useful before the introduction of ~class~ in JavaScript.
+
+#+begin_src js
+
+  function outsideFunction() {
+      let a = 5;
+      function insideFunction() {
+          console.log(a); // we have access to the external variable
+          a = 9;
+      }
+      insideFunction();
+      console.log(a);
+  }
+
+  outsideFunction();
+  insideFunction();
+
+#+end_src
+
+*** Access to the arguments
+You can access the function arguments in different ways. By their name or as array.
+
+**** By their names
+#+begin_src js
+
+  function reduce(list, func) {
+      // check the number of arguments that are passed to the function
+      console.log(reduce.length);
+      if (reduce.length !== 2)
+          return console.log("Invalid number of arguments");
+      if (!Array.isArray(list))
+          return console.log("List is not an Array");
+      let acumulator = list[0];
+      for (let i = 1; i < list.length; ++i)
+          acumulator = func(acumulator, list[i]);
+      return acumulator;
+  }
+
+  let myList = [ 1, 1, 2, 3, 5, 8 ];
+  let result = reduce(myList, (a, b) => a + b);
+  console.log(result);
+
+#+end_src
+
+
+**** By the arguments property
+
+#+begin_src js
+  function reduce(list, func) {
+      if (reduce.length !== 2)
+          return console.log("Invalid number of arguments");
+      if (!Array.isArray(reduce.arguments[0]))
+          return console.log("List is not an Array");
+      
+      let acumulator = reduce.arguments[0][0];
+      for (let i = 1; i < list.length; ++i)
+          acumulator = reduce.arguments[1](acumulator, reduce.arguments[0][i]);
+      return acumulator;
+  }
+
+  let myList = [ 1, 1, 2, 3, 5, 8 ];
+  let result = reduce(myList, (a, b) => a + b);
+  console.log(result);
+
+#+end_src
+
+
+**** With the spread operator
+
+The spread operator allows you to iterate over all elements from an array or
+string and operate with them one by one.
+
+#+begin_src js :result output
+  function fibbonacy(n2, n1) {
+      return n2 + n1;
+  }
+
+  let myList = [ 1, 1 ]
+  console.log(fibbonacy(...myList));
+
+  let list1 = [ 2, 3 ];
+  let totalList = [...myList, ...list1];
+  console.log(totalList);
+
+// Create a non deep-copy
+  console.log(myList === [...myList]);
+
+#+end_src
+
