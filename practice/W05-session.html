@@ -1,13 +1,13 @@
-<!-- Generate from "2023/10/19 18:46:52" 52b9ad4 with Emacs 27.1 (Org mode 9.3) -->
+<!-- Generate from "2023/10/19 18:46:52" 9b15ed7 with Emacs 27.1 (Org mode 9.3) -->
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"/><meta author="Lucas Elvira Martín"/><meta description=""/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="https://luelvira.github.io/interfaces-usuario/css/code.css"/><link rel="stylesheet" href="https://luelvira.github.io/interfaces-usuario/css/style.css"/><title>Session 5UI 2023-2024</title></head><body><header class="site-header"><h1>Session 5</h1><p class="date">Date: October  9, 2023</p><nav class="nav-side"><ul class="nav-categories"><li><a href="https://luelvira.github.io/interfaces-usuario/">Home</a></li><li><a href="https://luelvira.github.io/interfaces-usuario/sessions.html">Theory</a></li><li><a href="https://luelvira.github.io/interfaces-usuario/practice.html">Practice</a></li></ul></nav></header><main class="main-content"><section><article class="post"><p>
 :HEADER-ARGS:html: :tangle w05/index.html
 :HEADER-ARGS:css: :tangle w05/css/style.css
 :HEADER-ARGS:js: :tangle w05/js/main.js
 </p>
 
-<div id="outline-container-org1ef42a3" class="outline-2">
-<h2 id="org1ef42a3">Prepare the environment</h2>
-<div class="outline-text-2" id="text-org1ef42a3">
+<div id="outline-container-org69f44b4" class="outline-2">
+<h2 id="org69f44b4">Prepare the environment</h2>
+<div class="outline-text-2" id="text-org69f44b4">
 <pre>mkdir -p w05/{css,js,media}
 touch w05/index.html
 touch w05/css/style.css
@@ -15,9 +15,9 @@ touch w05/js/main.js</pre>
 </div>
 </div>
 
-<div id="outline-container-orga9fd7b2" class="outline-2">
-<h2 id="orga9fd7b2">Create the HTML template</h2>
-<div class="outline-text-2" id="text-orga9fd7b2">
+<div id="outline-container-org3c0417c" class="outline-2">
+<h2 id="org3c0417c">Create the HTML template</h2>
+<div class="outline-text-2" id="text-org3c0417c">
 <pre>&lt;<span class="org-keyword">!DOCTYPE</span> html&gt;
 &lt;<span class="org-function-name">html</span> <span class="org-variable-name">lang</span>=<span class="org-string">"en"</span>&gt;
   &lt;<span class="org-function-name">head</span>&gt;
@@ -29,9 +29,9 @@ touch w05/js/main.js</pre>
   &lt;<span class="org-function-name">body</span>&gt;</pre>
 </div>
 
-<div id="outline-container-org1a07987" class="outline-3">
-<h3 id="org1a07987">The form structure</h3>
-<div class="outline-text-3" id="text-org1a07987">
+<div id="outline-container-orgb9399c6" class="outline-3">
+<h3 id="orgb9399c6">The form structure</h3>
+<div class="outline-text-3" id="text-orgb9399c6">
 <pre>&lt;<span class="org-function-name">main</span>&gt;
   &lt;<span class="org-function-name">form</span> <span class="org-variable-name">action</span>=<span class="org-string">"login"</span> <span class="org-variable-name">method</span>=<span class="org-string">"GET"</span>&gt;
     &lt;<span class="org-function-name">div</span> <span class="org-variable-name">class</span>=<span class="org-string">"cont"</span>&gt;
@@ -55,9 +55,9 @@ touch w05/js/main.js</pre>
 </div>
 </div>
 
-<div id="outline-container-org392fc54" class="outline-3">
-<h3 id="org392fc54">EOF</h3>
-<div class="outline-text-3" id="text-org392fc54">
+<div id="outline-container-org628d42e" class="outline-3">
+<h3 id="org628d42e">EOF</h3>
+<div class="outline-text-3" id="text-org628d42e">
 <pre>&lt;<span class="org-function-name">script</span> <span class="org-variable-name">type</span>=<span class="org-string">"text/javascript"</span> <span class="org-variable-name">src</span>=<span class="org-string">"js/main.js"</span>&gt;&lt;/<span class="org-function-name">script</span>&gt;
 &lt;/<span class="org-function-name">body</span>&gt;
 &lt;/<span class="org-function-name">html</span>&gt;</pre>
@@ -65,9 +65,9 @@ touch w05/js/main.js</pre>
 </div>
 </div>
 
-<div id="outline-container-orgf4d2d3d" class="outline-2">
-<h2 id="orgf4d2d3d">Give some style to the form</h2>
-<div class="outline-text-2" id="text-orgf4d2d3d">
+<div id="outline-container-org6941af7" class="outline-2">
+<h2 id="org6941af7">Give some style to the form</h2>
+<div class="outline-text-2" id="text-org6941af7">
 <pre><span class="org-css-selector">main </span>{
       <span class="org-css-property">max-width</span>: 1080px;
       <span class="org-css-property">width</span>: 80%;
@@ -107,13 +107,13 @@ touch w05/js/main.js</pre>
 </div>
 </div>
 
-<div id="outline-container-org932c6aa" class="outline-2">
-<h2 id="org932c6aa">Read the data from the form</h2>
-<div class="outline-text-2" id="text-org932c6aa">
+<div id="outline-container-org7dbb457" class="outline-2">
+<h2 id="org7dbb457">Read the data from the form</h2>
+<div class="outline-text-2" id="text-org7dbb457">
 </div>
-<div id="outline-container-orge78674e" class="outline-3">
-<h3 id="orge78674e">Catch the events</h3>
-<div class="outline-text-3" id="text-orge78674e">
+<div id="outline-container-org8f069e0" class="outline-3">
+<h3 id="org8f069e0">Catch the events</h3>
+<div class="outline-text-3" id="text-org8f069e0">
 <pre><span class="org-keyword">let</span> <span class="org-variable-name">form</span> = document.getElementsByTagName(<span class="org-string">"form"</span>)[0];
 form.addEventListener(<span class="org-string">"submit"</span>, <span class="org-keyword">function</span>(<span class="org-variable-name">e</span>) {
     <span class="org-comment-delimiter">// </span><span class="org-comment">check which was the triger</span>

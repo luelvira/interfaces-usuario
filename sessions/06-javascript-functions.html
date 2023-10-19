@@ -1,12 +1,12 @@
-<!-- Generate from "2023/10/19 18:46:52" 52b9ad4 with Emacs 27.1 (Org mode 9.3) -->
+<!-- Generate from "2023/10/19 18:46:52" 9b15ed7 with Emacs 27.1 (Org mode 9.3) -->
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"/><meta author="Lucas Elvira Martín"/><meta description="Session for Week 7 - Functions in JavaScript"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="https://luelvira.github.io/interfaces-usuario/css/code.css"/><link rel="stylesheet" href="https://luelvira.github.io/interfaces-usuario/css/style.css"/><title>06 functions in JavaScriptUI 2023-2024</title></head><body><header class="site-header"><h1>06 functions in JavaScript</h1><p class="date">Date: October 16, 2023</p><nav class="nav-side"><ul class="nav-categories"><li><a href="https://luelvira.github.io/interfaces-usuario/">Home</a></li><li><a href="https://luelvira.github.io/interfaces-usuario/sessions.html">Theory</a></li><li><a href="https://luelvira.github.io/interfaces-usuario/practice.html">Practice</a></li></ul></nav></header><main class="main-content"><section><article class="post">
-<div id="outline-container-org1db32fe" class="outline-2">
-<h2 id="org1db32fe">Functions in JavaScript</h2>
-<div class="outline-text-2" id="text-org1db32fe">
+<div id="outline-container-org4f87e00" class="outline-2">
+<h2 id="org4f87e00">Functions in JavaScript</h2>
+<div class="outline-text-2" id="text-org4f87e00">
 </div>
-<div id="outline-container-orgb7a692f" class="outline-3">
-<h3 id="orgb7a692f">Defining functions</h3>
-<div class="outline-text-3" id="text-orgb7a692f">
+<div id="outline-container-org9f8f272" class="outline-3">
+<h3 id="org9f8f272">Defining functions</h3>
+<div class="outline-text-3" id="text-org9f8f272">
 <p>
 A function is a block of code with a set of statements assigned to a name. A
 function accepts arguments <b>by value</b> and can return one element (you can store
@@ -42,9 +42,9 @@ console.log(myList);</pre>
 </div>
 
 
-<div id="outline-container-orgef89a4b" class="outline-3">
-<h3 id="orgef89a4b">Function as variables</h3>
-<div class="outline-text-3" id="text-orgef89a4b">
+<div id="outline-container-org3b6fbda" class="outline-3">
+<h3 id="org3b6fbda">Function as variables</h3>
+<div class="outline-text-3" id="text-org3b6fbda">
 <p>
 As with any other object, JS functions can be assigned to another variable, and the
 function name would be used in the stack traces
@@ -58,9 +58,9 @@ function name would be used in the stack traces
   fib(<span class="org-constant">null</span>, 6);</pre>
 </div>
 
-<div id="outline-container-orge48a786" class="outline-4">
-<h4 id="orge48a786">Pass a function as argument</h4>
-<div class="outline-text-4" id="text-orge48a786">
+<div id="outline-container-org838f45b" class="outline-4">
+<h4 id="org838f45b">Pass a function as argument</h4>
+<div class="outline-text-4" id="text-org838f45b">
 <p>
 You can pass a function as an argument. This function gets the name <code>callback
  function</code>. This kind of operation are most common within array methods.
@@ -84,9 +84,9 @@ console.log(myList);</pre>
 </div>
 
 
-<div id="outline-container-org4ec8036" class="outline-4">
-<h4 id="org4ec8036">Define a function inside a function</h4>
-<div class="outline-text-4" id="text-org4ec8036">
+<div id="outline-container-orge07fb82" class="outline-4">
+<h4 id="orge07fb82">Define a function inside a function</h4>
+<div class="outline-text-4" id="text-orge07fb82">
 <p>
 Another thing you can do is declare a function inside another scope block. If
 you make this, you only will get access to the new function inside the original
@@ -108,17 +108,17 @@ insideFunction();</pre>
 </div>
 </div>
 
-<div id="outline-container-orgfe616a2" class="outline-4">
-<h4 id="orgfe616a2">Access to the arguments</h4>
-<div class="outline-text-4" id="text-orgfe616a2">
+<div id="outline-container-org8cfcba8" class="outline-4">
+<h4 id="org8cfcba8">Access to the arguments</h4>
+<div class="outline-text-4" id="text-org8cfcba8">
 <p>
 You can access the function arguments in different ways. By their name or as array.
 </p>
 </div>
 
-<div id="outline-container-orgf616298" class="outline-5">
-<h5 id="orgf616298">By their names</h5>
-<div class="outline-text-5" id="text-orgf616298">
+<div id="outline-container-orga15e296" class="outline-5">
+<h5 id="orga15e296">By their names</h5>
+<div class="outline-text-5" id="text-orga15e296">
 <pre><span class="org-keyword">function</span> <span class="org-function-name">reduce</span>(<span class="org-variable-name">list</span>, <span class="org-variable-name">func</span>) {
     <span class="org-comment-delimiter">// </span><span class="org-comment">check the number of arguments that are passed to the function</span>
     console.log(reduce.length);
@@ -139,9 +139,9 @@ console.log(result);</pre>
 </div>
 
 
-<div id="outline-container-org8b60d3b" class="outline-5">
-<h5 id="org8b60d3b">By the arguments property</h5>
-<div class="outline-text-5" id="text-org8b60d3b">
+<div id="outline-container-org5d516fb" class="outline-5">
+<h5 id="org5d516fb">By the arguments property</h5>
+<div class="outline-text-5" id="text-org5d516fb">
 <pre><span class="org-keyword">function</span> <span class="org-function-name">reduce</span>(<span class="org-variable-name">list</span>, <span class="org-variable-name">func</span>) {
     <span class="org-keyword">if</span> (reduce.length !== 2)
         <span class="org-keyword">return</span> console.log(<span class="org-string">"Invalid number of arguments"</span>);
@@ -161,9 +161,9 @@ console.log(result);</pre>
 </div>
 
 
-<div id="outline-container-org9e81528" class="outline-5">
-<h5 id="org9e81528">With the spread operator</h5>
-<div class="outline-text-5" id="text-org9e81528">
+<div id="outline-container-orga13a765" class="outline-5">
+<h5 id="orga13a765">With the spread operator</h5>
+<div class="outline-text-5" id="text-orga13a765">
 <p>
 The spread operator allows you to iterate over all elements from an array or
 string and operate with them one by one.
