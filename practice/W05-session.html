@@ -1,0 +1,134 @@
+<!-- Generate from "2023/10/19 18:46:52" 52b9ad4 with Emacs 27.1 (Org mode 9.3) -->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"/><meta author="Lucas Elvira Martín"/><meta description=""/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="https://luelvira.github.io/interfaces-usuario/css/code.css"/><link rel="stylesheet" href="https://luelvira.github.io/interfaces-usuario/css/style.css"/><title>Session 5UI 2023-2024</title></head><body><header class="site-header"><h1>Session 5</h1><p class="date">Date: October  9, 2023</p><nav class="nav-side"><ul class="nav-categories"><li><a href="https://luelvira.github.io/interfaces-usuario/">Home</a></li><li><a href="https://luelvira.github.io/interfaces-usuario/sessions.html">Theory</a></li><li><a href="https://luelvira.github.io/interfaces-usuario/practice.html">Practice</a></li></ul></nav></header><main class="main-content"><section><article class="post"><p>
+:HEADER-ARGS:html: :tangle w05/index.html
+:HEADER-ARGS:css: :tangle w05/css/style.css
+:HEADER-ARGS:js: :tangle w05/js/main.js
+</p>
+
+<div id="outline-container-org1ef42a3" class="outline-2">
+<h2 id="org1ef42a3">Prepare the environment</h2>
+<div class="outline-text-2" id="text-org1ef42a3">
+<pre>mkdir -p w05/{css,js,media}
+touch w05/index.html
+touch w05/css/style.css
+touch w05/js/main.js</pre>
+</div>
+</div>
+
+<div id="outline-container-orga9fd7b2" class="outline-2">
+<h2 id="orga9fd7b2">Create the HTML template</h2>
+<div class="outline-text-2" id="text-orga9fd7b2">
+<pre>&lt;<span class="org-keyword">!DOCTYPE</span> html&gt;
+&lt;<span class="org-function-name">html</span> <span class="org-variable-name">lang</span>=<span class="org-string">"en"</span>&gt;
+  &lt;<span class="org-function-name">head</span>&gt;
+    &lt;<span class="org-function-name">meta</span> <span class="org-variable-name">charset</span>=<span class="org-string">"UTF-8"</span>/&gt;
+    &lt;<span class="org-function-name">title</span>&gt;<span class="org-underline"><span class="org-bold">Document</span></span>&lt;/<span class="org-function-name">title</span>&gt;
+    &lt;<span class="org-function-name">meta</span> <span class="org-variable-name">name</span>=<span class="org-string">"viewport"</span> <span class="org-variable-name">content</span>=<span class="org-string">"width=device-width, initial-scale=1.0"</span>&gt;
+    &lt;<span class="org-function-name">link</span> <span class="org-variable-name">rel</span>=<span class="org-string">"stylesheet"</span> <span class="org-variable-name">href</span>=<span class="org-string">"css/style.css"</span> <span class="org-variable-name">type</span>=<span class="org-string">"text/css"</span> <span class="org-variable-name">media</span>=<span class="org-string">"screen"</span>&gt;
+  &lt;/<span class="org-function-name">head</span>&gt;
+  &lt;<span class="org-function-name">body</span>&gt;</pre>
+</div>
+
+<div id="outline-container-org1a07987" class="outline-3">
+<h3 id="org1a07987">The form structure</h3>
+<div class="outline-text-3" id="text-org1a07987">
+<pre>&lt;<span class="org-function-name">main</span>&gt;
+  &lt;<span class="org-function-name">form</span> <span class="org-variable-name">action</span>=<span class="org-string">"login"</span> <span class="org-variable-name">method</span>=<span class="org-string">"GET"</span>&gt;
+    &lt;<span class="org-function-name">div</span> <span class="org-variable-name">class</span>=<span class="org-string">"cont"</span>&gt;
+      &lt;<span class="org-function-name">label</span> <span class="org-variable-name">for</span>=<span class="org-string">"field1"</span>&gt;Field 1&lt;/<span class="org-function-name">label</span>&gt;
+      &lt;<span class="org-function-name">input</span> <span class="org-variable-name">id</span>=<span class="org-string">"field1"</span> <span class="org-variable-name">name</span>=<span class="org-string">"field1"</span> <span class="org-variable-name">type</span>=<span class="org-string">"text"</span> <span class="org-variable-name">value</span>=<span class="org-string">""</span>&gt;
+    &lt;/<span class="org-function-name">div</span>&gt;
+    &lt;<span class="org-function-name">div</span> <span class="org-variable-name">class</span>=<span class="org-string">"cont"</span>&gt;
+      &lt;<span class="org-function-name">label</span> <span class="org-variable-name">for</span>=<span class="org-string">"field2"</span>&gt;Field 2&lt;/<span class="org-function-name">label</span>&gt;
+      &lt;<span class="org-function-name">input</span> <span class="org-variable-name">id</span>=<span class="org-string">"field2"</span> <span class="org-variable-name">name</span>=<span class="org-string">"field2"</span> <span class="org-variable-name">type</span>=<span class="org-string">"text"</span> <span class="org-variable-name">value</span>=<span class="org-string">""</span>&gt;
+    &lt;/<span class="org-function-name">div</span>&gt;
+    &lt;<span class="org-function-name">div</span> <span class="org-variable-name">class</span>=<span class="org-string">"cont"</span>&gt;
+      &lt;<span class="org-function-name">label</span> <span class="org-variable-name">for</span>=<span class="org-string">"field3"</span>&gt;Field 3&lt;/<span class="org-function-name">label</span>&gt;
+      &lt;<span class="org-function-name">input</span> <span class="org-variable-name">id</span>=<span class="org-string">"field3"</span> <span class="org-variable-name">name</span>=<span class="org-string">"field3"</span> <span class="org-variable-name">type</span>=<span class="org-string">"text"</span> <span class="org-variable-name">value</span>=<span class="org-string">""</span>&gt;
+    &lt;/<span class="org-function-name">div</span>&gt;
+    &lt;<span class="org-function-name">div</span> <span class="org-variable-name">class</span>=<span class="org-string">"cont"</span>&gt;
+      &lt;<span class="org-function-name">input</span> <span class="org-variable-name">class</span>=<span class="org-string">"button"</span> <span class="org-variable-name">name</span>=<span class="org-string">""</span> <span class="org-variable-name">type</span>=<span class="org-string">"submit"</span> <span class="org-variable-name">value</span>=<span class="org-string">"Enviar"</span>&gt;
+      &lt;<span class="org-function-name">input</span> <span class="org-variable-name">class</span>=<span class="org-string">"button"</span> <span class="org-variable-name">name</span>=<span class="org-string">""</span> <span class="org-variable-name">type</span>=<span class="org-string">"reset"</span> <span class="org-variable-name">value</span>=<span class="org-string">"Cancelar"</span>&gt;
+    &lt;/<span class="org-function-name">div</span>&gt;
+  &lt;/<span class="org-function-name">form</span>&gt;
+&lt;/<span class="org-function-name">main</span>&gt;</pre>
+</div>
+</div>
+
+<div id="outline-container-org392fc54" class="outline-3">
+<h3 id="org392fc54">EOF</h3>
+<div class="outline-text-3" id="text-org392fc54">
+<pre>&lt;<span class="org-function-name">script</span> <span class="org-variable-name">type</span>=<span class="org-string">"text/javascript"</span> <span class="org-variable-name">src</span>=<span class="org-string">"js/main.js"</span>&gt;&lt;/<span class="org-function-name">script</span>&gt;
+&lt;/<span class="org-function-name">body</span>&gt;
+&lt;/<span class="org-function-name">html</span>&gt;</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf4d2d3d" class="outline-2">
+<h2 id="orgf4d2d3d">Give some style to the form</h2>
+<div class="outline-text-2" id="text-orgf4d2d3d">
+<pre><span class="org-css-selector">main </span>{
+      <span class="org-css-property">max-width</span>: 1080px;
+      <span class="org-css-property">width</span>: 80%;
+      <span class="org-css-property">padding</span>: 2vw;
+      <span class="org-css-property">margin</span>: auto;
+      <span class="org-css-property">box-shadow</span>: 2px 2px 7px;
+      <span class="org-css-selector">form </span>{
+          <span class="org-css-property">display</span>: flex;
+          <span class="org-css-property">justify-content</span>: center;
+          <span class="org-css-property">flex-direction</span>: column;
+          <span class="org-css-property">align-items</span>: center;
+          <span class="org-css-selector">.cont </span>{
+              <span class="org-css-property">margin</span>: 2% 0%;
+              <span class="org-css-property">display</span>: flex;
+              <span class="org-css-property">flex-direction</span>: row;
+              <span class="org-css-property">gap</span>: 2%;
+              <span class="org-css-property">width</span>: 35%;
+              <span class="org-css-selector">input[type=</span><span class="org-string">"text"</span><span class="org-css-selector">] </span>{
+                  <span class="org-css-property">border</span>: none;
+                  <span class="org-css-property">outline</span>: none;
+                  <span class="org-css-selector">&amp;:focus </span>{
+                      <span class="org-css-property">border-bottom</span>: 2px solid <span class="custom">blue</span>;
+                  }
+              }
+
+          }
+      }
+  }
+
+  <span class="org-css-selector">div:last-child </span>{
+      <span class="org-css-property">display</span>: flex;
+
+      <span class="org-css-selector">.button </span>{
+
+      }
+}</pre>
+</div>
+</div>
+
+<div id="outline-container-org932c6aa" class="outline-2">
+<h2 id="org932c6aa">Read the data from the form</h2>
+<div class="outline-text-2" id="text-org932c6aa">
+</div>
+<div id="outline-container-orge78674e" class="outline-3">
+<h3 id="orge78674e">Catch the events</h3>
+<div class="outline-text-3" id="text-orge78674e">
+<pre><span class="org-keyword">let</span> <span class="org-variable-name">form</span> = document.getElementsByTagName(<span class="org-string">"form"</span>)[0];
+form.addEventListener(<span class="org-string">"submit"</span>, <span class="org-keyword">function</span>(<span class="org-variable-name">e</span>) {
+    <span class="org-comment-delimiter">// </span><span class="org-comment">check which was the triger</span>
+    <span class="org-keyword">let</span> <span class="org-variable-name">self</span> = e.currentTarget;
+    console.log(self);
+    <span class="org-comment-delimiter">// </span><span class="org-comment">get the elements value</span>
+    <span class="org-keyword">let</span> <span class="org-variable-name">keys</span> = [1, 2, 3].map(n =&gt; <span class="org-string">"field"</span> + n);
+    console.log(keys);
+    <span class="org-keyword">let</span> <span class="org-variable-name">values</span> = keys.map(n =&gt; self[n].value);
+    console.log(values);
+
+    e.preventDefault();
+    e.stopPropagation();
+});</pre>
+</div>
+</div>
+</div>
+</article></section></main><footer class="footer-site"><div class="copyright"><p>© 2023-2024 Lucas Elvira Martín <br/><a href="mailto:luelvira@pa.uc3m.es">luelvira@pa.uc3m.es</a></p></div><div class="Generated"><p>Generated with Emacs 27.1 (Org mode 9.3)</p></div><div class="colabore"><a href="https://github.com/luelvira/interfaces-usuario/" target="_blank"><img src="https://luelvira.github.io/interfaces-usuario/img/github-mark-white.png" alt="Link to the github repository"/></a></div></footer></body></html>
