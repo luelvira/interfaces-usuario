@@ -1,0 +1,140 @@
+:PROPERTIES:
+:HEADER-ARGS:html: :tangle w05/index.html
+:HEADER-ARGS:css: :tangle w05/css/style.css
+:HEADER-ARGS:js: :tangle w05/js/main.js
+:END:
+#+TITLE: Session 5
+#+DATE: [2023-10-09 Mon]
+#+exclude_tags: noexport
+
+* Table of content                                             :noexport:TOC:
+- [[#prepare-the-environment][Prepare the environment]]
+- [[#create-the-html-template][Create the HTML template]]
+  - [[#the-form-structure][The form structure]]
+  - [[#eof][EOF]]
+- [[#give-some-style-to-the-form][Give some style to the form]]
+- [[#read-the-data-from-the-form][Read the data from the form]]
+  - [[#catch-the-events][Catch the events]]
+
+* Prepare the environment
+
+#+begin_src shell
+  mkdir -p w05/{css,js,media}
+  touch w05/index.html
+  touch w05/css/style.css
+  touch w05/js/main.js
+#+end_src
+
+#+RESULTS:
+
+* Create the HTML template
+
+#+begin_src html
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8"/>
+      <title>Document</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="css/style.css" type="text/css" media="screen">
+    </head>
+    <body>
+#+end_src
+
+** The form structure
+
+#+begin_src html
+  <main>
+    <form action="login" method="GET">
+      <div class="cont">
+        <label for="field1">Field 1</label>
+        <input id="field1" name="field1" type="text" value="">
+      </div>
+      <div class="cont">
+        <label for="field2">Field 2</label>
+        <input id="field2" name="field2" type="text" value="">
+      </div>
+      <div class="cont">
+        <label for="field3">Field 3</label>
+        <input id="field3" name="field3" type="text" value="">
+      </div>
+      <div class="cont">
+        <input class="button" name="" type="submit" value="Enviar">
+        <input class="button" name="" type="reset" value="Cancelar">
+      </div>
+    </form>
+  </main>
+#+end_src
+
+** EOF
+
+#+begin_src html
+  <script type="text/javascript" src="js/main.js"></script>
+  </body>
+  </html>
+#+end_src
+
+* Give some style to the form
+
+#+begin_src css
+
+    main {
+        max-width: 1080px;
+        width: 80%;
+        padding: 2vw;
+        margin: auto;
+        box-shadow: 2px 2px 7px;
+        form {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            .cont {
+                margin: 2% 0%;
+                display: flex;
+                flex-direction: row;
+                gap: 2%;
+                width: 35%;
+                input[type="text"] {
+                    border: none;
+                    outline: none;
+                    &:focus {
+                        border-bottom: 2px solid blue;
+                    }
+                }
+
+            }
+        }
+    }
+
+    div:last-child {
+        display: flex;
+        
+        .button {
+
+        }
+  }
+
+#+end_src
+
+* Read the data from the form
+
+** Catch the events
+
+#+begin_src js
+  let form = document.getElementsByTagName("form")[0];
+  form.addEventListener("submit", function(e) {
+      // check which was the triger
+      let self = e.currentTarget;
+      console.log(self);
+      // get the elements value
+      let keys = [1, 2, 3].map(n => "field" + n);
+      console.log(keys);
+      let values = keys.map(n => self[n].value);
+      console.log(values);
+
+      e.preventDefault();
+      e.stopPropagation();
+  });
+
+#+end_src

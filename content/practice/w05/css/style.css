@@ -1,0 +1,36 @@
+main {
+      max-width: 1080px;
+      width: 80%;
+      padding: 2vw;
+      margin: auto;
+      box-shadow: 2px 2px 7px;
+      form {
+          display: flex;
+          justify-content: center;
+          flex-direction: column;
+          align-items: center;
+          .cont {
+              margin: 2% 0%;
+              display: flex;
+              flex-direction: row;
+              gap: 2%;
+              width: 35%;
+              input[type="text"] {
+                  border: none;
+                  outline: none;
+                  &:focus {
+                      border-bottom: 2px solid blue;
+                  }
+              }
+
+          }
+      }
+  }
+
+  div:last-child {
+      display: flex;
+
+      .button {
+
+      }
+}

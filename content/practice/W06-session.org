@@ -1,0 +1,233 @@
+:PROPERTIES:
+:HEADER-ARGS:html: :tangle w06/index.html
+:HEADER-ARGS:css: :tangle w06/css/style.css
+:HEADER-ARGS:js: :tangle w06/js/main.js
+:END:
+#+TITLE: Session 6 and 7
+#+DATE: [2023-10-16 Mon]
+#+exclude_tags: noexport
+* Table of content                                             :noexport:TOC:
+- [[#prepare-the-environment][Prepare the environment]]
+- [[#create-the-template][Create the template]]
+  - [[#insert-the-javascript-file][Insert the javascript file]]
+- [[#working-with-the-storage-of-the-browser][Working with the storage of the browser]]
+  - [[#localstoragesessionstorage-vs-cookies][localStorage/sessionStorage vs Cookies]]
+
+* Prepare the environment
+
+As always, we create all the essential files
+#+begin_src shell
+  mkdir -p w06/{css,js}
+  touch w06/index.html
+  touch w06/js/main.js
+#+end_src
+
+#+RESULTS:
+
+* Create the template
+
+#+begin_src html
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8"/>
+      <title>Document</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="css/style.css" type="text/css" media="screen">
+    </head>
+    <body>
+#+end_src
+
+** Insert the javascript file
+
+We add the js file at the end of the body in order of get available all the DOM
+elements
+
+#+begin_src html
+
+  <script src="js/main.js"></script>
+  </body>
+  </html>
+#+end_src
+
+* Working with the storage of the browser
+
+** localStorage/sessionStorage vs Cookies
+
+Both are data that the user browser stores for some time so we can access them
+in other sessions. The data are shared in all the pages within the same domain
+
+*** localStorage/sessionStorage
+
+The localStorage is a data structure on the browser that allows us to store some
+text as key-value. This structure offers the following methods
+
+- ~localStorage.getItem(key)~: If the key exists, return the value
+  associated. Otherwise, return ~undefined~.
+- ~localStorage.setItem(key, value)~: Append a new key with the value
+  associated. If this key, already exists, replace it.
+- ~localStorage.removeItem(key)~: This method removes the item associated with the key passed.
+- ~localStorage.clear()~: Remove all the values stored
+
+*** Cookies
+The cookies are a string stored in the browser. To access it, we use the
+~document.cookie~ property. This string is stored as a key-value, separated by a
+~; ~ string. This separator works also for the properties of the cookies.
+
+Example from [[https://www.w3schools.com/js/js_cookies.asp][w3school js cookies]]
+#+begin_example js
+document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+#+end_example
+
+*** Implement the API of the localStorage for the cookies
+
+We have viewed two approaches to create an Object available to do it. (one
+different in each group). With the Object notation, we saw how to create an
+Object, define its properties, and access them. This method is more clean if we
+only need an instance, like in this case. However, the function notation allows
+us to describe the process more clearly.
+
+
+**** Function process
+In this example, we use a function as a constructor. To do it, when we call to
+it, we have to add the ~new~ keyword before the function name.
+
+#+begin_src js
+  function MyLocalStorage() {
+      this.myStorage = {};
+  };
+  let myLocalStorage = new MyLocalStorage();
+#+end_src
+
+Now we add the four methods with the prototype syntax. The first method we add
+is the get item. This method checks if it has the key stored in an auxiliary
+data structure. Otherwise, update this structure with the cookies and check
+again if the key exists. If not, return the default value.
+
+***** Get Item
+The process to convert the string into and key-value hashmap is the following:
+1. First, convert the string into an Array with the split method
+2. Second, convert the Array into a matrix with dimensions Nx2. This matrix has
+   the key value tuple in each row.
+3. Finally, Convert the matrix into an Object with the ~Object.fromEntries~ method
+
+
+#+begin_src js
+  MyLocalStorage.prototype.getItem = function(key, defaultValue) {
+      // Check if we have the item
+      if (this.myStorage[key]) return this.myStorage[key];
+      this.myStorage = Object.fromEntries(
+          document.cookie.split("; ") // return the first array
+              .map(cookie => cookie.split("=")) // convert the array into the matrix
+          );
+      return this.myStorage[key] || defaultValue;
+  };
+
+#+end_src
+
+***** Set item
+
+To add a new Item, we append it to our data structure and create the respective
+cookie
+
+#+begin_src js
+  MyLocalStorage.prototype.setItem = function(key, value) {
+	this.myStorage[key] = value;
+	document.cookie = `${key}=${value}`;
+  };
+#+end_src
+
+***** Remove item
+
+To remove a cookie we need to set the expiration date to a moment before the
+current one. I used to create a Date instance and set the timestamp to 0
+
+#+begin_src js
+  MyLocalStorage.prototype.removeItem = function(key) {
+      let date = new Date(0);
+      date = date.toUTCString();
+	document.cookie = `${key}=null;expires=${date}`;
+	delete myLocalStorage[key];
+  };
+
+#+end_src
+
+***** Clear
+
+To remove all the elements, we can iter over our Object and call the ~removeItem~ method
+
+#+begin_src js
+
+  MyLocalStorage.prototype.clear = function() {
+      for (let key of Object.keys(this.myStorage))
+          this.removeItem(key);
+  };
+
+#+end_src
+
+***** All together
+
+We can use the [[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures][clousure]] technique to simulate to have a private attribute
+
+#+begin_src js
+  function MyLocalStorage2() {
+      const update = () => Object.fromEntries(document.cookie.split("; ").map(s => s.split("=")));
+      let myStorage = update();
+      this.getItem = function(key, defaultValue) {
+          if (key in myStorage) return myStorage[key];
+          myStorage = update();
+          return myStorage[key] || defaultValue;
+      };
+
+      this.setItem = function(key, value) {
+          myStorage[key] = value;
+          document.cookie = `${key}=${value}`;
+      };
+
+      this.removeItem = function(key) {
+          let date = new Date(0);
+          date.toUTCString();
+          document.cookie = `${key}=null;expires=${date}`;
+          delete myLocalStorage[key];
+      }
+      this.clear = function() {
+          for (let key of Object.keys(myStorage)) {
+              this.removeItem(key);
+          }
+      }
+  };
+
+  let myLocalStorage2 = new MyLocalStorage2();
+
+#+end_src
+
+**** With the Object notation
+
+#+begin_src js
+  const cookiesOperations = {
+      listOfCookies: Object.fromEntries(document.cookie.split("; ").map(co => co.split("="))),
+
+      setItem(key, value) {
+          this.listOfCookies[key] = value;
+          document.cookie = `${key}=${value}`;
+      },
+
+      getItem(key, defaultValue) {
+          // return this.listOfCookies[key] if this.listOfCookies[key] else defaultValue
+          return this.listOfCookies[key] ? this.listOfCookies[key] : defaultValue;
+      },
+
+      remove(key) {
+          delete this.listOfCookies[key];
+          document.cookie = `${key}=null; expires=${(() => new Date(0))().toUTCString()}`;
+      },
+
+      clear() {
+          for (let key in this.listOfCookies)
+               this.remove(key);
+      },
+  }
+
+#+end_src
+
+But... What happens if the cookie has some properties?
