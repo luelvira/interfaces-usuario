@@ -2,10 +2,12 @@
     --background-color: #222831; 
     --foreground: #f8f8f2;
     --dark-color: #393e46;
-    --accent-color: #29a19c;
+    --accent-color: #85E0DB;
     --accent-light-color: #a3f7bf;
     --pink: #ff79c6;
     --purple: #bd93f9;
+    --max-width: 1080px;
+    --max-width-internal: 960px;
     
 }
 @font-face {
@@ -53,27 +55,23 @@ body {
     background-color: var(--background-color);
     color:  var(--foreground);
     font-family: DejavuSans;
+    margin: 0;
+    padding: 0;
 }
 b {
     color: var(--accent-light-color);
-    font-family: DejavuSans;
-    font-weight: bold;
 }
 .site-header {
     margin-bottom: 1%;
 }
-.site-header h1 {
-    text-align: center;
-}
 .site-header  .date  {
-    max-width: 960px;
+    max-width: var(--max-width-internal);
     width: 80%;
     margin: auto;
-    
 }
 
 .site-header .nav-side {
-    max-width: 960px;
+    max-width: var(--max-width-internal);
     width: 80%;
     margin: auto;
 }
@@ -86,13 +84,21 @@ b {
 .nav-categories li {
     display: inline-block;
 }
+.nav-categories .active {
+    color: var(--accent-light-color);
+    text-decoration: underline;
+}
 .main-content {
-    max-width: 1080px;
+    max-width: var(--max-width);
     width: 80%;
     display: block;
     margin: auto;
     background-color: var(--dark-color);
     padding:  0.5%;
+}
+p {
+    font-size: 1rem;
+    line-height: 1.5rem;
 }
 
 h1,  h2, h3, h4,  h5, h6 {
@@ -102,6 +108,7 @@ h1,  h2, h3, h4,  h5, h6 {
 h1  {
     font-size: 3rem;
     font-weight: 600;
+    text-align: center;
 }
 h2 {font-size: 2.5em; color: var(--pink);}
 h3 {font-size: 2rem; color: var(--purple);}
@@ -109,8 +116,12 @@ h4 {font-size: 1.8rem;}
 h5 {font-size: 1.5rem;}
 h6 {font-size: 1.2rem;}
 
-.outline-2,  .outline-3, outline-4,  outline-5, outline-6 {
+[class^="outline"] {
     padding:  0 1%;
+}
+
+li {
+    margin: 1% 0;
 }
 
 a {
@@ -138,4 +149,31 @@ footer .colabore {
 footer .colabore a{
     display: block;
     width: 90px;
+}
+pre, code {
+    background-color: var(--background-color);
+    font-family: Fira Code;
+    font-weight: 100;
+    font-size: 0.8rem;
+    padding: 0.1em 1%;
+}
+pre {
+    padding: 1%;
+    overflow-x: auto;
+}
+
+@media screen and (max-width: 700px) {
+    :root {
+	--max-width: auto;
+    }
+    .main-content {
+	width: 100%;
+    }
+h1 {font-size: 2.5rem;}
+h2 {font-size: 2rem;}
+h3 {font-size: 1.8rem;}
+h4 {font-size: 1.5rem;}
+h5 {font-size: 1.2rem;}
+h6 {font-size: 1rem;}
+body {font-size: 0.8rem;}
 }

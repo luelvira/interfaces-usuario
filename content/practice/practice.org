@@ -3,4 +3,6 @@
 - 2023-09-05 - [[file:W01-session.org][Week 1 - HTML]]
 - 2023-09-11 - [[file:W02-session.org][Week 2 - HTML + CSS]]
 - 2023-09-18 - [[file:W03-session.org][Week 3 - CSS]]
-- 2023-10-06 - [[file:W04-session.org][W04-session]]
+- 2023-10-02 - [[file:W04-session.org][Week 5 - Introduction to JS]]
+- 2023-10-09 - [[file:W05-session.org][Session 5]]
+- 2023-10-16 - [[file:W06-session.org][Session 6 and 7]]

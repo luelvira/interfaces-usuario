@@ -64,7 +64,7 @@
 			      info
 			      &key
 			      (publish-date)
-				  description)
+			      description)
   (concat
    "<!-- Generate from " (lem/get-commit) " with " org-export-creator-string " -->\n"
    "<!DOCTYPE html>"
@@ -86,9 +86,13 @@
 		    ,(unless (= (length publish-date) 0) (concat "<p class=\"date\">Date: " publish-date "</p>"))
 		    (nav (@ (class "nav-side"))
 			 (ul (@ (class "nav-categories"))
-			     (li (a (@ (href ,(concat lem/site-url "/"))) "Home"))
-			     (li (a (@ (href ,(concat lem/site-url "/sessions.html"))) "Theory"))
-			     (li (a (@ (href ,(concat lem/site-url "/practice.html"))) "Practice")))))
+			     (li (a (@ (href ,(concat lem/site-url "/"))
+				       (class ,(if (not (or (string-match "practice" filename)
+							    (string-match "sessions" filename))) "active" ""))) "Home"))
+			     (li (a (@ (href ,(concat lem/site-url "/sessions.html"))
+				       (class ,(if (string-match "sessions" filename) "active" ""))) "Theory"))
+			     (li (a (@ (href ,(concat lem/site-url "/practice.html"))
+				       (class ,(if (string-match "practice" filename) "active" ""))) "Practice")))))
 	    (main (@ (class "main-content"))
 		  (section
 		   (article (@ (class "post"))
