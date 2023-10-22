@@ -1,13 +1,13 @@
-<!-- Generate from "2023/10/19 18:46:52" f611b5c with Emacs 27.1 (Org mode 9.3) -->
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"/><meta author="Lucas Elvira Martín"/><meta description=""/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="https://luelvira.github.io/interfaces-usuario/css/code.css"/><link rel="stylesheet" href="https://luelvira.github.io/interfaces-usuario/css/style.css"/><title>Session 5UI 2023-2024</title></head><body><header class="site-header"><h1>Session 5</h1><p class="date">Date: October  9, 2023</p><nav class="nav-side"><ul class="nav-categories"><li><a href="https://luelvira.github.io/interfaces-usuario/">Home</a></li><li><a href="https://luelvira.github.io/interfaces-usuario/sessions.html">Theory</a></li><li><a href="https://luelvira.github.io/interfaces-usuario/practice.html">Practice</a></li></ul></nav></header><main class="main-content"><section><article class="post"><p>
+<!-- Generate from "2023/10/22 12:38:57" 7a0a3e2 with Emacs 27.1 (Org mode 9.3) -->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"/><meta author="Lucas Elvira Martín"/><meta description=""/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="https://luelvira.github.io/interfaces-usuario/css/code.css"/><link rel="stylesheet" href="https://luelvira.github.io/interfaces-usuario/css/style.css"/><title>Session 5UI 2023-2024</title></head><body><header class="site-header"><h1>Session 5</h1><p class="date">Date: October  9, 2023</p><nav class="nav-side"><ul class="nav-categories"><li><a href="https://luelvira.github.io/interfaces-usuario/" class="">Home</a></li><li><a href="https://luelvira.github.io/interfaces-usuario/sessions.html" class="">Theory</a></li><li><a href="https://luelvira.github.io/interfaces-usuario/practice.html" class="active">Practice</a></li></ul></nav></header><main class="main-content"><section><article class="post"><p>
 :HEADER-ARGS:html: :tangle w05/index.html
 :HEADER-ARGS:css: :tangle w05/css/style.css
 :HEADER-ARGS:js: :tangle w05/js/main.js
 </p>
 
-<div id="outline-container-orgd6c8428" class="outline-2">
-<h2 id="orgd6c8428">Prepare the environment</h2>
-<div class="outline-text-2" id="text-orgd6c8428">
+<div id="outline-container-orgb83417a" class="outline-2">
+<h2 id="orgb83417a">Prepare the environment</h2>
+<div class="outline-text-2" id="text-orgb83417a">
 <pre>mkdir -p w05/{css,js,media}
 touch w05/index.html
 touch w05/css/style.css
@@ -15,9 +15,9 @@ touch w05/js/main.js</pre>
 </div>
 </div>
 
-<div id="outline-container-orgd62c7a2" class="outline-2">
-<h2 id="orgd62c7a2">Create the HTML template</h2>
-<div class="outline-text-2" id="text-orgd62c7a2">
+<div id="outline-container-orgd4a15ce" class="outline-2">
+<h2 id="orgd4a15ce">Create the HTML template</h2>
+<div class="outline-text-2" id="text-orgd4a15ce">
 <pre>&lt;<span class="org-keyword">!DOCTYPE</span> html&gt;
 &lt;<span class="org-function-name">html</span> <span class="org-variable-name">lang</span>=<span class="org-string">"en"</span>&gt;
   &lt;<span class="org-function-name">head</span>&gt;
@@ -29,9 +29,9 @@ touch w05/js/main.js</pre>
   &lt;<span class="org-function-name">body</span>&gt;</pre>
 </div>
 
-<div id="outline-container-org161e234" class="outline-3">
-<h3 id="org161e234">The form structure</h3>
-<div class="outline-text-3" id="text-org161e234">
+<div id="outline-container-org421b104" class="outline-3">
+<h3 id="org421b104">The form structure</h3>
+<div class="outline-text-3" id="text-org421b104">
 <pre>&lt;<span class="org-function-name">main</span>&gt;
   &lt;<span class="org-function-name">form</span> <span class="org-variable-name">action</span>=<span class="org-string">"login"</span> <span class="org-variable-name">method</span>=<span class="org-string">"GET"</span>&gt;
     &lt;<span class="org-function-name">div</span> <span class="org-variable-name">class</span>=<span class="org-string">"cont"</span>&gt;
@@ -55,9 +55,9 @@ touch w05/js/main.js</pre>
 </div>
 </div>
 
-<div id="outline-container-org575d18d" class="outline-3">
-<h3 id="org575d18d">EOF</h3>
-<div class="outline-text-3" id="text-org575d18d">
+<div id="outline-container-org143c3ec" class="outline-3">
+<h3 id="org143c3ec">EOF</h3>
+<div class="outline-text-3" id="text-org143c3ec">
 <pre>&lt;<span class="org-function-name">script</span> <span class="org-variable-name">type</span>=<span class="org-string">"text/javascript"</span> <span class="org-variable-name">src</span>=<span class="org-string">"js/main.js"</span>&gt;&lt;/<span class="org-function-name">script</span>&gt;
 &lt;/<span class="org-function-name">body</span>&gt;
 &lt;/<span class="org-function-name">html</span>&gt;</pre>
@@ -65,9 +65,9 @@ touch w05/js/main.js</pre>
 </div>
 </div>
 
-<div id="outline-container-org043024e" class="outline-2">
-<h2 id="org043024e">Give some style to the form</h2>
-<div class="outline-text-2" id="text-org043024e">
+<div id="outline-container-orgee97d8a" class="outline-2">
+<h2 id="orgee97d8a">Give some style to the form</h2>
+<div class="outline-text-2" id="text-orgee97d8a">
 <pre><span class="org-css-selector">main </span>{
       <span class="org-css-property">max-width</span>: 1080px;
       <span class="org-css-property">width</span>: 80%;
@@ -107,13 +107,13 @@ touch w05/js/main.js</pre>
 </div>
 </div>
 
-<div id="outline-container-org5b69eae" class="outline-2">
-<h2 id="org5b69eae">Read the data from the form</h2>
-<div class="outline-text-2" id="text-org5b69eae">
+<div id="outline-container-orgd82b8e3" class="outline-2">
+<h2 id="orgd82b8e3">Read the data from the form</h2>
+<div class="outline-text-2" id="text-orgd82b8e3">
 </div>
-<div id="outline-container-org5757e6b" class="outline-3">
-<h3 id="org5757e6b">Catch the events</h3>
-<div class="outline-text-3" id="text-org5757e6b">
+<div id="outline-container-orgbc1e0f3" class="outline-3">
+<h3 id="orgbc1e0f3">Catch the events</h3>
+<div class="outline-text-3" id="text-orgbc1e0f3">
 <pre><span class="org-keyword">let</span> <span class="org-variable-name">form</span> = document.getElementsByTagName(<span class="org-string">"form"</span>)[0];
 form.addEventListener(<span class="org-string">"submit"</span>, <span class="org-keyword">function</span>(<span class="org-variable-name">e</span>) {
     <span class="org-comment-delimiter">// </span><span class="org-comment">check which was the triger</span>

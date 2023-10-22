@@ -1,12 +1,12 @@
-<!-- Generate from "2023/10/19 18:46:52" f611b5c with Emacs 27.1 (Org mode 9.3) -->
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"/><meta author="Lucas Elvira Martín"/><meta description=""/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="https://luelvira.github.io/interfaces-usuario/css/code.css"/><link rel="stylesheet" href="https://luelvira.github.io/interfaces-usuario/css/style.css"/><title>Session 6 and 7UI 2023-2024</title></head><body><header class="site-header"><h1>Session 6 and 7</h1><p class="date">Date: October 16, 2023</p><nav class="nav-side"><ul class="nav-categories"><li><a href="https://luelvira.github.io/interfaces-usuario/">Home</a></li><li><a href="https://luelvira.github.io/interfaces-usuario/sessions.html">Theory</a></li><li><a href="https://luelvira.github.io/interfaces-usuario/practice.html">Practice</a></li></ul></nav></header><main class="main-content"><section><article class="post"><p>
+<!-- Generate from "2023/10/22 12:38:57" 7a0a3e2 with Emacs 27.1 (Org mode 9.3) -->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"/><meta author="Lucas Elvira Martín"/><meta description=""/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="https://luelvira.github.io/interfaces-usuario/css/code.css"/><link rel="stylesheet" href="https://luelvira.github.io/interfaces-usuario/css/style.css"/><title>Session 6 and 7UI 2023-2024</title></head><body><header class="site-header"><h1>Session 6 and 7</h1><p class="date">Date: October 16, 2023</p><nav class="nav-side"><ul class="nav-categories"><li><a href="https://luelvira.github.io/interfaces-usuario/" class="">Home</a></li><li><a href="https://luelvira.github.io/interfaces-usuario/sessions.html" class="">Theory</a></li><li><a href="https://luelvira.github.io/interfaces-usuario/practice.html" class="active">Practice</a></li></ul></nav></header><main class="main-content"><section><article class="post"><p>
 :HEADER-ARGS:html: :tangle w06/index.html
 :HEADER-ARGS:css: :tangle w06/css/style.css
 :HEADER-ARGS:js: :tangle w06/js/main.js
 </p>
-<div id="outline-container-org1fcea2f" class="outline-2">
-<h2 id="org1fcea2f">Prepare the environment</h2>
-<div class="outline-text-2" id="text-org1fcea2f">
+<div id="outline-container-orgbf11396" class="outline-2">
+<h2 id="orgbf11396">Prepare the environment</h2>
+<div class="outline-text-2" id="text-orgbf11396">
 <p>
 As always, we create all the essential files
 </p>
@@ -16,9 +16,9 @@ touch w06/js/main.js</pre>
 </div>
 </div>
 
-<div id="outline-container-orgf20c36d" class="outline-2">
-<h2 id="orgf20c36d">Create the template</h2>
-<div class="outline-text-2" id="text-orgf20c36d">
+<div id="outline-container-org8641b3a" class="outline-2">
+<h2 id="org8641b3a">Create the template</h2>
+<div class="outline-text-2" id="text-org8641b3a">
 <pre>&lt;<span class="org-keyword">!DOCTYPE</span> html&gt;
 &lt;<span class="org-function-name">html</span> <span class="org-variable-name">lang</span>=<span class="org-string">"en"</span>&gt;
   &lt;<span class="org-function-name">head</span>&gt;
@@ -30,9 +30,9 @@ touch w06/js/main.js</pre>
   &lt;<span class="org-function-name">body</span>&gt;</pre>
 </div>
 
-<div id="outline-container-orgcc52564" class="outline-3">
-<h3 id="orgcc52564">Insert the javascript file</h3>
-<div class="outline-text-3" id="text-orgcc52564">
+<div id="outline-container-org49fba42" class="outline-3">
+<h3 id="org49fba42">Insert the javascript file</h3>
+<div class="outline-text-3" id="text-org49fba42">
 <p>
 We add the js file at the end of the body in order of get available all the DOM
 elements
@@ -45,22 +45,22 @@ elements
 </div>
 </div>
 
-<div id="outline-container-orgfee4e44" class="outline-2">
-<h2 id="orgfee4e44">Working with the storage of the browser</h2>
-<div class="outline-text-2" id="text-orgfee4e44">
+<div id="outline-container-orgc323e2c" class="outline-2">
+<h2 id="orgc323e2c">Working with the storage of the browser</h2>
+<div class="outline-text-2" id="text-orgc323e2c">
 </div>
-<div id="outline-container-org85e51ee" class="outline-3">
-<h3 id="org85e51ee">localStorage/sessionStorage vs Cookies</h3>
-<div class="outline-text-3" id="text-org85e51ee">
+<div id="outline-container-orgac0dd3a" class="outline-3">
+<h3 id="orgac0dd3a">localStorage/sessionStorage vs Cookies</h3>
+<div class="outline-text-3" id="text-orgac0dd3a">
 <p>
 Both are data that the user browser stores for some time so we can access them
 in other sessions. The data are shared in all the pages within the same domain
 </p>
 </div>
 
-<div id="outline-container-org909c81a" class="outline-4">
-<h4 id="org909c81a">localStorage/sessionStorage</h4>
-<div class="outline-text-4" id="text-org909c81a">
+<div id="outline-container-org685af6e" class="outline-4">
+<h4 id="org685af6e">localStorage/sessionStorage</h4>
+<div class="outline-text-4" id="text-org685af6e">
 <p>
 The localStorage is a data structure on the browser that allows us to store some
 text as key-value. This structure offers the following methods
@@ -77,9 +77,9 @@ associated. If this key, already exists, replace it.</li>
 </div>
 </div>
 
-<div id="outline-container-orgbb1af9f" class="outline-4">
-<h4 id="orgbb1af9f">Cookies</h4>
-<div class="outline-text-4" id="text-orgbb1af9f">
+<div id="outline-container-org29a403a" class="outline-4">
+<h4 id="org29a403a">Cookies</h4>
+<div class="outline-text-4" id="text-org29a403a">
 <p>
 The cookies are a string stored in the browser. To access it, we use the
 <code>document.cookie</code> property. This string is stored as a key-value, separated by a
@@ -95,9 +95,9 @@ document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 </div>
 </div>
 
-<div id="outline-container-orga0537b9" class="outline-4">
-<h4 id="orga0537b9">Implement the API of the localStorage for the cookies</h4>
-<div class="outline-text-4" id="text-orga0537b9">
+<div id="outline-container-org6d6db1c" class="outline-4">
+<h4 id="org6d6db1c">Implement the API of the localStorage for the cookies</h4>
+<div class="outline-text-4" id="text-org6d6db1c">
 <p>
 We have viewed two approaches to create an Object available to do it. (one
 different in each group). With the Object notation, we saw how to create an
@@ -108,9 +108,9 @@ us to describe the process more clearly.
 </div>
 
 
-<div id="outline-container-orge8eb463" class="outline-5">
-<h5 id="orge8eb463">Function process</h5>
-<div class="outline-text-5" id="text-orge8eb463">
+<div id="outline-container-orgf791960" class="outline-5">
+<h5 id="orgf791960">Function process</h5>
+<div class="outline-text-5" id="text-orgf791960">
 <p>
 In this example, we use a function as a constructor. To do it, when we call to
 it, we have to add the <code>new</code> keyword before the function name.
@@ -130,8 +130,8 @@ again if the key exists. If not, return the default value.
 </div>
 
 <ul class="org-ul">
-<li><a id="org2a38765"></a>Get Item<br />
-<div class="outline-text-6" id="text-org2a38765">
+<li><a id="orge9c75e4"></a>Get Item<br />
+<div class="outline-text-6" id="text-orge9c75e4">
 <p>
 The process to convert the string into and key-value hashmap is the following:
 </p>
@@ -155,8 +155,8 @@ the key value tuple in each row.</li>
 </div>
 </li>
 
-<li><a id="org80b038f"></a>Set item<br />
-<div class="outline-text-6" id="text-org80b038f">
+<li><a id="org798573a"></a>Set item<br />
+<div class="outline-text-6" id="text-org798573a">
 <p>
 To add a new Item, we append it to our data structure and create the respective
 cookie
@@ -169,8 +169,8 @@ cookie
 </div>
 </li>
 
-<li><a id="orgb5ccd36"></a>Remove item<br />
-<div class="outline-text-6" id="text-orgb5ccd36">
+<li><a id="orgf08d94c"></a>Remove item<br />
+<div class="outline-text-6" id="text-orgf08d94c">
 <p>
 To remove a cookie we need to set the expiration date to a moment before the
 current one. I used to create a Date instance and set the timestamp to 0
@@ -185,8 +185,8 @@ current one. I used to create a Date instance and set the timestamp to 0
 </div>
 </li>
 
-<li><a id="orgd640c40"></a>Clear<br />
-<div class="outline-text-6" id="text-orgd640c40">
+<li><a id="org34b69e4"></a>Clear<br />
+<div class="outline-text-6" id="text-org34b69e4">
 <p>
 To remove all the elements, we can iter over our Object and call the <code>removeItem</code> method
 </p>
@@ -198,8 +198,8 @@ To remove all the elements, we can iter over our Object and call the <code>remov
 </div>
 </li>
 
-<li><a id="org1e0619d"></a>All together<br />
-<div class="outline-text-6" id="text-org1e0619d">
+<li><a id="org48014f7"></a>All together<br />
+<div class="outline-text-6" id="text-org48014f7">
 <p>
 We can use the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures">clousure</a> technique to simulate to have a private attribute
 </p>
@@ -237,9 +237,9 @@ We can use the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/
 </ul>
 </div>
 
-<div id="outline-container-orgc13eb8a" class="outline-5">
-<h5 id="orgc13eb8a">With the Object notation</h5>
-<div class="outline-text-5" id="text-orgc13eb8a">
+<div id="outline-container-org0efcd13" class="outline-5">
+<h5 id="org0efcd13">With the Object notation</h5>
+<div class="outline-text-5" id="text-org0efcd13">
 <pre><span class="org-keyword">const</span> <span class="org-variable-name">cookiesOperations</span> = {
     listOfCookies: Object.fromEntries(document.cookie.split(<span class="org-string">"; "</span>).map(co =&gt; co.split(<span class="org-string">"="</span>))),
 
